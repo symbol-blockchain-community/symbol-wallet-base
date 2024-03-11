@@ -12,7 +12,7 @@ export default function Root(): React.JSX.Element {
       <Link href='/_sitemap' className='text-blue-700 underline'>
         to sitemap
       </Link>
-      <Button variant='default' size='default'>
+      <Button variant='outline' size='default'>
         Title
       </Button>
     </View>
