@@ -1,6 +1,8 @@
 import { Link } from 'expo-router';
 import { View, Text } from 'react-native';
 
+import Button from '@/components/atom/Button';
+
 export default function Root(): React.JSX.Element {
   return (
     <View className='flex-1 justify-center items-center gap-3'>
@@ -10,6 +12,9 @@ export default function Root(): React.JSX.Element {
       <Link href='/_sitemap' className='text-blue-700 underline'>
         to sitemap
       </Link>
+      <Button variant='default' size='default'>
+        Title
+      </Button>
     </View>
   );
 }

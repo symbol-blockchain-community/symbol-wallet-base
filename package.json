@@ -12,6 +12,8 @@
   "dependencies": {
     "@react-native-async-storage/async-storage": "1.21.0",
     "buffer": "^6.0.3",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
     "events": "^3.3.0",
     "expo": "~50.0.8",
     "expo-constants": "^15.4.5",
@@ -30,7 +32,8 @@
     "react-native-screens": "^3.29.0",
     "readable-stream": "^4.5.2",
     "symbol-hd-wallets": "^0.14.2",
-    "symbol-sdk": "^2.0.4"
+    "symbol-sdk": "^2.0.4",
+    "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
