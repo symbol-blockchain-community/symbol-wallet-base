@@ -1,5 +1,4 @@
 // @ts-check
-// TODO: nativewind.platformSelect は native wind v2 版では既知の不具合により動作不能。 v4 リリース後の対応とする。
 
 /** @type {import("tailwindcss").Config} */
 module.exports = {

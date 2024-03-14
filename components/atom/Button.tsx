@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: 'bg-primary',
-        outline: 'border border-input ',
+        outline: 'border border-input',
         secondary: 'bg-secondary',
         ghost: '',
         link: '',
