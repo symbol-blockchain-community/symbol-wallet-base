@@ -39,7 +39,7 @@ const textVariants = cva('font-medium', {
       link: 'text-blue-700 underline',
     },
     size: {
-      default: 'text-sm',
+      default: 'text-base',
       sm: 'text-sm',
       lg: 'text-lg',
       icon: 'text-sm',
@@ -55,9 +55,9 @@ interface Props extends PressableProps, VariantProps<typeof buttonVariants> {}
 
 export default function Button({ className, size, children, variant, ...props }: Props): JSX.Element {
   return (
-    <Pressable {...props} className={cn(buttonVariants({ variant, size, className }), '')}>
+    <Pressable {...props} className={cn(buttonVariants({ variant, size, className }))}>
       {typeof children === 'string' ? (
-        <Text className={cn(textVariants({ variant, size, className }), '')}>{children}</Text>
+        <Text className={cn(textVariants({ variant, size, className }))}>{children}</Text>
       ) : (
         children
       )}

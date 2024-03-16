@@ -1,6 +1,7 @@
 import '../shim';
 import { usePathname, Stack, Link, router, SplashScreen } from 'expo-router';
 import { Pressable, useColorScheme } from 'react-native';
+import Toast from 'react-native-toast-message';
 
 import { IconAccount, IconClose } from '@/components/atom/Icons';
 import { useLoadedAssets } from '@/hooks/useLoadedAssets';
@@ -69,6 +70,7 @@ export default function RootLayout(): JSX.Element {
           />
         </Stack>
       </StateProvider>
+      <Toast />
     </I18nProvider>
   );
 }

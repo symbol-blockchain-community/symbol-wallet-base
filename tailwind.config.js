@@ -34,7 +34,7 @@ module.exports = {
           foreground: 'hsl(210, 40%, 98%)',
         },
         secondary: {
-          DEFAULT: 'hsl(210, 40%, 96.1%)',
+          DEFAULT: 'hsl(210, 40%, 96%)',
           foreground: 'hsl(222, 47%, 11%)',
         },
         warning: {

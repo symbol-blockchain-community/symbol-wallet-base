@@ -2,7 +2,7 @@ import Icons from '@expo/vector-icons/Ionicons';
 import { StyleProp, TextStyle } from 'react-native';
 
 interface Props {
-  size?: 28 | 32 | 48;
+  size?: 20 | 28 | 32 | 48;
   isOutline?: boolean;
   style?: StyleProp<TextStyle>;
 }

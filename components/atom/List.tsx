@@ -38,7 +38,7 @@ interface ListItemProps extends ViewProps {}
 
 export function ListItem({ className, ...props }: ListItemProps): JSX.Element {
   return (
-    <View className={cn('flex-row justify-between items-center p-4 bg-white', className)} {...props}>
+    <View className={cn('flex-row justify-start items-center gap-x-3 p-4', className)} {...props}>
       {props.children}
     </View>
   );

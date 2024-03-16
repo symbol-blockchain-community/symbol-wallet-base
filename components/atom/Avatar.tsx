@@ -1,10 +1,10 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 import React from 'react';
-import { Image, ImageProps, View } from 'react-native';
+import { Image, ImageProps } from 'react-native';
 
 import { cn } from '@/util/classes';
 
-const sizeVariants = cva('rounded-full overflow-hidden', {
+const containerVariants = cva('rounded-full overflow-hidden', {
   variants: {
     size: {
       default: 'w-10 h-10',
@@ -18,12 +18,8 @@ const sizeVariants = cva('rounded-full overflow-hidden', {
   },
 });
 
-interface Props extends ImageProps, VariantProps<typeof sizeVariants> {}
+interface Props extends ImageProps, VariantProps<typeof containerVariants> {}
 
 export default function Avatar({ source, size, ...props }: Props): JSX.Element {
-  return (
-    <View className={cn(sizeVariants({ size }), '')}>
-      <Image {...props} source={source} />
-    </View>
-  );
+  return <Image {...props} source={source} className={cn(containerVariants({ size }))} resizeMode='contain' />;
 }
