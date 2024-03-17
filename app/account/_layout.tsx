@@ -9,7 +9,7 @@ export default function AccountLayout(): JSX.Element {
       <Stack.Screen name='network' options={{ headerShown: true }} />
       <Stack.Screen name='policy' options={{ headerShown: true }} />
       <Stack.Screen name='qa' options={{ headerShown: true }} />
-      <Stack.Screen name='terms' options={{ headerShown: true }} />
+      <Stack.Screen name='terms' options={{ headerShown: true, presentation: 'modal' }} />
     </Stack>
   );
 }

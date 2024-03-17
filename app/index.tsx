@@ -11,6 +11,9 @@ export default function Root(): React.JSX.Element {
       <Link href='/_sitemap' className='text-blue-700 underline'>
         to sitemap
       </Link>
+      <Link href='/login' replace className='text-blue-700 underline'>
+        to login
+      </Link>
     </View>
   );
 }

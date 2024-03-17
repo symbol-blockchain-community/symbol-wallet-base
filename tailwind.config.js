@@ -11,7 +11,7 @@ module.exports = {
     extend: {
       colors: {
         /** 境界線の色 */
-        border: 'hsl(214, 31%, 91%)',
+        border: 'hsl(217, 14%, 81%)',
         /** Input 系要素の境界線 */
         input: 'hsl(214, 31%, 91%)',
         /** 標準の背景色 */

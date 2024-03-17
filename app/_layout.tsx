@@ -51,7 +51,7 @@ export default function RootLayout(): JSX.Element {
             name='account'
             options={{
               title: 'Account',
-              headerShown: true,
+              headerShown: false,
               presentation: 'modal',
               headerLeft: handleHeaderLeftClickForModal,
             }}
