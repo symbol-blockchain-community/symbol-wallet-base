@@ -1,8 +1,9 @@
 import '../shim';
-import IonIcon from '@expo/vector-icons/Ionicons';
 import { usePathname, Stack, Link, router, SplashScreen } from 'expo-router';
 import { Pressable, useColorScheme } from 'react-native';
+import Toast from 'react-native-toast-message';
 
+import { IconAccount, IconClose } from '@/components/atom/Icons';
 import { useLoadedAssets } from '@/hooks/useLoadedAssets';
 import { StateProvider } from '@/states/context';
 import { I18nProvider } from '@/states/i18nContext';
@@ -21,7 +22,7 @@ export default function RootLayout(): JSX.Element {
   const handleHeaderRightClickForPage = () => {
     return (
       <Link href='/account'>
-        <IonIcon name='person-circle-outline' size={28} />
+        <IconAccount />
       </Link>
     );
   };
@@ -29,7 +30,7 @@ export default function RootLayout(): JSX.Element {
   const handleHeaderLeftClickForModal = () => {
     return (
       <Pressable onPress={() => router.back()}>
-        <IonIcon name='close' size={28} />
+        <IconClose />
       </Pressable>
     );
   };
@@ -69,6 +70,7 @@ export default function RootLayout(): JSX.Element {
           />
         </Stack>
       </StateProvider>
+      <Toast />
     </I18nProvider>
   );
 }
