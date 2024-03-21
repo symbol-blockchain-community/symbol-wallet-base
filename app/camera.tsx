@@ -3,7 +3,7 @@ import * as React from 'react';
 import { View, Text, ScrollView } from 'react-native';
 
 import Button from '@/components/atom/Button';
-import QRCodeReader from '@/components/atom/QRCodeReader';
+import QRCodeReader from '@/components/molecules/QRCodeReader';
 
 export default function Root(): React.JSX.Element {
   const [open, setOpen] = React.useState(false);
