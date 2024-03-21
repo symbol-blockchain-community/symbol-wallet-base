@@ -47,7 +47,6 @@ export default function QRCodeReader({
 
   return (
     <View {...props}>
-      <Text>permission: {JSON.stringify(permission)}</Text>
       {permission && permission.status === 'undetermined' && (
         <>
           <Button variant='default' onPress={handlePressRequestPermission} className=''>
