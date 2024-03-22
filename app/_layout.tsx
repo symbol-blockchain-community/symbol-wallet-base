@@ -43,7 +43,7 @@ export default function RootLayout(): JSX.Element {
             name='index'
             options={{
               title: 'Wallets',
-              headerShown: true,
+              headerShown: false,
               headerRight: handleHeaderRightClickForPage,
             }}
           />

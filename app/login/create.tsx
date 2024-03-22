@@ -24,7 +24,7 @@ export default function LoginCreate(): React.JSX.Element {
         <Avatar source={require('@/assets/icon.png')} size='lg' />
       </View>
       <View className='py-12'>
-        <Text>{t('login.new.precautions')}</Text>
+        <Text className='text-base'>{t('login.new.precautions')}</Text>
       </View>
       <View className='flex flex-grow flex-col justify-center space-y-12 w-full max-w-sm'>
         {[

@@ -13,6 +13,8 @@ const ja = {
     address: 'アドレス',
     balance: '残高',
     importance: '重要度',
+    next: '次へ',
+    copied: 'コピーしました',
   },
   login: {
     index: {
@@ -35,9 +37,19 @@ const ja = {
       submit: 'リカバリーフレーズを作成する',
       checking: '全て確認して下さい',
     },
+    import: {
+      title: 'リカバリーフレーズを入力してください',
+    },
+    imported: {
+      title: '読み込むアカウントを選択してください',
+    },
     generated: {
       title: 'リカバリーフレーズを作成しました。必ず安全な場所に保管し、誰にも共有しないで下さい。',
       input_label: 'リカバリーフレーズ',
+      save: '保存する',
+    },
+    complete: {
+      finished: '準備を完了しました！',
     },
   },
   setting: {
