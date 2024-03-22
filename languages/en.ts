@@ -15,10 +15,23 @@ const en: typeof ja = {
     balance: 'Balance',
     importance: 'Importance',
   },
-  setting: {
-    network: {
-      testnet: 'Testnet',
-      mainnet: 'Mainnet',
+  pages: {
+    camera: {
+      scanResult: 'Scan Result',
+      startCamera: 'Start Camera',
+    },
+    setting: {
+      network: {
+        testnet: 'Testnet',
+        mainnet: 'Mainnet',
+      },
+    },
+  },
+  molecules: {
+    QrCodeReader: {
+      enableCamera: 'Enable Camera',
+      cameraDisabled: 'The camera is disabled. Please allow the use of the camera from the settings screen.',
+      openSettings: 'Open Settings',
     },
   },
 };

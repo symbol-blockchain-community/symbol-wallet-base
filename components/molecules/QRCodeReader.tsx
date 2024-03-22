@@ -4,6 +4,7 @@ import { Pressable, View, Text, Linking } from 'react-native';
 
 import Button from '@/components/atom/Button';
 import { IconLightDown, IconLightUp, IconCameraReverse } from '@/components/atom/Icons';
+import { useI18n } from '@/hooks/useI18n';
 import { cn } from '@/util/classes';
 
 interface Props {
@@ -22,6 +23,8 @@ export default function QRCodeReader({
   disableTourchSwitcher = false,
   ...props
 }: Props): JSX.Element {
+  const { t } = useI18n();
+
   const [facing, setFacing] = React.useState<'back' | 'front'>('back');
   const [enableTorch, setEnableTorch] = React.useState(false);
   const [permission, requestPermission] = useCameraPermissions();
@@ -47,21 +50,7 @@ export default function QRCodeReader({
 
   return (
     <View {...props}>
-      {permission && permission.status === 'undetermined' && (
-        <>
-          <Button variant='default' onPress={handlePressRequestPermission} className=''>
-            カメラを有効化
-          </Button>
-        </>
-      )}
-      {permission && permission.status === 'denied' && (
-        <View className={cn('w-full my-4 rounded-lg')}>
-          <Text>カメラが無効になっています。設定画面よりカメラの使用を許可して下さい。</Text>
-          <Button variant='default' onPress={() => Linking.openSettings()} className=''>
-            設定を開く
-          </Button>
-        </View>
-      )}
+      {/* パーミッションOK */}
       {permission && permission.status === 'granted' && (
         <>
           <CameraView
@@ -90,10 +79,31 @@ export default function QRCodeReader({
               </Pressable>
             )}
             <Button variant='default' onPress={() => setOpen(false)} className='flex-1 '>
-              キャンセル
+              {t('common.cancel')}
             </Button>
           </View>
         </>
+      )}
+      {/* 初回起動時 */}
+      {permission && permission.status === 'undetermined' && (
+        <>
+          <Button variant='default' onPress={handlePressRequestPermission} className=''>
+            {/* カメラを有効化 */}
+            {t('molecules.QrCodeReader.enableCamera')}
+          </Button>
+        </>
+      )}
+
+      {/* パーミッション拒否済み */}
+      {permission && permission.status === 'denied' && (
+        <View className={cn('w-full my-4 rounded-lg')}>
+          {/* カメラが無効になっています。設定画面よりカメラの使用を許可して下さい。 */}
+          <Text>{t('molecules.QrCodeReader.cameraDisabled')}</Text>
+          <Button variant='default' onPress={() => Linking.openSettings()} className=''>
+            {/* 設定を開く */}
+            {t('molecules.QrCodeReader.openSettings')}
+          </Button>
+        </View>
       )}
     </View>
   );

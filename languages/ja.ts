@@ -14,10 +14,23 @@ const ja = {
     balance: '残高',
     importance: '重要度',
   },
-  setting: {
-    network: {
-      testnet: 'テストネット',
-      mainnet: 'メインネット',
+  pages: {
+    camera: {
+      startCamera: 'カメラを起動',
+      scanResult: '読み取り結果',
+    },
+    setting: {
+      network: {
+        testnet: 'テストネット',
+        mainnet: 'メインネット',
+      },
+    },
+  },
+  molecules: {
+    QrCodeReader: {
+      enableCamera: 'カメラを有効化',
+      cameraDisabled: 'カメラが無効になっています。設定画面よりカメラの使用を許可して下さい。',
+      openSettings: '設定を開く',
     },
   },
 };
