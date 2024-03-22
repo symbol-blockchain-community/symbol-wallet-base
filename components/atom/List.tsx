@@ -3,7 +3,7 @@ import { FlatList, View, ViewProps } from 'react-native';
 import { cn } from '@/util/classes';
 
 type ListItemData<T> = {
-  id: number;
+  id: number | string;
 } & T;
 
 interface Props<T> {
@@ -31,7 +31,7 @@ export function List<T>(props: Props<T>): JSX.Element {
     <FlatList
       className={cn(props.className)}
       data={props.items}
-      ItemSeparatorComponent={() => <View className='border border-input w-full' />}
+      ItemSeparatorComponent={() => <View className='w-full h-1' />}
       renderItem={({ item }) => props.renderItem(item)}
       keyExtractor={(item) => item.id.toString()}
     />

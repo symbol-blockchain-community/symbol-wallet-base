@@ -5,7 +5,7 @@ import { Pressable, PressableProps, Text } from 'react-native';
 import { cn } from '@/util/classes';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center whitespace-nowrap rounded-md ring-offset-background transition-colors disabled:opacity-50',
+  'inline-flex items-center justify-center whitespace-nowrap rounded-md ring-offset-background transition-colors',
   {
     variants: {
       variant: {
@@ -56,11 +56,16 @@ interface Props extends PressableProps, VariantProps<typeof buttonVariants> {}
 export default function Button({ className, size, children, variant, ...props }: Props): JSX.Element {
   return (
     <Pressable {...props} className={cn(buttonVariants({ variant, size, className }))}>
-      {typeof children === 'string' ? (
-        <Text className={cn(textVariants({ variant, size, className }))}>{children}</Text>
-      ) : (
-        children
-      )}
+      {({ pressed }) => {
+        if (typeof children === 'string') {
+          return (
+            <Text className={cn(textVariants({ variant, size, className }), pressed ? 'opacity-20' : 'opacity-100')}>
+              {children}
+            </Text>
+          );
+        }
+        return <>{children}</>;
+      }}
     </Pressable>
   );
 }

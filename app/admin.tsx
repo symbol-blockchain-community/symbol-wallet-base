@@ -15,6 +15,8 @@ import Select from '@/components/atom/Select';
 import Switch from '@/components/atom/Switch';
 import Tabs from '@/components/atom/Tabs';
 import TextArea from '@/components/atom/Textarea';
+import { AccountController } from '@/controller/AccountController';
+import { SecureStorage } from '@/util/storages/SecureStorage';
 
 /**
  * このスクリーンは開発中に Atom Component 等を確認するための検証用です。
@@ -25,6 +27,10 @@ export default function Root(): React.JSX.Element {
       <ScrollView>
         <View className='flex justify-start items-stretch gap-y-10 p-2 bg-background'>
           <Text className='font-bold'>このスクリーンは開発中に Atom Component 等を確認するための検証用です。</Text>
+          <View>
+            <Button onPress={() => AccountController.createNewPrivateKeyAccount('testnet')}>検証用 WALLET 追加</Button>
+            <Button onPress={() => new SecureStorage('ACCOUNT_SERVICE').resetSecretItem()}>検証用 WALLET 削除</Button>
+          </View>
           <View>
             <Text>LINK</Text>
             <Link href='/_sitemap' className='text-blue-700 underline'>
@@ -151,7 +157,7 @@ export default function Root(): React.JSX.Element {
           注意 Scroll View と RN FlatList は Nest できません。ページ内で FlatList or Scroll View といった二者択一とする
         </Text>
         <List
-          items={new Array(2).fill(0).map(() => ({ name: 'test' }))}
+          items={new Array(2).fill(0).map((_, i) => ({ name: 'test', id: i }))}
           renderItem={(e) => (
             <ListItem>
               <Avatar source={require('@/assets/icon.png')} />

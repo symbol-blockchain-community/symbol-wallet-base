@@ -1,5 +1,4 @@
 import { useRouter } from 'expo-router';
-import { useEffect } from 'react';
 import { View, Text } from 'react-native';
 
 import Avatar from '@/components/atom/Avatar';
@@ -9,10 +8,6 @@ import { useI18n } from '@/hooks/useI18n';
 export default function LoginRoot(): React.JSX.Element {
   const { t, locale, setLocale } = useI18n();
   const router = useRouter();
-
-  useEffect(() => {
-    router.push('/login/imported');
-  }, []);
 
   const handleCreateNew = () => {
     router.push('/login/create');
