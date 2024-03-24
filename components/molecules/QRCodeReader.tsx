@@ -63,7 +63,7 @@ export default function QRCodeReader({
             enableTorch={enableTorch}
             onBarcodeScanned={handleBarcodeScanned}
           >
-            <View className={cn('w-11/12 max-w-5xl my-4 h-screen h-5/6 rounded-lg')} />
+            <View className={cn('w-11/12 max-w-5xl my-4 h-5/6 rounded-lg')} />
           </CameraView>
           <View className='mt-5 flex flex-row justify-between'>
             {/* ライトOn/Offボタン */}
