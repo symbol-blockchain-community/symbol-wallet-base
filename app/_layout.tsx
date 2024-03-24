@@ -1,5 +1,5 @@
 import '../shim';
-import { usePathname, Stack, Link, router, SplashScreen } from 'expo-router';
+import { usePathname, Stack, Link, SplashScreen, useRouter } from 'expo-router';
 import { Pressable, useColorScheme } from 'react-native';
 import Toast from 'react-native-toast-message';
 
@@ -16,6 +16,7 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout(): JSX.Element {
   const pathname = usePathname();
+  const router = useRouter();
   const colorSchema = useColorScheme();
   const isLoadingComplete = useLoadedAssets();
   console.log('mode', { pathname, colorSchema, isLoadingComplete });

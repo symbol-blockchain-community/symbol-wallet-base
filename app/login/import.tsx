@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Keyboard, ScrollView } from 'react-native';
 
 import Avatar from '@/components/atom/Avatar';
 import Button from '@/components/atom/Button';
@@ -22,34 +22,38 @@ export default function LoginImport(): JSX.Element {
 
   const handleComplete = () => {
     // TODO: ニーモニックを解析し、問題がなければ Secure Storage へ格納する
-    router.push('/');
+    router.push('/login/imported');
   };
 
   return (
-    <View className='flex-1 flex flex-col flex-grow justify-between items-center gap-3 px-6 py-24'>
-      <View className='flex flex-col items-center'>
-        <Avatar source={require('@/assets/icon.png')} size='lg' />
-      </View>
-      <View className='py-12'>
-        <Text className='text-base'>{t('login.import.title')}</Text>
-      </View>
-      <View className='flex flex-grow flex-col justify-start space-y-8 w-full max-w-sm'>
-        <View>
-          <Text className='pb-2'>{t('login.generated.input_label')}</Text>
-          <TextArea
-            value={mnemonic}
-            onChangeText={handleOnChange}
-            className='text-lg tracking-wider p-8 text-primary'
-            placeholder='example: test eat town super sum hello world byte horse ...'
-          />
+    <ScrollView className='flex-1'>
+      <View className='min-h-screen flex flex-col flex-grow justify-between items-center gap-3 px-6 py-24'>
+        <View className='flex flex-col items-center'>
+          <Avatar source={require('@/assets/icon.png')} size='lg' />
         </View>
-        <Text>{t('login.new.precautions2_content')}</Text>
+        <View className='py-12'>
+          <Text className='text-base'>{t('login.import.title')}</Text>
+        </View>
+        <View className='flex flex-grow flex-col justify-start space-y-8 w-full max-w-sm'>
+          <View>
+            <Text className='pb-2'>{t('login.generated.input_label')}</Text>
+            <TextArea
+              value={mnemonic}
+              onChangeText={handleOnChange}
+              className='text-lg tracking-wider p-8 text-primary'
+              placeholder='example: test eat town super sum hello world byte horse ...'
+              returnKeyType='done'
+              blurOnSubmit
+            />
+          </View>
+          <Text>{t('login.new.precautions2_content')}</Text>
+        </View>
+        {mnemonic.split(' ').length === 24 && (
+          <Button variant='default' className='w-full max-w-sm' onPress={handleComplete}>
+            {t('common.next')}
+          </Button>
+        )}
       </View>
-      {mnemonic.split(' ').length === 24 && (
-        <Button variant='default' className='w-full max-w-sm' onPress={handleComplete}>
-          {t('common.next')}
-        </Button>
-      )}
-    </View>
+    </ScrollView>
   );
 }

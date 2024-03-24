@@ -67,7 +67,7 @@ export default function LoginImported(): JSX.Element {
       <View className='py-12'>
         <Text className='text-base'>{t('login.imported.title')}</Text>
       </View>
-      {accounts.length > 0 && (
+      {accounts.filter((e) => e.checked).length > 0 && (
         <Button variant='default' className='w-full max-w-sm' onPress={handleComplete}>
           {t('common.next')}
         </Button>

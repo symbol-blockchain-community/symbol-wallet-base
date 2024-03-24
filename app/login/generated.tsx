@@ -26,7 +26,8 @@ export default function LoginGenerate(): React.JSX.Element {
       // TODO: テキストファイルではなく、 QR 付き pdf を生成する
       writeAsStringAsync(tempFilePath, mnemonic)
         .then(() => Sharing.shareAsync(tempFilePath))
-        .then(() => deleteAsync(tempFilePath));
+        .then(() => deleteAsync(tempFilePath))
+        .catch((error) => console.error(error));
       setChecked(true);
     }
   };
@@ -55,7 +56,7 @@ export default function LoginGenerate(): React.JSX.Element {
         <View>
           <Text className='pb-2'>{t('login.generated.input_label')}</Text>
           <View className='relative w-full'>
-            <Button className='absolute right-2 top-2' variant='ghost' size='icon' onPress={handleCopy}>
+            <Button className='absolute right-2 top-2 z-10' variant='ghost' size='icon' onPress={handleCopy}>
               <IconCopy size={20} />
             </Button>
             <TextArea readOnly value={mnemonic} className='text-lg tracking-wider p-8 text-primary' />

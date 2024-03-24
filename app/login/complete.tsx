@@ -12,7 +12,7 @@ export default function LoginComplete(): JSX.Element {
   const router = useRouter();
 
   const handleComplete = () => {
-    router.push('/');
+    router.replace('/');
   };
 
   return (
