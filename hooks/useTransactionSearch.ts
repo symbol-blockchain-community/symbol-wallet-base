@@ -83,12 +83,12 @@ export function useTransactionHistory(
       const body = (await res.raw.json()) as TransactionPage;
 
       setTransactions((prev) =>
-        pageNumber === 1 ? { [pageNumber]: body.data } : { ...prev, [pageNumber]: body.data }
+        pageNumber === 1 ? { [pageNumber.toString()]: body.data } : { ...prev, [pageNumber.toString()]: body.data }
       );
       setError(null);
       setOffset(pageNumber);
     } catch (err) {
-      setError(err instanceof Error ? err : new Error(err));
+      setError(err instanceof Error ? err : new Error(err as string));
     } finally {
       setIsLoading(false);
     }

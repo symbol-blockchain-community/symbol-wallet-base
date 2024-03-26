@@ -52,6 +52,13 @@ const ja = {
       finished: '準備を完了しました！',
     },
   },
+  wallet: {
+    layout: {
+      transactions_tab_name: '履歴',
+    },
+    index: {},
+    transactions: {},
+  },
   setting: {
     network: {
       testnet: 'テストネット',

@@ -36,3 +36,20 @@ export function getNetworkTypeToAddressChatAt0(str: string): NetworkType {
       throw new InvalidValueError('Invalid network type: ' + str.charAt(0));
   }
 }
+
+type ExplorerType = 'transactions' | 'accounts' | 'namespaces' | 'mosaics' | 'nodes' | 'blocks';
+
+/**
+ * Explorer の URL を生成する
+ * https://symbol.fyi/${type}/${value}
+ */
+export function getExplorerUrl(networkType: NetworkType, type: ExplorerType, value: string | number): string {
+  switch (networkType) {
+    case 'mainnet':
+      return `https://symbol.fyi/${type}/${value.toString()}`;
+    case 'testnet':
+      return `https://testnet.symbol.fyi/${type}/${value.toString()}`;
+    default:
+      throw new InvalidValueError('Invalid network type: ' + networkType);
+  }
+}
