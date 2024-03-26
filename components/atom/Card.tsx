@@ -9,7 +9,7 @@ const cardVariants = cva('flex flex-col space-y-1 border border-input p-2', {
     color: {
       default: 'bg-card text-white shadow-sm',
       transparent: 'bg-transparent text-card-foreground',
-      glass: 'bg-gray-200/30 backdrop-blur-lg text-card-foreground border border-gray-200/30 shadow-sm',
+      glass: 'bg-gray-200/30 text-card-foreground border border-gray-200/30 shadow-sm',
     },
     radius: {
       default: 'rounded-lg',

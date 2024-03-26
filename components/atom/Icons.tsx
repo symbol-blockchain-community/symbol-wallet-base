@@ -3,7 +3,7 @@ import { IconProps } from '@expo/vector-icons/build/createIconSet';
 import { StyleProp, TextStyle } from 'react-native';
 
 interface Props extends Omit<IconProps<string>, 'name'> {
-  size?: 20 | 28 | 32 | 48;
+  size?: 20 | 24 | 28 | 32 | 48;
   isOutline?: boolean;
   style?: StyleProp<TextStyle>;
 }
@@ -62,4 +62,12 @@ export function IconQRCode({ size = 28, isOutline = true, ...props }: Props): JS
 
 export function IconCopy({ size = 28, isOutline = true, ...props }: Props): JSX.Element {
   return <Icons {...props} name={isOutline ? 'copy-outline' : 'copy'} size={size} />;
+}
+
+export function IconReceipt({ size = 28, isOutline = true, ...props }: Props): JSX.Element {
+  return <Icons {...props} name={isOutline ? 'receipt-outline' : 'receipt'} size={size} />;
+}
+
+export function IconDown({ size = 28, isOutline = true, ...props }: Props): JSX.Element {
+  return <Icons {...props} name={isOutline ? 'caret-down-circle-outline' : 'caret-down'} size={size} />;
 }
