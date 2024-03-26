@@ -30,7 +30,7 @@ function Item({ item, setAccounts }: ItemProps): JSX.Element {
 
   return (
     <Pressable onPress={handleChenge}>
-      <ListItem className='pr-10'>
+      <ListItem className='pr-10 space-x-4'>
         <Checkbox value={item.checked} onTouchStart={handleChenge} />
         <Text className='whitespace-normal text-base'>{item.address}</Text>
       </ListItem>

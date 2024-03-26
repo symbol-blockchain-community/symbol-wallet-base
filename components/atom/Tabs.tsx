@@ -4,7 +4,7 @@ import { Pressable, PressableProps, Text, View, ViewProps } from 'react-native';
 
 import { cn } from '@/util/classes';
 
-const tabsVariants = cva('flex flex-row gap-x-0 p-1 bg-muted rounded-md w-full mb-1', {
+const tabsVariants = cva('flex flex-row p-1 bg-muted rounded-md w-full mb-1', {
   variants: {},
   defaultVariants: {},
 });

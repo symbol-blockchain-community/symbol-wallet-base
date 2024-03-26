@@ -8,8 +8,11 @@ type ListItemData<T> = {
 
 interface Props<T> {
   className?: string;
+  onRefresh?: () => void;
+  refreshing?: boolean;
   items: ListItemData<T>[];
   renderItem: (item: T) => JSX.Element;
+  ListFooterComponent?: () => JSX.Element;
 }
 
 /**
@@ -32,8 +35,11 @@ export function List<T>(props: Props<T>): JSX.Element {
       className={cn(props.className)}
       data={props.items}
       ItemSeparatorComponent={() => <View className='w-full h-1' />}
+      ListFooterComponent={props.ListFooterComponent}
       renderItem={({ item }) => props.renderItem(item)}
       keyExtractor={(item) => item.id.toString()}
+      onRefresh={props.onRefresh}
+      refreshing={props.refreshing}
     />
   );
 }
@@ -42,7 +48,7 @@ interface ListItemProps extends ViewProps {}
 
 export function ListItem({ className, ...props }: ListItemProps): JSX.Element {
   return (
-    <View className={cn('flex-row justify-start items-center gap-x-3 p-4', className)} {...props}>
+    <View className={cn('flex-row justify-start items-center p-4', className)} {...props}>
       {props.children}
     </View>
   );
