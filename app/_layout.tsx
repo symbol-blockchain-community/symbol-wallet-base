@@ -47,6 +47,7 @@ export default function RootLayout(): JSX.Element {
               title: 'Base Wallet',
               headerShown: true,
               headerRight: handleHeaderRightClickForPage,
+              headerLeft: () => <></>, // トップページは戻るボタンは表示しない
             }}
           />
           <Stack.Screen
@@ -67,7 +68,7 @@ export default function RootLayout(): JSX.Element {
           <Stack.Screen
             name='wallet'
             options={{
-              headerShown: true,
+              headerShown: false,
             }}
           />
         </Stack>
