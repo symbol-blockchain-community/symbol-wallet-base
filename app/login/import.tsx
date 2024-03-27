@@ -1,6 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { View, Text, Keyboard, ScrollView } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import Avatar from '@/components/atom/Avatar';
 import Button from '@/components/atom/Button';
@@ -26,34 +27,31 @@ export default function LoginImport(): JSX.Element {
   };
 
   return (
-    <ScrollView className='flex-1'>
-      <View className='min-h-screen flex flex-col flex-grow justify-between items-center gap-3 px-6 py-24'>
+    <ScrollView scrollEnabled={false}>
+      <SafeAreaView className='flex flex-col min-h-[100vh] items-center p-6'>
         <View className='flex flex-col items-center'>
           <Avatar source={require('@/assets/icon.png')} size='lg' />
         </View>
-        <View className='py-12'>
+        <View className='py-6'>
           <Text className='text-base'>{t('login.import.title')}</Text>
         </View>
-        <View className='flex flex-grow flex-col justify-start space-y-8 w-full max-w-sm'>
-          <View>
-            <Text className='pb-2'>{t('login.generated.input_label')}</Text>
-            <TextArea
-              value={mnemonic}
-              onChangeText={handleOnChange}
-              className='text-lg tracking-wider p-8 text-primary'
-              placeholder='example: test eat town super sum hello world byte horse ...'
-              returnKeyType='done'
-              blurOnSubmit
-            />
-          </View>
-          <Text>{t('login.new.precautions2_content')}</Text>
+        <View className='flex flex-col justify-start w-full max-w-sm'>
+          <Text className='pb-2'>{t('login.generated.input_label')}</Text>
+          <TextArea
+            value={mnemonic}
+            onChangeText={handleOnChange}
+            className='text-lg tracking-wider p-8 text-primary'
+            placeholder='example: test eat town super sum hello world byte horse ...'
+            returnKeyType='done'
+            blurOnSubmit
+          />
         </View>
         {mnemonic.split(' ').length === 24 && (
-          <Button variant='default' className='w-full max-w-sm' onPress={handleComplete}>
+          <Button variant='default' className='w-full max-w-sm mt-auto' onPress={handleComplete}>
             {t('common.next')}
           </Button>
         )}
-      </View>
+      </SafeAreaView>
     </ScrollView>
   );
 }

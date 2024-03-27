@@ -1,5 +1,6 @@
 import { useRouter } from 'expo-router';
 import { View, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import Avatar from '@/components/atom/Avatar';
 import Button from '@/components/atom/Button';
@@ -27,14 +28,14 @@ export default function LoginRoot(): React.JSX.Element {
   };
 
   return (
-    <View className='flex-1 flex flex-col flex-grow justify-between items-center gap-3 px-6 py-24'>
+    <SafeAreaView className='flex-1 flex flex-col items-center p-6'>
       <View className='flex flex-col items-center'>
         <Avatar source={require('@/assets/icon.png')} size='lg' />
       </View>
       <View className='py-12'>
         <Text className='text-2xl font-bold'>Base Wallet</Text>
       </View>
-      <View className='flex flex-grow flex-col justify-center space-y-12 w-full max-w-sm'>
+      <View className='flex flex-col justify-center space-y-10 w-full max-w-sm'>
         <Button variant='default' onPress={handleCreateNew}>
           {t('login.index.new')}
         </Button>
@@ -42,7 +43,7 @@ export default function LoginRoot(): React.JSX.Element {
           {t('login.index.import')}
         </Button>
       </View>
-      <View>
+      <View className='mt-auto'>
         <Text className='text-sm text-muted-foreground'>{t('login.index.remark')}</Text>
       </View>
       <View className='flex flex-row justify-end w-full'>
@@ -53,6 +54,6 @@ export default function LoginRoot(): React.JSX.Element {
           {t('login.index.language')}
         </Button>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }

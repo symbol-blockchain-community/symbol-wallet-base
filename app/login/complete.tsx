@@ -1,6 +1,7 @@
 import { useRouter } from 'expo-router';
 import LottieView from 'lottie-react-native';
 import { View, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import CompleteAnimation from '@/assets/animations/complete.json';
 import Avatar from '@/components/atom/Avatar';
@@ -16,7 +17,7 @@ export default function LoginComplete(): JSX.Element {
   };
 
   return (
-    <View className='flex-1 flex flex-col flex-grow justify-between items-center gap-3 px-6 py-24'>
+    <SafeAreaView className='flex-1 flex flex-col items-center p-6'>
       <View className='flex flex-col items-center'>
         <Avatar source={require('@/assets/icon.png')} size='lg' />
       </View>
@@ -27,6 +28,6 @@ export default function LoginComplete(): JSX.Element {
       <Button variant='default' className='w-full max-w-sm' onPress={handleComplete}>
         {t('common.next')}
       </Button>
-    </View>
+    </SafeAreaView>
   );
 }

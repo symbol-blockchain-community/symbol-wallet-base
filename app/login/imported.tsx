@@ -1,6 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import Avatar from '@/components/atom/Avatar';
 import Button from '@/components/atom/Button';
@@ -30,9 +31,11 @@ function Item({ item, setAccounts }: ItemProps): JSX.Element {
 
   return (
     <Pressable onPress={handleChenge}>
-      <ListItem className='pr-10 space-x-4'>
+      <ListItem className='max-w-full space-x-3'>
         <Checkbox value={item.checked} onTouchStart={handleChenge} />
-        <Text className='whitespace-normal text-base'>{item.address}</Text>
+        <View className='pr-3'>
+          <Text className='text-base'>{item.address}</Text>
+        </View>
       </ListItem>
     </Pressable>
   );
@@ -42,6 +45,7 @@ export default function LoginImported(): JSX.Element {
   const { t } = useI18n();
   const router = useRouter();
   const [accounts, setAccounts] = useState<AccountItem[]>([]);
+  const isAccountSelected = accounts.filter((e) => e.checked).length > 0;
 
   const handleComplete = () => {
     // TODO: 選択されたアカウントをストレージへ保管する
@@ -60,21 +64,23 @@ export default function LoginImported(): JSX.Element {
   }, []);
 
   return (
-    <View className='flex-1 flex flex-col flex-grow justify-between items-center gap-3 px-6 py-24'>
+    <SafeAreaView className='flex-1 flex flex-col items-center p-6'>
       <View className='flex flex-col items-center'>
         <Avatar source={require('@/assets/icon.png')} size='lg' />
       </View>
-      <View className='py-12'>
-        <Text className='text-base'>{t('login.imported.title')}</Text>
-      </View>
-      {accounts.filter((e) => e.checked).length > 0 && (
-        <Button variant='default' className='w-full max-w-sm' onPress={handleComplete}>
-          {t('common.next')}
-        </Button>
-      )}
-      <View className='flex flex-grow flex-col justify-start space-y-8 w-full max-w-sm'>
-        <List items={accounts} renderItem={(item) => <Item item={item} setAccounts={setAccounts} />} />
-      </View>
-    </View>
+      <Button
+        className='w-full max-w-sm my-6'
+        variant={isAccountSelected ? 'default' : 'ghost'}
+        onPress={handleComplete}
+        disabled={!isAccountSelected}
+      >
+        {isAccountSelected ? t('common.next') : t('login.imported.title')}
+      </Button>
+      <List
+        items={accounts}
+        renderItem={(item) => <Item item={item} setAccounts={setAccounts} />}
+        ListFooterComponent={() => <SafeAreaView edges={['bottom']} />}
+      />
+    </SafeAreaView>
   );
 }

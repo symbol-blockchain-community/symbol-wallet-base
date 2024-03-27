@@ -1,6 +1,7 @@
 import { Link, useNavigation, useRouter } from 'expo-router';
 import * as React from 'react';
 import { View, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import ButtonBase from '@/components/atom/ButtonBase';
 import { List } from '@/components/atom/List';

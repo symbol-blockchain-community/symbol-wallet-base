@@ -1,3 +1,4 @@
+import Entypo from '@expo/vector-icons/Entypo';
 import Icons from '@expo/vector-icons/Ionicons';
 import { IconProps } from '@expo/vector-icons/build/createIconSet';
 import { StyleProp, TextStyle } from 'react-native';
@@ -70,4 +71,20 @@ export function IconReceipt({ size = 28, isOutline = true, ...props }: Props): J
 
 export function IconDown({ size = 28, isOutline = true, ...props }: Props): JSX.Element {
   return <Icons {...props} name={isOutline ? 'caret-down-circle-outline' : 'caret-down'} size={size} />;
+}
+
+export function IconLightDown({ size = 28, ...props }: Props): JSX.Element {
+  return <Entypo name='light-down' size={size} {...props} />;
+}
+
+export function IconLightUp({ size = 28, isOutline = true, ...props }: Props): JSX.Element {
+  return <Entypo name='light-up' size={size} {...props} />;
+}
+
+export function IconCamera({ size = 28, isOutline = true, ...props }: Props): JSX.Element {
+  return <Icons name={isOutline ? 'camera-outline' : 'camera'} size={size} {...props} />;
+}
+
+export function IconCameraReverse({ size = 28, isOutline = true, ...props }: Props): JSX.Element {
+  return <Icons name={isOutline ? 'camera-reverse-outline' : 'camera-reverse'} size={size} {...props} />;
 }
