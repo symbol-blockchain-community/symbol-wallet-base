@@ -4,6 +4,7 @@ import { useRouter } from 'expo-router';
 import * as Sharing from 'expo-sharing';
 import { useEffect, useState } from 'react';
 import { View, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
 
 import Avatar from '@/components/atom/Avatar';
@@ -45,28 +46,25 @@ export default function LoginGenerate(): React.JSX.Element {
   }, []);
 
   return (
-    <View className='flex-1 flex flex-col flex-grow justify-between items-center gap-3 px-6 py-24'>
+    <SafeAreaView className='flex-1 flex flex-col items-center p-6'>
       <View className='flex flex-col items-center'>
         <Avatar source={require('@/assets/icon.png')} size='lg' />
       </View>
-      <View className='py-12'>
+      <View className='py-6'>
         <Text className='text-base'>{t('login.generated.title')}</Text>
       </View>
-      <View className='flex flex-grow flex-col justify-start space-y-8 w-full max-w-sm'>
-        <View>
-          <Text className='pb-2'>{t('login.generated.input_label')}</Text>
-          <View className='relative w-full'>
-            <Button className='absolute right-2 top-2 z-10' variant='ghost' size='icon' onPress={handleCopy}>
-              <IconCopy size={20} />
-            </Button>
-            <TextArea readOnly value={mnemonic} className='text-lg tracking-wider p-8 text-primary' />
-          </View>
+      <View className='flex flex-col justify-start w-full max-w-sm'>
+        <Text className='pb-2'>{t('login.generated.input_label')}</Text>
+        <View className='relative w-full'>
+          <Button className='absolute right-2 top-2 z-10' variant='ghost' size='icon' onPress={handleCopy}>
+            <IconCopy size={20} />
+          </Button>
+          <TextArea readOnly value={mnemonic} className='text-lg tracking-wider p-8 text-primary' />
         </View>
-        <Text>{t('login.new.precautions2_content')}</Text>
       </View>
-      <Button variant='default' className='w-full max-w-sm' onPress={handleSubmit}>
+      <Button variant='default' className='w-full max-w-sm mt-auto' onPress={handleSubmit}>
         {checked ? t('common.next') : t('login.generated.save')}
       </Button>
-    </View>
+    </SafeAreaView>
   );
 }

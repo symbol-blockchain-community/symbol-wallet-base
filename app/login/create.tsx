@@ -1,6 +1,7 @@
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import Avatar from '@/components/atom/Avatar';
 import Button from '@/components/atom/Button';
@@ -19,14 +20,14 @@ export default function LoginCreate(): React.JSX.Element {
   };
 
   return (
-    <View className='flex-1 flex flex-col flex-grow justify-between items-center gap-3 px-6 py-24'>
+    <SafeAreaView className='flex-1 flex flex-col items-center p-6'>
       <View className='flex flex-col items-center'>
         <Avatar source={require('@/assets/icon.png')} size='lg' />
       </View>
-      <View className='py-12'>
+      <View className='py-6'>
         <Text className='text-base'>{t('login.new.precautions')}</Text>
       </View>
-      <View className='flex flex-grow flex-col justify-center space-y-12 w-full max-w-sm'>
+      <View className='flex flex-col justify-center space-y-6 w-full max-w-sm'>
         {[
           {
             title: t('login.new.precautions1_title'),
@@ -52,7 +53,7 @@ export default function LoginCreate(): React.JSX.Element {
           </View>
         ))}
       </View>
-      <View>
+      <View className='mt-auto w-full'>
         <Button
           disabled={![precaution1, precaution2].every((e) => e)}
           variant={[precaution1, precaution2].every((e) => e) ? 'default' : 'ghost'}
@@ -61,6 +62,6 @@ export default function LoginCreate(): React.JSX.Element {
           {[precaution1, precaution2].every((e) => e) ? t('login.new.submit') : t('login.new.checking')}
         </Button>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
