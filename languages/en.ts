@@ -16,12 +16,22 @@ const en: typeof ja = {
     importance: 'Importance',
   },
   pages: {
-    // TODO: ある程度できてきたら英語翻訳対応
+    camera: {
+      scanResult: 'Scan Result',
+      startCamera: 'Start Camera',
+    },
     setting: {
       network: {
         testnet: 'Testnet',
         mainnet: 'Mainnet',
       },
+    },
+  },
+  molecules: {
+    QrCodeReader: {
+      enableCamera: 'Enable Camera',
+      cameraDisabled: 'The camera is disabled. Please allow the use of the camera from the settings screen.',
+      openSettings: 'Open Settings',
     },
   },
 };

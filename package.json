@@ -41,7 +41,8 @@
     "symbol-hd-wallets": "^0.14.2",
     "symbol-sdk": "^2.0.4",
     "tailwind-merge": "^2.2.1",
-    "expo-clipboard": "~5.0.1"
+    "expo-clipboard": "~5.0.1",
+    "expo-camera": "~14.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
