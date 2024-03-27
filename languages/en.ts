@@ -15,10 +15,13 @@ const en: typeof ja = {
     balance: 'Balance',
     importance: 'Importance',
   },
-  setting: {
-    network: {
-      testnet: 'Testnet',
-      mainnet: 'Mainnet',
+  pages: {
+    // TODO: ある程度できてきたら英語翻訳対応
+    setting: {
+      network: {
+        testnet: 'Testnet',
+        mainnet: 'Mainnet',
+      },
     },
   },
 };
