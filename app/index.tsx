@@ -64,15 +64,15 @@ export default function Root(): React.JSX.Element {
         <Text>Loading...</Text>
       ) : (
         <>
+          <Link href='/_sitemap' className='text-blue-700 underline text-center'>
+            開発用 - サイトマップへ
+          </Link>
           <List
             items={wallets}
             renderItem={(item) => <Item item={item} />}
             onRefresh={reloadAccountInfo}
             refreshing={isWalletsInfoReload}
           />
-          <Link href='/_sitemap' className='text-blue-700 underline'>
-            開発用 - サイトマップへ
-          </Link>
         </>
       )}
     </View>

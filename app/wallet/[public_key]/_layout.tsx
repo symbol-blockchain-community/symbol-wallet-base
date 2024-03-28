@@ -58,7 +58,7 @@ export default function WalletPublicKeyDynamicLayout(): JSX.Element {
         name='transactions'
         initialParams={currentWallet}
         options={{
-          headerTitle: t('wallet.layout.transactions_tab_name'),
+          headerTitle: t('pages.wallet.layout.transactions_tab_name'),
         }}
       />
       <Stack.Screen
