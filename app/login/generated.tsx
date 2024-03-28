@@ -51,10 +51,10 @@ export default function LoginGenerate(): React.JSX.Element {
         <Avatar source={require('@/assets/icon.png')} size='lg' />
       </View>
       <View className='py-6'>
-        <Text className='text-base'>{t('login.generated.title')}</Text>
+        <Text className='text-base'>{t('pages.login.generated.title')}</Text>
       </View>
       <View className='flex flex-col justify-start w-full max-w-sm'>
-        <Text className='pb-2'>{t('login.generated.input_label')}</Text>
+        <Text className='pb-2'>{t('pages.login.generated.input_label')}</Text>
         <View className='relative w-full'>
           <Button className='absolute right-2 top-2 z-10' variant='ghost' size='icon' onPress={handleCopy}>
             <IconCopy size={20} />
@@ -63,7 +63,7 @@ export default function LoginGenerate(): React.JSX.Element {
         </View>
       </View>
       <Button variant='default' className='w-full max-w-sm mt-auto' onPress={handleSubmit}>
-        {checked ? t('common.next') : t('login.generated.save')}
+        {checked ? t('common.next') : t('pages.login.generated.save')}
       </Button>
     </SafeAreaView>
   );

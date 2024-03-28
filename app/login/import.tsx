@@ -33,10 +33,10 @@ export default function LoginImport(): JSX.Element {
           <Avatar source={require('@/assets/icon.png')} size='lg' />
         </View>
         <View className='py-6'>
-          <Text className='text-base'>{t('login.import.title')}</Text>
+          <Text className='text-base'>{t('pages.login.import.title')}</Text>
         </View>
         <View className='flex flex-col justify-start w-full max-w-sm'>
-          <Text className='pb-2'>{t('login.generated.input_label')}</Text>
+          <Text className='pb-2'>{t('pages.login.generated.input_label')}</Text>
           <TextArea
             value={mnemonic}
             onChangeText={handleOnChange}

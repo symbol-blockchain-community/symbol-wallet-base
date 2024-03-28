@@ -74,7 +74,7 @@ export default function LoginImported(): JSX.Element {
         onPress={handleComplete}
         disabled={!isAccountSelected}
       >
-        {isAccountSelected ? t('common.next') : t('login.imported.title')}
+        {isAccountSelected ? t('common.next') : t('pages.login.imported.title')}
       </Button>
       <List
         items={accounts}
