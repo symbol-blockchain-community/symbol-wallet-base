@@ -2,10 +2,17 @@ import { FlatList, View, ViewProps } from 'react-native';
 
 import { cn } from '@/util/classes';
 
-interface Props<T extends object> {
+type ListItemData<T> = {
+  id: number | string;
+} & T;
+
+interface Props<T> {
   className?: string;
-  items: T[];
+  onRefresh?: () => void;
+  refreshing?: boolean;
+  items: ListItemData<T>[];
   renderItem: (item: T) => JSX.Element;
+  ListFooterComponent?: () => JSX.Element;
 }
 
 /**
@@ -13,7 +20,7 @@ interface Props<T extends object> {
  *
  * ```tsx
  * <List
- *   items={[{name: 'test'}]}
+ *   items={[{id: "1", name: 'test'}]}
  *   renderItem={(item) => (
  *     <ListItem>
  *       <Text>{item.name}</Text>
@@ -22,14 +29,17 @@ interface Props<T extends object> {
  * />
  * ```
  */
-export function List<T extends object>(props: Props<T>): JSX.Element {
+export function List<T>(props: Props<T>): JSX.Element {
   return (
     <FlatList
       className={cn(props.className)}
-      data={props.items.flatMap((item, index) => ({ id: index.toString(), ...item }))}
-      ItemSeparatorComponent={() => <View className='border border-input w-full' />}
+      data={props.items}
+      ItemSeparatorComponent={() => <View className='w-full h-1' />}
+      ListFooterComponent={props.ListFooterComponent}
       renderItem={({ item }) => props.renderItem(item)}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item) => item.id.toString()}
+      onRefresh={props.onRefresh}
+      refreshing={props.refreshing}
     />
   );
 }
@@ -38,7 +48,7 @@ interface ListItemProps extends ViewProps {}
 
 export function ListItem({ className, ...props }: ListItemProps): JSX.Element {
   return (
-    <View className={cn('flex-row justify-start items-center gap-x-3 p-4', className)} {...props}>
+    <View className={cn('flex-row justify-start items-center p-4', className)} {...props}>
       {props.children}
     </View>
   );

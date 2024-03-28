@@ -1,9 +1,10 @@
 import '../shim';
-import { usePathname, Stack, Link, router, SplashScreen } from 'expo-router';
+import { usePathname, Stack, Link, SplashScreen, useRouter } from 'expo-router';
 import { Pressable, useColorScheme } from 'react-native';
 import Toast from 'react-native-toast-message';
 
 import { IconAccount, IconClose } from '@/components/atom/Icons';
+// import { useLoadedAssets } from '@/hooks/useLoadedAssets';
 import { useLoadedAssets } from '@/hooks/useLoadedAssets';
 import { StateProvider } from '@/states/context';
 import { I18nProvider } from '@/states/i18nContext';
@@ -15,8 +16,9 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout(): JSX.Element {
   const pathname = usePathname();
-  const isLoadingComplete = useLoadedAssets();
+  const router = useRouter();
   const colorSchema = useColorScheme();
+  const isLoadingComplete = useLoadedAssets();
   console.log('mode', { pathname, colorSchema, isLoadingComplete });
 
   const handleHeaderRightClickForPage = () => {
@@ -42,7 +44,7 @@ export default function RootLayout(): JSX.Element {
           <Stack.Screen
             name='index'
             options={{
-              title: 'Wallets',
+              title: 'Base Wallet',
               headerShown: true,
               headerRight: handleHeaderRightClickForPage,
             }}
@@ -51,7 +53,7 @@ export default function RootLayout(): JSX.Element {
             name='account'
             options={{
               title: 'Account',
-              headerShown: true,
+              headerShown: false,
               presentation: 'modal',
               headerLeft: handleHeaderLeftClickForModal,
             }}
