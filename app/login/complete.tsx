@@ -23,7 +23,7 @@ export default function LoginComplete(): JSX.Element {
       </View>
       <View className='flex flex-grow items-center justify-center w-full max-w-sm'>
         <LottieView source={CompleteAnimation} autoPlay style={{ height: 200, width: 200 }} />
-        <Text className='text-base'>{t('login.complete.finished')}</Text>
+        <Text className='text-base'>{t('pages.login.complete.finished')}</Text>
       </View>
       <Button variant='default' className='w-full max-w-sm' onPress={handleComplete}>
         {t('common.next')}

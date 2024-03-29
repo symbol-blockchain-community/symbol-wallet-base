@@ -37,21 +37,21 @@ export default function LoginRoot(): React.JSX.Element {
       </View>
       <View className='flex flex-col justify-center space-y-10 w-full max-w-sm'>
         <Button variant='default' onPress={handleCreateNew}>
-          {t('login.index.new')}
+          {t('pages.login.index.new')}
         </Button>
         <Button variant='outline' onPress={handleImport}>
-          {t('login.index.import')}
+          {t('pages.login.index.import')}
         </Button>
       </View>
       <View className='mt-auto'>
-        <Text className='text-sm text-muted-foreground'>{t('login.index.remark')}</Text>
+        <Text className='text-sm text-muted-foreground'>{t('pages.login.index.remark')}</Text>
       </View>
       <View className='flex flex-row justify-end w-full'>
         <Button variant='link' onPress={handleOpenModal}>
-          {t('login.index.terms')}
+          {t('pages.login.index.terms')}
         </Button>
         <Button variant='link' onPress={toggleLanguage}>
-          {t('login.index.language')}
+          {t('pages.login.index.language')}
         </Button>
       </View>
     </SafeAreaView>

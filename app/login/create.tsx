@@ -25,19 +25,19 @@ export default function LoginCreate(): React.JSX.Element {
         <Avatar source={require('@/assets/icon.png')} size='lg' />
       </View>
       <View className='py-6'>
-        <Text className='text-base'>{t('login.new.precautions')}</Text>
+        <Text className='text-base'>{t('pages.login.new.precautions')}</Text>
       </View>
       <View className='flex flex-col justify-center space-y-6 w-full max-w-sm'>
         {[
           {
-            title: t('login.new.precautions1_title'),
-            content: t('login.new.precautions1_content'),
+            title: t('pages.login.new.precautions1_title'),
+            content: t('pages.login.new.precautions1_content'),
             checked: precaution1,
             setChecked: setPrecaution1,
           },
           {
-            title: t('login.new.precautions2_title'),
-            content: t('login.new.precautions2_content'),
+            title: t('pages.login.new.precautions2_title'),
+            content: t('pages.login.new.precautions2_content'),
             checked: precaution2,
             setChecked: setPrecaution2,
           },
@@ -59,7 +59,7 @@ export default function LoginCreate(): React.JSX.Element {
           variant={[precaution1, precaution2].every((e) => e) ? 'default' : 'ghost'}
           onPress={handleSubmit}
         >
-          {[precaution1, precaution2].every((e) => e) ? t('login.new.submit') : t('login.new.checking')}
+          {[precaution1, precaution2].every((e) => e) ? t('pages.login.new.submit') : t('pages.login.new.checking')}
         </Button>
       </View>
     </SafeAreaView>
