@@ -8,3 +8,16 @@ export function longTextToShort(text: string, len: number = 4): string {
   }
   return `${text.substring(0, len)}...${text.substring(text.length - len)}`;
 }
+
+/**
+ * お問い合わせ番号等、セキュアである必要はないランダムなIDを生成します
+ * 引数 num は桁数を指定します。
+ */
+export function generateUnsecureRandomId(num: number): string {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let id = '';
+  for (let i = 0; i < num; i++) {
+    id += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return `${new Date().getTime().toString()}-${id}`;
+}

@@ -1,7 +1,6 @@
 import { Link, useNavigation, useRouter } from 'expo-router';
 import * as React from 'react';
 import { View, Text } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 import ButtonBase from '@/components/atom/ButtonBase';
 import { List } from '@/components/atom/List';
@@ -64,7 +63,7 @@ export default function Root(): React.JSX.Element {
         <Text>Loading...</Text>
       ) : (
         <>
-          <Link href='/_sitemap' className='text-blue-700 underline text-center'>
+          <Link href='/_sitemap' className='text-blue-700 underline text-center py-10 text-lg'>
             開発用 - サイトマップへ
           </Link>
           <List

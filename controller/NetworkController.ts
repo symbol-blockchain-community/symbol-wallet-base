@@ -1,6 +1,8 @@
+import { ConnectionError } from '@/models/ErrorModels';
 import { ConnectionStatus, NetworkInfo, NetworkType, NodeInfo } from '@/models/NetworkModels';
 import { NetworkService, StorageModel } from '@/services/NetworkService';
 import { NodeStatisticsService } from '@/services/NodeStatisticsService';
+import { modeConfig } from '@/util/configs/mode';
 
 export class NetworkController {
   private constructor() {}
@@ -21,6 +23,82 @@ export class NetworkController {
       network: service,
       connection: status ? 'connected' : 'disconnected',
     };
+  }
+
+  /**
+   * Network Storage を検証し、デフォルト値が存在しない場合書き込みを行う
+   * デフォルト値:
+   * - NetworkType = mainnet
+   * - Node = ランダムに選出
+   */
+  public static async initCheck(): Promise<void> {
+    const service = await NetworkService.createByStorage();
+    console.log(`initCheck: current network type is ${service?.networkType}, node is ${service?.restGatewayUrl}`);
+    if (!service || !service.restGatewayUrl) {
+      // node list の取得を 3 度試みる。3 度共 NG の場合は error
+      let nodes: (NodeInfo & { connection: ConnectionStatus })[] = [];
+      const currentNetworkType = service?.networkType || modeConfig.DEFAULT_NETWORK_TYPE;
+      for (let i = 0; i < 3; i++) {
+        nodes = await NetworkController.getNodeList(currentNetworkType, i * 20);
+        nodes = nodes.filter((node) => node.connection === 'connected');
+        if (nodes.length > 0) {
+          break;
+        }
+      }
+      if (nodes.length === 0) {
+        throw new ConnectionError('Failed to get node list');
+      }
+
+      // 取得したノードリストより1つストレージへ登録を行う
+      await NetworkController.setSettings(modeConfig.DEFAULT_NETWORK_TYPE, {
+        restGatewayUrl: nodes[0].restGatewayUrl,
+      });
+      console.log(
+        `initCheck: set default network type to ${modeConfig.DEFAULT_NETWORK_TYPE}, node is ${nodes[0].restGatewayUrl}`
+      );
+    }
+  }
+
+  /**
+   * NetworkType を切り替える。
+   * 該当の NetworkType の接続先ノードの情報がまだ未設定である場合、統計サーバーより候補を取得しランダムに登録する
+   */
+  public static async switchNetworkType(networkType: NetworkType): Promise<void> {
+    const service = await NetworkService.getNetworkInfoByNetworkType(networkType);
+    if (!service || !service.restGatewayUrl) {
+      // node list の取得を 3 度試みる。3 度共 NG の場合は error
+      let nodes: (NodeInfo & { connection: ConnectionStatus })[] = [];
+      for (let i = 0; i < 3; i++) {
+        nodes = await NetworkController.getNodeList(networkType, i * 20);
+        nodes = nodes.filter((node) => node.connection === 'connected');
+        if (nodes.length > 0) {
+          break;
+        }
+      }
+      if (nodes.length === 0) {
+        throw new ConnectionError('Failed to get node list');
+      }
+      await NetworkController.setSettings(networkType, { restGatewayUrl: nodes[0].restGatewayUrl });
+    } else {
+      await NetworkController.setSettings(networkType, { restGatewayUrl: service.restGatewayUrl });
+    }
+  }
+
+  /**
+   * 対象のノードが指定された NetworkType のものであるか検証する（かつ有効なノードであるのか検証する
+   */
+  public static async isHealthNode(networkType: NetworkType, restGatewayUrl: string): Promise<boolean> {
+    try {
+      const service = new NetworkService(restGatewayUrl, networkType);
+      if (await service.getStatus()) {
+        return await service.validateNetworkType();
+      } else {
+        return false;
+      }
+    } catch (err) {
+      console.warn(`isHealthNode: failed to connect node, ${restGatewayUrl} ${err}`);
+      return false;
+    }
   }
 
   /**

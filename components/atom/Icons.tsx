@@ -53,6 +53,10 @@ export function IconNodes({ size = 28, isOutline = true, ...props }: Props): JSX
   return <Icons {...props} name={isOutline ? 'git-network-outline' : 'git-network'} size={size} />;
 }
 
+export function IconServer({ size = 28, isOutline = true, ...props }: Props): JSX.Element {
+  return <Icons {...props} name={isOutline ? 'server-outline' : 'server'} size={size} />;
+}
+
 export function IconInfo({ size = 28, isOutline = true, ...props }: Props): JSX.Element {
   return <Icons {...props} name={isOutline ? 'alert-circle-outline' : 'alert'} size={size} />;
 }
@@ -87,4 +91,12 @@ export function IconCamera({ size = 28, isOutline = true, ...props }: Props): JS
 
 export function IconCameraReverse({ size = 28, isOutline = true, ...props }: Props): JSX.Element {
   return <Icons name={isOutline ? 'camera-reverse-outline' : 'camera-reverse'} size={size} {...props} />;
+}
+
+export function IconRadioButtonOn({ size = 28, isOutline = true, ...props }: Props): JSX.Element {
+  return <Icons name={isOutline ? 'radio-button-on-outline' : 'radio-button-on'} size={size} {...props} />;
+}
+
+export function IconRadioButtonOff({ size = 28, isOutline = true, ...props }: Props): JSX.Element {
+  return <Icons name={isOutline ? 'radio-button-off-outline' : 'radio-button-off'} size={size} {...props} />;
 }

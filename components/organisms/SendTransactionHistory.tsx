@@ -9,12 +9,13 @@ import { useTransactionHistory } from '@/hooks/useTransactionSearch';
 import { getExplorerUrl } from '@/util/symbol/network';
 
 interface Props {
+  node: string | null;
   signerPublicKey: string;
 }
 
 export default function SendTransactionHistory(props: Props): JSX.Element {
   const router = useRouter();
-  const { isLoading, error, next, refresh, transactions } = useTransactionHistory('confirmed', {
+  const { isLoading, error, next, refresh, transactions } = useTransactionHistory(props.node, 'confirmed', {
     order: 'desc',
     signerPublicKey: props.signerPublicKey,
     embedded: true,

@@ -9,12 +9,13 @@ import { useTransactionHistory } from '@/hooks/useTransactionSearch';
 import { getExplorerUrl } from '@/util/symbol/network';
 
 interface Props {
+  node: string | null;
   recipientAddress: string;
 }
 
 export default function ReceievedTransactionHistory(props: Props): JSX.Element {
   const router = useRouter();
-  const { isLoading, error, next, refresh, transactions } = useTransactionHistory('confirmed', {
+  const { isLoading, error, next, refresh, transactions } = useTransactionHistory(props.node, 'confirmed', {
     order: 'desc',
     recipientAddress: props.recipientAddress,
     embedded: true,
@@ -25,10 +26,6 @@ export default function ReceievedTransactionHistory(props: Props): JSX.Element {
       console.error(error);
     }
   }, [error]);
-
-  if (transactions[1]) {
-    console.log(transactions[1].meta);
-  }
 
   return (
     <List
