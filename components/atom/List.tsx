@@ -13,6 +13,7 @@ interface Props<T> {
   items: ListItemData<T>[];
   renderItem: (item: T) => JSX.Element;
   ListFooterComponent?: () => JSX.Element;
+  ListEmptyComponent?: () => JSX.Element;
 }
 
 /**
@@ -36,6 +37,7 @@ export function List<T>(props: Props<T>): JSX.Element {
       data={props.items}
       ItemSeparatorComponent={() => <View className='w-full h-1' />}
       ListFooterComponent={props.ListFooterComponent}
+      ListEmptyComponent={props.ListEmptyComponent}
       renderItem={({ item }) => props.renderItem(item)}
       keyExtractor={(item) => item.id.toString()}
       onRefresh={props.onRefresh}

@@ -45,7 +45,7 @@ const textVariants = cva('font-medium', {
 });
 
 interface Props extends VariantProps<typeof tabsVariants> {
-  buttonProps?: PressableProps;
+  buttonProps?: ButtonProps;
   containerProps?: ViewProps;
   /** タブ名を name, 表示するコンテンツを content に指定します */
   tabs: { name: string; content: React.ReactNode }[];
