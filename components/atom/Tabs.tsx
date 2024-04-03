@@ -4,7 +4,7 @@ import { Pressable, PressableProps, Text, View, ViewProps } from 'react-native';
 
 import { cn } from '@/util/classes';
 
-const tabsVariants = cva('flex flex-row gap-x-0 p-1 bg-muted rounded-md w-full mb-1', {
+const tabsVariants = cva('flex flex-row p-1 bg-muted rounded-md w-full mb-1', {
   variants: {},
   defaultVariants: {},
 });
@@ -45,7 +45,7 @@ const textVariants = cva('font-medium', {
 });
 
 interface Props extends VariantProps<typeof tabsVariants> {
-  buttonProps?: PressableProps;
+  buttonProps?: ButtonProps;
   containerProps?: ViewProps;
   /** タブ名を name, 表示するコンテンツを content に指定します */
   tabs: { name: string; content: React.ReactNode }[];

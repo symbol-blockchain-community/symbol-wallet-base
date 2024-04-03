@@ -24,11 +24,9 @@ type UseTransactionSearchResult = {
   error: Error | null;
 };
 
-const config = new Configuration({ basePath: 'https://symbolnode.blockchain-authn.app:3001' });
-const transactionRoute = new TransactionRoutesApi(config);
-
 /**
  * 指定したアドレスに起因するトランザクションの一覧を検索する
+ * node 引数が null の場合、検索の実行を保留にする
  *
  * ```
  * const [address, setAddress] = useState<string>('NAE***');
@@ -36,6 +34,7 @@ const transactionRoute = new TransactionRoutesApi(config);
  * ```
  */
 export function useTransactionHistory(
+  node: string | null,
   mode: Mode,
   query: Omit<SearchConfirmedTransactionsRequest, 'pageNumber'>
 ): UseTransactionSearchResult {
@@ -44,8 +43,11 @@ export function useTransactionHistory(
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
   const [offset, setOffset] = useState(0);
+  const config = new Configuration({ basePath: node || undefined });
+  const transactionRoute = new TransactionRoutesApi(config);
 
   const next = async () => {
+    if (node === null) return;
     try {
       await _search(offset);
     } catch (err) {
@@ -54,6 +56,7 @@ export function useTransactionHistory(
   };
 
   const refresh = async () => {
+    if (node === null) return;
     try {
       setIsLoading(false);
       setTransactions({});
@@ -66,6 +69,7 @@ export function useTransactionHistory(
   };
 
   const _search = async (_offset: number) => {
+    if (node === null) return;
     try {
       setIsLoading(true);
       const pageNumber = _offset + 1;
@@ -82,13 +86,15 @@ export function useTransactionHistory(
       }
       const body = (await res.raw.json()) as TransactionPage;
 
+      console.debug(`useTransactionSearch: search result, ${body.data.length}, ${node}, ${JSON.stringify(query)}`);
+
       setTransactions((prev) =>
-        pageNumber === 1 ? { [pageNumber]: body.data } : { ...prev, [pageNumber]: body.data }
+        pageNumber === 1 ? { [pageNumber.toString()]: body.data } : { ...prev, [pageNumber.toString()]: body.data }
       );
       setError(null);
       setOffset(pageNumber);
     } catch (err) {
-      setError(err instanceof Error ? err : new Error(err));
+      setError(err instanceof Error ? err : new Error(err as string));
     } finally {
       setIsLoading(false);
     }
@@ -96,8 +102,10 @@ export function useTransactionHistory(
 
   // 検索キーワードが変更されたら、リセットしてからデータの取得を開始
   useEffect(() => {
+    if (node === null) return;
     refresh();
   }, [
+    node,
     query.address,
     query.embedded,
     query.fromHeight,

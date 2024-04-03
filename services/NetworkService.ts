@@ -9,6 +9,7 @@ import { NetworkType } from '@/models/NetworkModels';
 import { Configuration, NodeRoutesApi } from '@/services/NodeClientService';
 import { STORAGE_KEYS } from '@/util/configs/storage-keys';
 import { AsyncStorage } from '@/util/storages/AsyncStorage';
+import { hexToStrNetworkType } from '@/util/symbol/network';
 
 export type StorageModel = {
   /** 共通の設定値 */
@@ -51,7 +52,7 @@ export class NetworkService extends AsyncStorage {
    * 現在のクラス属性のノード情報を、WALLETの接続先ノードとして更新する
    */
   public async setAccessPointToStorage(): Promise<void> {
-    const oldStorageData: StorageModel | null = JSON.parse(await this.getItem());
+    const oldStorageData: StorageModel = JSON.parse((await this.getItem()) || '{}');
     const storageData: StorageModel = {
       common: {
         currentNetworkType: this.networkType,
@@ -74,7 +75,7 @@ export class NetworkService extends AsyncStorage {
       const res = await this.nodeRoutes.getNodeHealth({ signal: controller.signal });
       return res.status.apiNode === 'up' && res.status.db === 'up';
     } catch (err) {
-      console.error(err);
+      console.warn(`getStatus: node ${this.restGatewayUrl} error, ${err}`);
       return false;
     } finally {
       clearTimeout(timeout);
@@ -82,35 +83,45 @@ export class NetworkService extends AsyncStorage {
   }
 
   /** 保存されているネットワークタイプの一覧を返却する */
-  static async getNetworkTypesByStorage(): Promise<string[]> {
-    const storage = new AsyncStorage(STORAGE_KEYS.async.NETWORK);
-    const storageData: StorageModel | null = JSON.parse(await storage.getItem());
+  static async getNetworkTypesByStorage(): Promise<string[] | null> {
+    const storage = await new AsyncStorage(STORAGE_KEYS.async.NETWORK).getItem();
+    if (!storage) return null;
+
+    const storageData: StorageModel = JSON.parse(storage);
     if (!storageData) {
-      throw new Error('Storage is empty');
+      return null;
     }
     return Object.keys(storageData.networks);
   }
 
   /** 指定したネットワークに属する設定値を取得する */
-  static async getNetworkInfoByNetworkType(networkType: string): Promise<StorageModel['networks'][string]> {
-    const storage = new AsyncStorage(STORAGE_KEYS.async.NETWORK);
-    const storageData: StorageModel | null = JSON.parse(await storage.getItem());
+  static async getNetworkInfoByNetworkType(networkType: string): Promise<StorageModel['networks'][string] | null> {
+    const storage = await new AsyncStorage(STORAGE_KEYS.async.NETWORK).getItem();
+    if (!storage) return null;
+
+    const storageData: StorageModel = JSON.parse(storage);
     if (!storageData) {
-      throw new Error('Storage is empty');
+      return null;
     }
     return storageData.networks[networkType];
   }
 
+  /** 指定した NetworkType と実際の Node の NetworkType が一致するか検証する */
+  public async validateNetworkType(): Promise<boolean> {
+    const info = await this.nodeRoutes.getNodeInfo();
+    return hexToStrNetworkType(info.networkIdentifier) === this.networkType;
+  }
+
   /** ストレージの設定を元にネットワークインスタンスを作成する */
   static async createByStorage(): Promise<NetworkService | null> {
-    const storage = new AsyncStorage(STORAGE_KEYS.async.NETWORK);
-    const storageData: StorageModel | null = JSON.parse(await storage.getItem());
+    const storage = await new AsyncStorage(STORAGE_KEYS.async.NETWORK).getItem();
+    if (!storage) return null;
 
-    // null チェック
-    if (!storageData) return null;
-    if (!storageData.common.currentNetworkType) return null;
-    const networkType = storageData.common.currentNetworkType as NetworkType;
-    const restGatewayUrl = storageData.networks[networkType]?.restGatewayUrl;
+    const model: StorageModel = JSON.parse(storage);
+    if (!model.common.currentNetworkType) return null;
+
+    const networkType = model.common.currentNetworkType as NetworkType;
+    const restGatewayUrl = model.networks[networkType]?.restGatewayUrl;
     if (!restGatewayUrl) return null;
 
     return new NetworkService(restGatewayUrl, networkType);

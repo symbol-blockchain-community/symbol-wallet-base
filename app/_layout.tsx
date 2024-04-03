@@ -1,13 +1,13 @@
 import '../shim';
 import { usePathname, Stack, Link, SplashScreen, useRouter } from 'expo-router';
-import { Pressable, useColorScheme } from 'react-native';
+import { Pressable, View } from 'react-native';
 import Toast from 'react-native-toast-message';
 
 import { IconAccount, IconClose } from '@/components/atom/Icons';
-// import { useLoadedAssets } from '@/hooks/useLoadedAssets';
 import { useLoadedAssets } from '@/hooks/useLoadedAssets';
 import { StateProvider } from '@/states/context';
 import { I18nProvider } from '@/states/i18nContext';
+import { modeConfig } from '@/util/configs/mode';
 
 // Catch any errors thrown by the Layout component.
 export { ErrorBoundary } from 'expo-router';
@@ -17,9 +17,9 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout(): JSX.Element {
   const pathname = usePathname();
   const router = useRouter();
-  const colorSchema = useColorScheme();
   const isLoadingComplete = useLoadedAssets();
-  console.log('mode', { pathname, colorSchema, isLoadingComplete });
+
+  console.debug(`root: current page is ${pathname}`);
 
   const handleHeaderRightClickForPage = () => {
     return (
@@ -37,6 +37,10 @@ export default function RootLayout(): JSX.Element {
     );
   };
 
+  if (!isLoadingComplete) {
+    return <View />;
+  }
+
   return (
     <I18nProvider>
       <StateProvider>
@@ -44,9 +48,10 @@ export default function RootLayout(): JSX.Element {
           <Stack.Screen
             name='index'
             options={{
-              title: 'Base Wallet',
+              title: modeConfig.APPLICATION_NAME,
               headerShown: true,
               headerRight: handleHeaderRightClickForPage,
+              headerLeft: () => <></>, // トップページは戻るボタンは表示しない
             }}
           />
           <Stack.Screen
@@ -67,7 +72,7 @@ export default function RootLayout(): JSX.Element {
           <Stack.Screen
             name='wallet'
             options={{
-              headerShown: true,
+              headerShown: false,
             }}
           />
         </Stack>

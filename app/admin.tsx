@@ -16,6 +16,8 @@ import Switch from '@/components/atom/Switch';
 import Tabs from '@/components/atom/Tabs';
 import TextArea from '@/components/atom/Textarea';
 import { AccountController } from '@/controller/AccountController';
+import { STORAGE_KEYS } from '@/util/configs/storage-keys';
+import { AsyncStorage } from '@/util/storages/AsyncStorage';
 import { SecureStorage } from '@/util/storages/SecureStorage';
 
 /**
@@ -27,9 +29,15 @@ export default function Root(): React.JSX.Element {
       <ScrollView>
         <View className='flex justify-start items-stretch gap-y-10 p-2 bg-background'>
           <Text className='font-bold'>このスクリーンは開発中に Atom Component 等を確認するための検証用です。</Text>
-          <View>
-            <Button onPress={() => AccountController.createNewPrivateKeyAccount('testnet')}>検証用 WALLET 追加</Button>
-            <Button onPress={() => new SecureStorage('ACCOUNT_SERVICE').resetSecretItem()}>検証用 WALLET 削除</Button>
+          <View className='flex flex-col space-y-4'>
+            <Button onPress={() => AccountController.createNewPrivateKeyAccount('testnet')}>WALLET 設定追加</Button>
+            <Button onPress={() => new SecureStorage(STORAGE_KEYS.secure.ACCOUNT).resetSecretItem()}>
+              WALLET 初期化
+            </Button>
+            <Button onPress={() => new AsyncStorage(STORAGE_KEYS.async.NETWORK).removeItem()}>NW 設定初期化</Button>
+            <Button onPress={() => new AsyncStorage(STORAGE_KEYS.async.NODESTATISTICS).removeItem()}>
+              統計サーバーキャッシュ削除
+            </Button>
           </View>
           <View>
             <Text>LINK</Text>

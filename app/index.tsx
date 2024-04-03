@@ -1,7 +1,6 @@
-import { Link } from 'expo-router';
+import { Link, useNavigation, useRouter } from 'expo-router';
 import * as React from 'react';
 import { View, Text } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 import ButtonBase from '@/components/atom/ButtonBase';
 import { List } from '@/components/atom/List';
@@ -10,12 +9,10 @@ import { WalletModel } from '@/models/AccountModel';
 import { AddressService } from '@/services/AddressService';
 
 function Item({ item }: { item: WalletModel }) {
-  // const router = useRouter();
+  const router = useRouter();
 
-  /** 選択されたアカウントの詳細ページを開く */
   const onPressItem = () => {
-    // TODO: 今後のブランチより対応
-    // router.push('/wallet/');
+    router.push(`/wallet/${item.publicKey}`);
   };
 
   return (
@@ -32,12 +29,33 @@ function Item({ item }: { item: WalletModel }) {
     </ButtonBase>
   );
 }
+export type TempType = {
+  index: { id: number } | undefined;
+};
 
 export default function Root(): React.JSX.Element {
-  const { isLoading, wallets, error } = useLoadWallets();
-  console.log(isLoading, wallets, error);
+  const navigation = useNavigation();
+  const { isLoading, wallets } = useLoadWallets();
+  const [isWalletsInfoReload, setIsWalletsInfoReload] = React.useState<boolean>(false);
 
-  // TODO: Error バウンダリ
+  React.useEffect(() => {
+    const state = navigation.getState();
+    navigation.reset({
+      ...state,
+      routes: state.routes.map((route) => ({ ...route, state: undefined })),
+    });
+  }, []);
+
+  const reloadAccountInfo = () => {
+    setIsWalletsInfoReload(true);
+    try {
+      // TODO: 実際にはノードよりアドレスに紐づく残高情報を取得する
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsWalletsInfoReload(false);
+    }
+  };
 
   return (
     <View className='flex-1 items-center py-2'>
@@ -45,13 +63,14 @@ export default function Root(): React.JSX.Element {
         <Text>Loading...</Text>
       ) : (
         <>
-          <Link href='/_sitemap' className='text-blue-700 underline text-center'>
+          <Link href='/_sitemap' className='text-blue-700 underline text-center py-10 text-lg'>
             開発用 - サイトマップへ
           </Link>
           <List
             items={wallets}
             renderItem={(item) => <Item item={item} />}
-            ListFooterComponent={() => <SafeAreaView edges={['bottom']} />}
+            onRefresh={reloadAccountInfo}
+            refreshing={isWalletsInfoReload}
           />
         </>
       )}

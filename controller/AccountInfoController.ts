@@ -25,6 +25,7 @@ export class AccountInfoController {
 
   public constructor(node: string, address: string) {
     // 引数の整形
+    console.debug(`AccountInfoController: node ${node}, address ${address}`);
     this.address = AddressService.createFromRawAddress(address).plain();
     const basePath = new URL(node).origin;
     // 各サービスの有効化
@@ -68,9 +69,9 @@ export class AccountInfoController {
         const mosaicNamesDTO = namespaceInfoDTO.mosaicNames.find((e) => e.mosaicId === m.id);
         return {
           id: m.id,
-          amount: toAbsoluteAmount(Number(m.amount || 0), mosaicInfoDTO.mosaic.divisibility),
-          divisivility: mosaicInfoDTO.mosaic.divisibility,
-          namespace: mosaicNamesDTO.names.length === 0 ? undefined : mosaicNamesDTO.names[0],
+          amount: toAbsoluteAmount(Number(m.amount || 0), mosaicInfoDTO!.mosaic.divisibility),
+          divisivility: mosaicInfoDTO!.mosaic.divisibility,
+          namespace: mosaicNamesDTO?.names.length === 0 ? undefined : mosaicNamesDTO?.names[0],
         };
       })
     );

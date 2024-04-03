@@ -5,8 +5,10 @@ import { STORAGE_KEYS } from '@/util/configs/storage-keys';
 import { AsyncStorage } from '@/util/storages/AsyncStorage';
 
 type StorageModel = {
-  expire: number;
-  nodeList: NodeInfo[];
+  [key: string]: {
+    expire: number;
+    nodeList: NodeInfo[];
+  };
 };
 
 /**
@@ -16,9 +18,11 @@ type StorageModel = {
 export class NodeStatisticsService extends AsyncStorage {
   private static readonly CACHE_EXPIRE_TIME = 1000 * 60 * 60 * 24; // 1日
   private statisticsServer: string;
+  private networkType: NetworkType;
 
   public constructor(networkType: NetworkType) {
     super(STORAGE_KEYS.async.NODESTATISTICS);
+    this.networkType = networkType;
     this.statisticsServer = NETWORK_PROPERTIES[networkType].statisticsNodeServerUrl;
   }
 
@@ -73,11 +77,25 @@ export class NodeStatisticsService extends AsyncStorage {
 
   /** 最新の NodeInfo[] を AsyncStorage に格納する */
   private async setNodeList(nodeList: NodeInfo[]): Promise<void> {
-    const storageData: StorageModel = {
-      expire: new Date().getTime() + NodeStatisticsService.CACHE_EXPIRE_TIME,
-      nodeList,
-    };
-    await this.setItem(JSON.stringify(storageData));
+    const cache = await this.getItem();
+    if (cache) {
+      const storageData: StorageModel = {
+        ...JSON.parse(cache),
+        [this.networkType]: {
+          expire: new Date().getTime() + NodeStatisticsService.CACHE_EXPIRE_TIME,
+          nodeList,
+        },
+      };
+      await this.setItem(JSON.stringify(storageData));
+    } else {
+      const storageData: StorageModel = {
+        [this.networkType]: {
+          expire: new Date().getTime() + NodeStatisticsService.CACHE_EXPIRE_TIME,
+          nodeList,
+        },
+      };
+      await this.setItem(JSON.stringify(storageData));
+    }
   }
 
   /** ローカルストレージにキャッシュされているノード情報のリストを強制的にパージし、新しい一覧に置き換える */
@@ -88,11 +106,25 @@ export class NodeStatisticsService extends AsyncStorage {
 
   /** NodeInfo[] を取得する */
   public async getNodeList(): Promise<NodeInfo[]> {
-    const storageData: StorageModel | null = JSON.parse(await this.getItem());
+    const cache = await this.getItem();
+    if (!cache) {
+      // 既存のデータが存在しない場合、統計サーバーより再取得を行う
+      const nodeList: NodeInfo[] = await this.getNodeListByStatistics();
+      this.setNodeList(nodeList);
+      return nodeList;
+    }
+
+    const storageData: StorageModel = JSON.parse(cache);
+    const currentNetworkData = storageData[this.networkType];
 
     // storageData が null ではなく、かつ expire の期限を超過していない場合、storageData をそのまま返却する
-    if (storageData && new Date().getTime() < storageData.expire) {
-      return storageData.nodeList;
+    if (
+      currentNetworkData &&
+      currentNetworkData.nodeList.length !== 0 &&
+      new Date().getTime() < currentNetworkData.expire
+    ) {
+      console.log(currentNetworkData.nodeList.length);
+      return currentNetworkData.nodeList;
     } else {
       // 既存のデータが存在しない、またはキャッシュが古い場合、統計サーバーより再取得を行う
       const nodeList: NodeInfo[] = await this.getNodeListByStatistics();

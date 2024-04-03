@@ -9,9 +9,9 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-primary',
+        default: 'bg-primary shadow-sm',
         outline: 'border border-input',
-        secondary: 'bg-secondary',
+        secondary: 'bg-secondary shadow-sm border border-input',
         ghost: '',
         link: '',
       },

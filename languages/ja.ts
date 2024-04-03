@@ -57,6 +57,13 @@ const ja = {
       startCamera: 'カメラを起動',
       scanResult: '読み取り結果',
     },
+    wallet: {
+      layout: {
+        transactions_tab_name: '履歴',
+      },
+      index: {},
+      transactions: {},
+    },
     setting: {
       network: {
         testnet: 'テストネット',
