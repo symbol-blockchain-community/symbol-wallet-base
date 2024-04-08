@@ -25,8 +25,8 @@ export class WalletService extends AsyncStorage {
 
   /** 現在の Wallet 情報を削除します */
   public async removeWallet(): Promise<void> {
-    const wallets: WalletModel[] | null = JSON.parse(await this.getItem());
-    if (!wallets) return;
+    const wallets: WalletModel[] | null = JSON.parse((await this.getItem()) || 'null');
+    if (!wallets) throw new InvalidValueError('Failed to read from storage.');
 
     // 一致する Wallet を削除する
     const index = wallets.findIndex((wallet) => wallet.id === this.wallet.id);
@@ -39,10 +39,8 @@ export class WalletService extends AsyncStorage {
 
   /** 現在 の WalletModel の privateKeyId を削除します */
   public async removePrivateKeyId(): Promise<void> {
-    const wallets: WalletModel[] | null = JSON.parse(await this.getItem());
-    if (!wallets) {
-      throw new InvalidValueError('Failed to read from storage.');
-    }
+    const wallets: WalletModel[] | null = JSON.parse((await this.getItem()) || 'null');
+    if (!wallets) throw new InvalidValueError('Failed to read from storage.');
 
     // 一致する privateKeyId を削除する
     for (const wallet of wallets) {
@@ -57,14 +55,14 @@ export class WalletService extends AsyncStorage {
   /** 保存されている WalletModel[] を返却します */
   public static async getWallets(): Promise<WalletModel[]> {
     const storage = new AsyncStorage(STORAGE_KEYS.async.WALLET);
-    const data: WalletModel[] | null = JSON.parse(await storage.getItem());
+    const data: WalletModel[] = JSON.parse((await storage.getItem()) || '[]');
     return data || [];
   }
 
   /** PrivateKeyModel より新規 Wallet を作成し、 AsyncStorage に追加します */
   public static async setNewFullWallet(model: PrivateKeyModel, height?: number): Promise<WalletService> {
     const storage = new AsyncStorage(STORAGE_KEYS.async.WALLET);
-    const oldData: WalletModel[] | null = JSON.parse(await storage.getItem());
+    const oldData: WalletModel[] = JSON.parse((await storage.getItem()) || '[]');
     const privateKeyService = PrivateKeyService.createFromPrivateKey(model.privateKey);
     const data: WalletModel = {
       id: randomUUID(),
@@ -95,7 +93,7 @@ export class WalletService extends AsyncStorage {
   /** 公開鍵より秘密鍵を持たない新規 Wallet を作成し、AsyncStorage に追加します */
   public static async setNewWallet(networkType: NetworkType, publicKey: string): Promise<WalletService> {
     const storage = new AsyncStorage(STORAGE_KEYS.async.WALLET);
-    const oldData: WalletModel[] | null = JSON.parse(await storage.getItem());
+    const oldData: WalletModel[] = JSON.parse((await storage.getItem()) || '[]');
     const address = AddressService.createFromPublicKey(publicKey, networkType);
     const data: WalletModel = {
       id: randomUUID(),
@@ -124,7 +122,7 @@ export class WalletService extends AsyncStorage {
   /** WalletModel.id より WalletService インスタンスを作成します */
   public static async getByWalletId(id: string): Promise<WalletService> {
     const storage = new AsyncStorage(STORAGE_KEYS.async.WALLET);
-    const data: WalletModel[] | null = JSON.parse(await storage.getItem());
+    const data: WalletModel[] = JSON.parse((await storage.getItem()) || '[]');
     if (!data) {
       throw new InvalidValueError('Failed to read from storage.');
     } else {

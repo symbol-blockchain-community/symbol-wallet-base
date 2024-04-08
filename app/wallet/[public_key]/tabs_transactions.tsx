@@ -1,25 +1,18 @@
-import * as Clipboard from 'expo-clipboard';
-import { useLocalSearchParams } from 'expo-router';
+// import { useLocalSearchParams } from 'expo-router';
 import { View } from 'react-native';
-import Toast from 'react-native-toast-message';
 
 import Tabs from '@/components/atom/Tabs';
 import ReceievedTransactionHistory from '@/components/organisms/ReceievedTransactionHistory';
 import SendTransactionHistory from '@/components/organisms/SendTransactionHistory';
 import { useI18n } from '@/hooks/useI18n';
 import { useLoadCurrentNetwork } from '@/hooks/useLoadCurrentNetwork';
-import { WalletModel } from '@/models/AccountModel';
-import { AddressService } from '@/services/AddressService';
+// import { WalletModel } from '@/models/AccountModel';
+// import { AddressService } from '@/services/AddressService';
 
 export default function WalletAccountTransactions(): JSX.Element {
   const { t } = useI18n();
-  const params = useLocalSearchParams() as unknown as WalletModel;
-  const address = AddressService.createFromPublicKey(params.publicKey, params.networkType);
+  // const params = useLocalSearchParams() as unknown as WalletModel;
   const { isLoading, error, network } = useLoadCurrentNetwork();
-
-  const copyAddress = () => {
-    Clipboard.setStringAsync(address.plain()).then(() => Toast.show({ text1: t('common.copied') }));
-  };
 
   if (error) throw error;
 

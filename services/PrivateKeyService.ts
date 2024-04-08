@@ -55,43 +55,38 @@ export class PrivateKeyService extends SecureStorage {
   /** 指定された id の秘密鍵を SeucreStorage より削除する */
   public static async deleteFromStorageById(id: string): Promise<void> {
     const storage = new SecureStorage(STORAGE_KEYS.secure.PRIVATEKEY);
-    const data: PrivateKeyModel[] | null = JSON.parse(await storage.getSecretItem());
+    const data: PrivateKeyModel[] = JSON.parse((await storage.getSecretItem()) || '[]');
     if (!data) {
-      await storage.setSecretItem(JSON.stringify([]));
-    } else {
-      const newData = data.filter((e) => e.id !== id);
-      await storage.setSecretItem(JSON.stringify(newData));
+      throw new InvalidValueError('Failed to read from storage.');
     }
+    const newData = data.filter((e) => e.id !== id);
+    await storage.setSecretItem(JSON.stringify(newData));
   }
 
   /** 指定された id の PrivateKeyModel を SecureStorage より取得する */
   public static async getFromStorageById(id: string): Promise<PrivateKeyModel> {
     const storage = new SecureStorage(STORAGE_KEYS.secure.PRIVATEKEY);
-    const data: PrivateKeyModel[] | null = JSON.parse(await storage.getSecretItem());
-    if (!data) {
+    const data: PrivateKeyModel[] = JSON.parse((await storage.getSecretItem()) || '[]');
+    const result = data.find((e) => e.id === id);
+    if (!result) {
       throw new InvalidValueError('Failed to read from storage.');
     } else {
-      const result = data.find((e) => e.id === id);
-      if (!result) {
-        throw new InvalidValueError('Failed to read from storage.');
-      } else {
-        return result;
-      }
+      return result;
     }
   }
 
   /** 現在の秘密鍵を SecureStorage へ保管する。同一 NetworkType かつ秘密鍵文字列がある場合は ERROR */
   public async setToStorage(networkType: NetworkType): Promise<PrivateKeyModel> {
     // 重複の検証
-    let oldData: PrivateKeyModel[] | null = JSON.parse(await this.getSecretItem());
-    if (oldData) {
+    const storageResult = await this.getSecretItem();
+    let oldData: PrivateKeyModel[] = [];
+    if (storageResult) {
+      oldData = JSON.parse(storageResult);
       for (const v of oldData) {
         if (v.privateKey === this.privateKey && v.networkType === networkType) {
           throw new InvalidValueError('Duplicate private key');
         }
       }
-    } else {
-      oldData = [];
     }
     // 書き込み
     const id = randomUUID();

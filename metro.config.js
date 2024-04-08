@@ -9,7 +9,7 @@ const config = {
   ...defaultConfig,
   resolver: {
     extraNodeModules: {
-      crypto: require.resolve('expo-symbol-crypto'),
+      crypto: require.resolve('@symbol-blockchain-community/expo-symbol-crypto'),
       stream: require.resolve('readable-stream'),
       buffer: require.resolve('buffer'),
       events: require.resolve('events'),
