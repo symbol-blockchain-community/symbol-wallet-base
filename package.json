@@ -13,7 +13,8 @@
   "dependencies": {
     "@react-native-async-storage/async-storage": "1.21.0",
     "@react-native-picker/picker": "2.6.1",
-    "@symbol-blockchain-community/expo-symbol-crypto": "^0.0.2",
+    "@symbol-blockchain-community/expo-symbol-crypto": "^0.0.3",
+    "assert": "^2.1.0",
     "buffer": "^6.0.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
@@ -45,9 +46,12 @@
     "react-native-screens": "^3.29.0",
     "react-native-toast-message": "^2.2.0",
     "readable-stream": "^4.5.2",
+    "stream-browserify": "^2.0.2",
     "symbol-hd-wallets": "^0.14.2",
     "symbol-sdk": "^2.0.5",
-    "tailwind-merge": "^2.2.1"
+    "symbol-sdk-v3": "npm:symbol-sdk@~3.2.0",
+    "tailwind-merge": "^2.2.1",
+    "url": "^0.11.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
