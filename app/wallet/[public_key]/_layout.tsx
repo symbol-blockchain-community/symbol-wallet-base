@@ -1,8 +1,8 @@
-import { Link, Stack, useLocalSearchParams, useRouter } from 'expo-router';
+import { Link, useLocalSearchParams, useRouter, Tabs } from 'expo-router';
 import { useEffect } from 'react';
 import { View } from 'react-native';
 
-import { IconQRCode, IconReceipt } from '@/components/atom/Icons';
+import { IconQRCode, IconReceipt, IconWallet } from '@/components/atom/Icons';
 import { useI18n } from '@/hooks/useI18n';
 import { useLoadWallets } from '@/hooks/useLoadWallets';
 
@@ -36,36 +36,35 @@ export default function WalletPublicKeyDynamicLayout(): JSX.Element {
   }
 
   return (
-    <Stack initialRouteName='index'>
-      <Stack.Screen
-        name='index'
+    <Tabs initialRouteName='tabs_home' screenOptions={{ tabBarActiveTintColor: 'blue' }}>
+      <Tabs.Screen
+        name='tabs_home'
         initialParams={currentWallet}
         options={{
-          headerTitle: currentWallet.name,
-          headerRight: () => (
-            <View className='flex flex-row gap-2'>
-              <Link href={`/wallet/${currentWallet.publicKey}/transactions`} className='active:opacity-20 py-3 px-4'>
-                <IconReceipt size={24} />
-              </Link>
-              <Link href={`/wallet/${currentWallet.publicKey}/account_qr`} className='active:opacity-20 py-3 px-4'>
-                <IconQRCode size={24} />
-              </Link>
-            </View>
-          ),
+          headerShown: false,
+          tabBarIcon: () => <IconWallet size={20} className='text-primary' />,
+          tabBarLabel: 'Home',
         }}
       />
-      <Stack.Screen
-        name='transactions'
+      <Tabs.Screen
+        name='tabs_transactions'
         initialParams={currentWallet}
         options={{
+          headerShown: false,
           headerTitle: t('pages.wallet.layout.transactions_tab_name'),
+          tabBarIcon: () => <IconReceipt size={20} className='text-primary' />,
+          tabBarLabel: 'History',
         }}
       />
-      <Stack.Screen
-        name='account_qr'
+      <Tabs.Screen
+        name='tabs_account_qr'
         initialParams={currentWallet}
-        options={{ presentation: 'modal', headerTitle: 'QR' }}
+        options={{
+          headerShown: false,
+          headerTitle: 'QR',
+          href: null,
+        }}
       />
-    </Stack>
+    </Tabs>
   );
 }

@@ -7,7 +7,7 @@
 import { MnemonicPassPhrase, ExtendedKey, Wallet, Network } from 'symbol-hd-wallets';
 
 import { MnemonicModel } from '@/models/AccountModel';
-import { InvalidValueError, StorageError } from '@/models/ErrorModels';
+import { InvalidValueError } from '@/models/ErrorModels';
 import { STORAGE_KEYS } from '@/util/configs/storage-keys';
 import { SecureStorage } from '@/util/storages/SecureStorage';
 
@@ -31,13 +31,9 @@ export class MnemonicService extends SecureStorage {
   }
 
   /** ローカルストレージに保存されたニーモニックを返却する */
-  public static async getFromStorage() {
+  public static async getFromStorage(): Promise<MnemonicModel | null> {
     const storage = new SecureStorage(STORAGE_KEYS.secure.MNEMONIC);
-    const item: MnemonicModel | null = JSON.parse(await storage.getSecretItem());
-    if (!item) {
-      throw new StorageError('Failed to read from storage.');
-    }
-    return item;
+    return JSON.parse((await storage.getSecretItem()) || 'null');
   }
 
   /** ニーモニックフレーズより MnemonicService インスタンスを返却する */

@@ -13,7 +13,7 @@ export class LanguageService extends AsyncStorage {
     if (!item) {
       // 端末で設定されている言語を返す
       const { languageCode } = getLocales()[0];
-      return languageCode;
+      return languageCode || 'en';
     }
     return item;
   }

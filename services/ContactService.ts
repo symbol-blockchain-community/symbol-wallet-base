@@ -53,11 +53,8 @@ export class ContactService extends AsyncStorage {
   /** ローカルストレージより保存された連絡帳データを全て読みだす */
   static async create(networkType: NetworkType): Promise<ContactService> {
     const storage = new AsyncStorage(STORAGE_KEYS.async.CONTACT);
-    const item = JSON.parse(await storage.getItem()) as ContactModel[];
-    if (!item) {
-      return new ContactService([]);
-    }
-
+    const item: ContactModel[] = JSON.parse((await storage.getItem()) || '[]');
+    if (!item) return new ContactService([]);
     return new ContactService(item.filter((e) => e.networkType === networkType));
   }
 }
