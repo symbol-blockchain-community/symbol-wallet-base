@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { LinkActionEnum } from './LinkActionEnum.js';
+import { exists, mapValues } from '../runtime';
+import type { LinkActionEnum } from './LinkActionEnum';
 import {
     LinkActionEnumFromJSON,
     LinkActionEnumFromJSONTyped,
     LinkActionEnumToJSON,
-} from './LinkActionEnum.js';
+} from './LinkActionEnum';
 
 /**
  * 

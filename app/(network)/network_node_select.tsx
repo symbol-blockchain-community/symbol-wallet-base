@@ -4,14 +4,14 @@ import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import ButtonBase from '@/components/atom/ButtonBase.js';
-import { IconDown } from '@/components/atom/Icons.js';
-import { List, ListItem } from '@/components/atom/List.js';
-import { NetworkController } from '@/controller/NetworkController.js';
-import { useGetNodeList } from '@/hooks/useGetNodeList.js';
-import { useLoadCurrentNetwork } from '@/hooks/useLoadCurrentNetwork.js';
-import { ConnectionError, StorageError } from '@/models/ErrorModels.js';
-import { cn } from '@/util/classes.js';
+import ButtonBase from '@/components/atom/ButtonBase';
+import { IconDown } from '@/components/atom/Icons';
+import { List, ListItem } from '@/components/atom/List';
+import { NetworkController } from '@/controller/NetworkController';
+import { useGetNodeList } from '@/hooks/useGetNodeList';
+import { useLoadCurrentNetwork } from '@/hooks/useLoadCurrentNetwork';
+import { ConnectionError, StorageError } from '@/models/ErrorModels';
+import { cn } from '@/util/classes';
 
 // 手入力へも対応する
 

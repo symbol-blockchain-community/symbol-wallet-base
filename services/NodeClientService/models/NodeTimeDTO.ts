@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { CommunicationTimestampsDTO } from './CommunicationTimestampsDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { CommunicationTimestampsDTO } from './CommunicationTimestampsDTO';
 import {
     CommunicationTimestampsDTOFromJSON,
     CommunicationTimestampsDTOFromJSONTyped,
     CommunicationTimestampsDTOToJSON,
-} from './CommunicationTimestampsDTO.js';
+} from './CommunicationTimestampsDTO';
 
 /**
  * 

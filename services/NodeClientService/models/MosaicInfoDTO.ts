@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { MosaicDTO } from './MosaicDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { MosaicDTO } from './MosaicDTO';
 import {
     MosaicDTOFromJSON,
     MosaicDTOFromJSONTyped,
     MosaicDTOToJSON,
-} from './MosaicDTO.js';
+} from './MosaicDTO';
 
 /**
  * 

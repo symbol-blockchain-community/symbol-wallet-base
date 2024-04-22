@@ -1,8 +1,8 @@
-import { ConnectionError } from '@/models/ErrorModels.js';
-import { NetworkType, NodeInfo } from '@/models/NetworkModels.js';
-import { NETWORK_PROPERTIES } from '@/util/configs/network-properties.js';
-import { STORAGE_KEYS } from '@/util/configs/storage-keys.js';
-import { AsyncStorage } from '@/util/storages/AsyncStorage.js';
+import { ConnectionError } from '@/models/ErrorModels';
+import { NetworkType, NodeInfo } from '@/models/NetworkModels';
+import { NETWORK_PROPERTIES } from '@/util/configs/network-properties';
+import { STORAGE_KEYS } from '@/util/configs/storage-keys';
+import { AsyncStorage } from '@/util/storages/AsyncStorage';
 
 type StorageModel = {
   [key: string]: {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { NetworkController } from '@/controller/NetworkController.js';
-import { NetworkInfo } from '@/models/NetworkModels.js';
+import { NetworkController } from '@/controller/NetworkController';
+import { NetworkInfo } from '@/models/NetworkModels';
 
 type ILoadCurrentNetwork = {
   isLoading: boolean;

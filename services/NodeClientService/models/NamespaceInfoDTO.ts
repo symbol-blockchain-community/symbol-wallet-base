@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { NamespaceDTO } from './NamespaceDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { NamespaceDTO } from './NamespaceDTO';
 import {
     NamespaceDTOFromJSON,
     NamespaceDTOFromJSONTyped,
     NamespaceDTOToJSON,
-} from './NamespaceDTO.js';
-import type { NamespaceMetaDTO } from './NamespaceMetaDTO.js';
+} from './NamespaceDTO';
+import type { NamespaceMetaDTO } from './NamespaceMetaDTO';
 import {
     NamespaceMetaDTOFromJSON,
     NamespaceMetaDTOFromJSONTyped,
     NamespaceMetaDTOToJSON,
-} from './NamespaceMetaDTO.js';
+} from './NamespaceMetaDTO';
 
 /**
  * 

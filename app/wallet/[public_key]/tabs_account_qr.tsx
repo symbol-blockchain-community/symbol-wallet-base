@@ -1,13 +1,13 @@
 import * as Clipboard from 'expo-clipboard';
 import { Link, useLocalSearchParams } from 'expo-router';
 import { ScrollView, Text, View } from 'react-native';
-import { Toast } from 'react-native-toast-message/lib/src/Toast.js';
+import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
-import ButtonBase from '@/components/atom/ButtonBase.js';
-import { Card } from '@/components/atom/Card.js';
-import { WalletModel } from '@/models/AccountModel.js';
-import { AddressService } from '@/services/AddressService.js';
-import { getExplorerUrl } from '@/util/symbol/network.js';
+import ButtonBase from '@/components/atom/ButtonBase';
+import { Card } from '@/components/atom/Card';
+import { WalletModel } from '@/models/AccountModel';
+import { AddressService } from '@/services/AddressService';
+import { getExplorerUrl } from '@/util/symbol/network';
 
 /**
  * Wallet の Account QR を表示する

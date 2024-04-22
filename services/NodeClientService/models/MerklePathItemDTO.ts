@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { PositionEnum } from './PositionEnum.js';
+import { exists, mapValues } from '../runtime';
+import type { PositionEnum } from './PositionEnum';
 import {
     PositionEnumFromJSON,
     PositionEnumFromJSONTyped,
     PositionEnumToJSON,
-} from './PositionEnum.js';
+} from './PositionEnum';
 
 /**
  * Each merkle path item is composed of a hash, and a position relative to the proofHash being evaluated.

@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { BlockInfoDTOBlock } from './BlockInfoDTOBlock.js';
+import { exists, mapValues } from '../runtime';
+import type { BlockInfoDTOBlock } from './BlockInfoDTOBlock';
 import {
     BlockInfoDTOBlockFromJSON,
     BlockInfoDTOBlockFromJSONTyped,
     BlockInfoDTOBlockToJSON,
-} from './BlockInfoDTOBlock.js';
-import type { BlockMetaDTO } from './BlockMetaDTO.js';
+} from './BlockInfoDTOBlock';
+import type { BlockMetaDTO } from './BlockMetaDTO';
 import {
     BlockMetaDTOFromJSON,
     BlockMetaDTOFromJSONTyped,
     BlockMetaDTOToJSON,
-} from './BlockMetaDTO.js';
+} from './BlockMetaDTO';
 
 /**
  * 

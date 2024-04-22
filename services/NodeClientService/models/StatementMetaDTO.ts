@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
+import { exists, mapValues } from '../runtime';
 /**
  * Metadata related to the statment, including block information.
  * @export

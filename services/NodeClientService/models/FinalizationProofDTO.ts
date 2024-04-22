@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { MessageGroup } from './MessageGroup.js';
+import { exists, mapValues } from '../runtime';
+import type { MessageGroup } from './MessageGroup';
 import {
     MessageGroupFromJSON,
     MessageGroupFromJSONTyped,
     MessageGroupToJSON,
-} from './MessageGroup.js';
+} from './MessageGroup';
 
 /**
  * 

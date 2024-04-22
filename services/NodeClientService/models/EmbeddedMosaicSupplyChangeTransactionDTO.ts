@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { MosaicSupplyChangeActionEnum } from './MosaicSupplyChangeActionEnum.js';
+import { exists, mapValues } from '../runtime';
+import type { MosaicSupplyChangeActionEnum } from './MosaicSupplyChangeActionEnum';
 import {
     MosaicSupplyChangeActionEnumFromJSON,
     MosaicSupplyChangeActionEnumFromJSONTyped,
     MosaicSupplyChangeActionEnumToJSON,
-} from './MosaicSupplyChangeActionEnum.js';
-import type { NetworkTypeEnum } from './NetworkTypeEnum.js';
+} from './MosaicSupplyChangeActionEnum';
+import type { NetworkTypeEnum } from './NetworkTypeEnum';
 import {
     NetworkTypeEnumFromJSON,
     NetworkTypeEnumFromJSONTyped,
     NetworkTypeEnumToJSON,
-} from './NetworkTypeEnum.js';
+} from './NetworkTypeEnum';
 
 /**
  * 

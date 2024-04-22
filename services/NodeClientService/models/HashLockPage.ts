@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { HashLockInfoDTO } from './HashLockInfoDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { HashLockInfoDTO } from './HashLockInfoDTO';
 import {
     HashLockInfoDTOFromJSON,
     HashLockInfoDTOFromJSONTyped,
     HashLockInfoDTOToJSON,
-} from './HashLockInfoDTO.js';
-import type { Pagination } from './Pagination.js';
+} from './HashLockInfoDTO';
+import type { Pagination } from './Pagination';
 import {
     PaginationFromJSON,
     PaginationFromJSONTyped,
     PaginationToJSON,
-} from './Pagination.js';
+} from './Pagination';
 
 /**
  * 

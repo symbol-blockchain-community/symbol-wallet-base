@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { HashLockEntryDTO } from './HashLockEntryDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { HashLockEntryDTO } from './HashLockEntryDTO';
 import {
     HashLockEntryDTOFromJSON,
     HashLockEntryDTOFromJSONTyped,
     HashLockEntryDTOToJSON,
-} from './HashLockEntryDTO.js';
+} from './HashLockEntryDTO';
 
 /**
  * 

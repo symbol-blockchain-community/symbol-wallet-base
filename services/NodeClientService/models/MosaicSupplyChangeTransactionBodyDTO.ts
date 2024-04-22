@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { MosaicSupplyChangeActionEnum } from './MosaicSupplyChangeActionEnum.js';
+import { exists, mapValues } from '../runtime';
+import type { MosaicSupplyChangeActionEnum } from './MosaicSupplyChangeActionEnum';
 import {
     MosaicSupplyChangeActionEnumFromJSON,
     MosaicSupplyChangeActionEnumFromJSONTyped,
     MosaicSupplyChangeActionEnumToJSON,
-} from './MosaicSupplyChangeActionEnum.js';
+} from './MosaicSupplyChangeActionEnum';
 
 /**
  * 

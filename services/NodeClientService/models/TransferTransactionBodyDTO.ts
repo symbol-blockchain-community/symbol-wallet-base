@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { UnresolvedMosaic } from './UnresolvedMosaic.js';
+import { exists, mapValues } from '../runtime';
+import type { UnresolvedMosaic } from './UnresolvedMosaic';
 import {
     UnresolvedMosaicFromJSON,
     UnresolvedMosaicFromJSONTyped,
     UnresolvedMosaicToJSON,
-} from './UnresolvedMosaic.js';
+} from './UnresolvedMosaic';
 
 /**
  * 

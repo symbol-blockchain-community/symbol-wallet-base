@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { MosaicRestrictionsPageDataInner } from './MosaicRestrictionsPageDataInner.js';
+import { exists, mapValues } from '../runtime';
+import type { MosaicRestrictionsPageDataInner } from './MosaicRestrictionsPageDataInner';
 import {
     MosaicRestrictionsPageDataInnerFromJSON,
     MosaicRestrictionsPageDataInnerFromJSONTyped,
     MosaicRestrictionsPageDataInnerToJSON,
-} from './MosaicRestrictionsPageDataInner.js';
-import type { Pagination } from './Pagination.js';
+} from './MosaicRestrictionsPageDataInner';
+import type { Pagination } from './Pagination';
 import {
     PaginationFromJSON,
     PaginationFromJSONTyped,
     PaginationToJSON,
-} from './Pagination.js';
+} from './Pagination';
 
 /**
  * 

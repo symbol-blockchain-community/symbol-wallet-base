@@ -1,4 +1,4 @@
-import { NetworkProperty } from '@/models/NetworkModels.js';
+import { NetworkProperty } from '@/models/NetworkModels';
 
 type INetworkProperties = {
   /** `NetworkType` と同一の値とする */

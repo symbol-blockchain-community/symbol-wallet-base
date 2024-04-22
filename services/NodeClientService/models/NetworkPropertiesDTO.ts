@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { NodeIdentityEqualityStrategy } from './NodeIdentityEqualityStrategy.js';
+import { exists, mapValues } from '../runtime';
+import type { NodeIdentityEqualityStrategy } from './NodeIdentityEqualityStrategy';
 import {
     NodeIdentityEqualityStrategyFromJSON,
     NodeIdentityEqualityStrategyFromJSONTyped,
     NodeIdentityEqualityStrategyToJSON,
-} from './NodeIdentityEqualityStrategy.js';
+} from './NodeIdentityEqualityStrategy';
 
 /**
  * Network related configuration properties.

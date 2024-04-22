@@ -1,6 +1,6 @@
-import Entypo from '@expo/vector-icons/Entypo.js';
-import IonIcons from '@expo/vector-icons/Ionicons.js';
-import { IconProps } from '@expo/vector-icons/build/createIconSet.js';
+import Entypo from '@expo/vector-icons/Entypo';
+import IonIcons from '@expo/vector-icons/Ionicons';
+import { IconProps } from '@expo/vector-icons/build/createIconSet';
 import { StyleProp, TextStyle } from 'react-native';
 
 interface Props extends Omit<IconProps<string>, 'name'> {

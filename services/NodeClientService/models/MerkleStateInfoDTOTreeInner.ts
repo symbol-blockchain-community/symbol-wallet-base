@@ -12,31 +12,31 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { MerkleTreeBranchDTO } from './MerkleTreeBranchDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { MerkleTreeBranchDTO } from './MerkleTreeBranchDTO';
 import {
     MerkleTreeBranchDTOFromJSON,
     MerkleTreeBranchDTOFromJSONTyped,
     MerkleTreeBranchDTOToJSON,
-} from './MerkleTreeBranchDTO.js';
-import type { MerkleTreeBranchLinkDTO } from './MerkleTreeBranchLinkDTO.js';
+} from './MerkleTreeBranchDTO';
+import type { MerkleTreeBranchLinkDTO } from './MerkleTreeBranchLinkDTO';
 import {
     MerkleTreeBranchLinkDTOFromJSON,
     MerkleTreeBranchLinkDTOFromJSONTyped,
     MerkleTreeBranchLinkDTOToJSON,
-} from './MerkleTreeBranchLinkDTO.js';
-import type { MerkleTreeLeafDTO } from './MerkleTreeLeafDTO.js';
+} from './MerkleTreeBranchLinkDTO';
+import type { MerkleTreeLeafDTO } from './MerkleTreeLeafDTO';
 import {
     MerkleTreeLeafDTOFromJSON,
     MerkleTreeLeafDTOFromJSONTyped,
     MerkleTreeLeafDTOToJSON,
-} from './MerkleTreeLeafDTO.js';
-import type { MerkleTreeNodeTypeEnum } from './MerkleTreeNodeTypeEnum.js';
+} from './MerkleTreeLeafDTO';
+import type { MerkleTreeNodeTypeEnum } from './MerkleTreeNodeTypeEnum';
 import {
     MerkleTreeNodeTypeEnumFromJSON,
     MerkleTreeNodeTypeEnumFromJSONTyped,
     MerkleTreeNodeTypeEnumToJSON,
-} from './MerkleTreeNodeTypeEnum.js';
+} from './MerkleTreeNodeTypeEnum';
 
 /**
  * 

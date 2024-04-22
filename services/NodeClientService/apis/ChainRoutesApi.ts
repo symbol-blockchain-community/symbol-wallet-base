@@ -13,14 +13,14 @@
  */
 
 
-import * as runtime from '../runtime.js';
+import * as runtime from '../runtime';
 import type {
   ChainInfoDTO,
-} from '../models/index.js';
+} from '../models/index';
 import {
     ChainInfoDTOFromJSON,
     ChainInfoDTOToJSON,
-} from '../models/index.js';
+} from '../models/index';
 
 /**
  * 

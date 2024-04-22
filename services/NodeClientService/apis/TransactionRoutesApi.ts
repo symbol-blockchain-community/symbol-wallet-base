@@ -13,7 +13,7 @@
  */
 
 
-import * as runtime from '../runtime.js';
+import * as runtime from '../runtime';
 import type {
   AnnounceTransactionInfoDTO,
   Cosignature,
@@ -24,7 +24,7 @@ import type {
   TransactionPage,
   TransactionPayload,
   TransactionTypeEnum,
-} from '../models/index.js';
+} from '../models/index';
 import {
     AnnounceTransactionInfoDTOFromJSON,
     AnnounceTransactionInfoDTOToJSON,
@@ -44,7 +44,7 @@ import {
     TransactionPayloadToJSON,
     TransactionTypeEnumFromJSON,
     TransactionTypeEnumToJSON,
-} from '../models/index.js';
+} from '../models/index';
 
 export interface AnnounceCosignatureTransactionRequest {
     cosignature: Cosignature;

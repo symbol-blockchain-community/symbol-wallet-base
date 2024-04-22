@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { AccountLinkVotingKeyDTO } from './AccountLinkVotingKeyDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { AccountLinkVotingKeyDTO } from './AccountLinkVotingKeyDTO';
 import {
     AccountLinkVotingKeyDTOFromJSON,
     AccountLinkVotingKeyDTOFromJSONTyped,
     AccountLinkVotingKeyDTOToJSON,
-} from './AccountLinkVotingKeyDTO.js';
+} from './AccountLinkVotingKeyDTO';
 
 /**
  * 

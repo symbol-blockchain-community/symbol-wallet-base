@@ -6,10 +6,10 @@
 
 import { randomUUID } from 'expo-crypto';
 
-import { ContactModel } from '@/models/AccountModel.js';
-import { NetworkType } from '@/models/NetworkModels.js';
-import { STORAGE_KEYS } from '@/util/configs/storage-keys.js';
-import { AsyncStorage } from '@/util/storages/AsyncStorage.js';
+import { ContactModel } from '@/models/AccountModel';
+import { NetworkType } from '@/models/NetworkModels';
+import { STORAGE_KEYS } from '@/util/configs/storage-keys';
+import { AsyncStorage } from '@/util/storages/AsyncStorage';
 
 /**
  * Manage Symbol Address Contacts

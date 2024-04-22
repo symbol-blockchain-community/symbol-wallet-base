@@ -1,5 +1,5 @@
-import { InvalidValueError } from '@/models/ErrorModels.js';
-import { NetworkType } from '@/models/NetworkModels.js';
+import { InvalidValueError } from '@/models/ErrorModels';
+import { NetworkType } from '@/models/NetworkModels';
 
 export function strNetworkTypeToHexadecimal(networkType: NetworkType): number {
   switch (networkType) {

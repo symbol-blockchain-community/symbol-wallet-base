@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { CosignatureDTO } from './CosignatureDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { CosignatureDTO } from './CosignatureDTO';
 import {
     CosignatureDTOFromJSON,
     CosignatureDTOFromJSONTyped,
     CosignatureDTOToJSON,
-} from './CosignatureDTO.js';
-import type { NetworkTypeEnum } from './NetworkTypeEnum.js';
+} from './CosignatureDTO';
+import type { NetworkTypeEnum } from './NetworkTypeEnum';
 import {
     NetworkTypeEnumFromJSON,
     NetworkTypeEnumFromJSONTyped,
     NetworkTypeEnumToJSON,
-} from './NetworkTypeEnum.js';
+} from './NetworkTypeEnum';
 
 /**
  * Transaction to combine multiple transactions together.

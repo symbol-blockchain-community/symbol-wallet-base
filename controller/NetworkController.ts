@@ -1,8 +1,8 @@
-import { ConnectionError } from '@/models/ErrorModels.js';
-import { ConnectionStatus, NetworkInfo, NetworkType, NodeInfo } from '@/models/NetworkModels.js';
+import { ConnectionError } from '@/models/ErrorModels';
+import { ConnectionStatus, NetworkInfo, NetworkType, NodeInfo } from '@/models/NetworkModels';
 import { NetworkService, StorageModel } from '@/services/NetworkService';
 import { NodeStatisticsService } from '@/services/NodeStatisticsService';
-import { modeConfig } from '@/util/configs/mode.js';
+import { modeConfig } from '@/util/configs/mode';
 
 export class NetworkController {
   private constructor() {}

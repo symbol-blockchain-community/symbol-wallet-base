@@ -2,11 +2,11 @@ import { useRouter } from 'expo-router';
 import { useEffect } from 'react';
 import { View, Text } from 'react-native';
 
-import ButtonBase from '@/components/atom/ButtonBase.js';
-import { IconDown } from '@/components/atom/Icons.js';
-import { List, ListItem } from '@/components/atom/List.js';
-import { useTransactionHistory } from '@/hooks/useTransactionSearch.js';
-import { getExplorerUrl } from '@/util/symbol/network.js';
+import ButtonBase from '@/components/atom/ButtonBase';
+import { IconDown } from '@/components/atom/Icons';
+import { List, ListItem } from '@/components/atom/List';
+import { useTransactionHistory } from '@/hooks/useTransactionSearch';
+import { getExplorerUrl } from '@/util/symbol/network';
 
 interface Props {
   node: string | null;

@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { ServerDTO } from './ServerDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { ServerDTO } from './ServerDTO';
 import {
     ServerDTOFromJSON,
     ServerDTOFromJSONTyped,
     ServerDTOToJSON,
-} from './ServerDTO.js';
+} from './ServerDTO';
 
 /**
  * 

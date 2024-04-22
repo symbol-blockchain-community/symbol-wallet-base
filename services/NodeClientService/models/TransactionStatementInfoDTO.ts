@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { StatementMetaDTO } from './StatementMetaDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { StatementMetaDTO } from './StatementMetaDTO';
 import {
     StatementMetaDTOFromJSON,
     StatementMetaDTOFromJSONTyped,
     StatementMetaDTOToJSON,
-} from './StatementMetaDTO.js';
-import type { TransactionStatementDTO } from './TransactionStatementDTO.js';
+} from './StatementMetaDTO';
+import type { TransactionStatementDTO } from './TransactionStatementDTO';
 import {
     TransactionStatementDTOFromJSON,
     TransactionStatementDTOFromJSONTyped,
     TransactionStatementDTOToJSON,
-} from './TransactionStatementDTO.js';
+} from './TransactionStatementDTO';
 
 /**
  * Collection of receipts related to a transaction.

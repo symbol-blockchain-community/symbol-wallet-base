@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { LockHashAlgorithmEnum } from './LockHashAlgorithmEnum.js';
+import { exists, mapValues } from '../runtime';
+import type { LockHashAlgorithmEnum } from './LockHashAlgorithmEnum';
 import {
     LockHashAlgorithmEnumFromJSON,
     LockHashAlgorithmEnumFromJSONTyped,
     LockHashAlgorithmEnumToJSON,
-} from './LockHashAlgorithmEnum.js';
-import type { NetworkTypeEnum } from './NetworkTypeEnum.js';
+} from './LockHashAlgorithmEnum';
+import type { NetworkTypeEnum } from './NetworkTypeEnum';
 import {
     NetworkTypeEnumFromJSON,
     NetworkTypeEnumFromJSONTyped,
     NetworkTypeEnumToJSON,
-} from './NetworkTypeEnum.js';
+} from './NetworkTypeEnum';
 
 /**
  * Transaction to reveal a proof.

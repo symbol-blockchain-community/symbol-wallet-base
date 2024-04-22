@@ -13,14 +13,14 @@
  */
 
 
-import * as runtime from '../runtime.js';
+import * as runtime from '../runtime';
 import type {
   MerkleStateInfoDTO,
   ModelError,
   Order,
   SecretLockInfoDTO,
   SecretLockPage,
-} from '../models/index.js';
+} from '../models/index';
 import {
     MerkleStateInfoDTOFromJSON,
     MerkleStateInfoDTOToJSON,
@@ -32,7 +32,7 @@ import {
     SecretLockInfoDTOToJSON,
     SecretLockPageFromJSON,
     SecretLockPageToJSON,
-} from '../models/index.js';
+} from '../models/index';
 
 export interface GetSecretLockRequest {
     compositeHash: string;

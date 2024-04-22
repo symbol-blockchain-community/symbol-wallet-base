@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { AccountRestrictionsInfoDTO } from './AccountRestrictionsInfoDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { AccountRestrictionsInfoDTO } from './AccountRestrictionsInfoDTO';
 import {
     AccountRestrictionsInfoDTOFromJSON,
     AccountRestrictionsInfoDTOFromJSONTyped,
     AccountRestrictionsInfoDTOToJSON,
-} from './AccountRestrictionsInfoDTO.js';
-import type { Pagination } from './Pagination.js';
+} from './AccountRestrictionsInfoDTO';
+import type { Pagination } from './Pagination';
 import {
     PaginationFromJSON,
     PaginationFromJSONTyped,
     PaginationToJSON,
-} from './Pagination.js';
+} from './Pagination';
 
 /**
  * 

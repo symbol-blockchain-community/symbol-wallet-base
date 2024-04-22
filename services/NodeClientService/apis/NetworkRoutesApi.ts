@@ -13,14 +13,14 @@
  */
 
 
-import * as runtime from '../runtime.js';
+import * as runtime from '../runtime';
 import type {
   ModelError,
   NetworkConfigurationDTO,
   NetworkTypeDTO,
   RentalFeesDTO,
   TransactionFeesDTO,
-} from '../models/index.js';
+} from '../models/index';
 import {
     ModelErrorFromJSON,
     ModelErrorToJSON,
@@ -32,7 +32,7 @@ import {
     RentalFeesDTOToJSON,
     TransactionFeesDTOFromJSON,
     TransactionFeesDTOToJSON,
-} from '../models/index.js';
+} from '../models/index';
 
 /**
  * 

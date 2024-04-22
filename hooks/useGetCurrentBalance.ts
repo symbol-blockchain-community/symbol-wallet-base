@@ -1,8 +1,8 @@
 import { useState, useEffect, useMemo } from 'react';
 
-import { AccountInfoController } from '@/controller/AccountInfoController.js';
-import { Mosaic } from '@/models/MosaicModel.js';
-import { ResponseError } from '@/services/NodeClientService/index.js';
+import { AccountInfoController } from '@/controller/AccountInfoController';
+import { Mosaic } from '@/models/MosaicModel';
+import { ResponseError } from '@/services/NodeClientService/index';
 
 type IResult = {
   isLoading: boolean;

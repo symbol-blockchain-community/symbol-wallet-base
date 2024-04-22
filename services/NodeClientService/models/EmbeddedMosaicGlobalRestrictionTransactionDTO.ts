@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { MosaicRestrictionTypeEnum } from './MosaicRestrictionTypeEnum.js';
+import { exists, mapValues } from '../runtime';
+import type { MosaicRestrictionTypeEnum } from './MosaicRestrictionTypeEnum';
 import {
     MosaicRestrictionTypeEnumFromJSON,
     MosaicRestrictionTypeEnumFromJSONTyped,
     MosaicRestrictionTypeEnumToJSON,
-} from './MosaicRestrictionTypeEnum.js';
-import type { NetworkTypeEnum } from './NetworkTypeEnum.js';
+} from './MosaicRestrictionTypeEnum';
+import type { NetworkTypeEnum } from './NetworkTypeEnum';
 import {
     NetworkTypeEnumFromJSON,
     NetworkTypeEnumFromJSONTyped,
     NetworkTypeEnumToJSON,
-} from './NetworkTypeEnum.js';
+} from './NetworkTypeEnum';
 
 /**
  * 

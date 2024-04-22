@@ -2,7 +2,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import React from 'react';
 import { Pressable, PressableProps, Text, View, ViewProps } from 'react-native';
 
-import { cn } from '@/util/classes.js';
+import { cn } from '@/util/classes';
 
 const tabsVariants = cva('flex flex-row p-1 bg-muted rounded-md w-full mb-1', {
   variants: {},

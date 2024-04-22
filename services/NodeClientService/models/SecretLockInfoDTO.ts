@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { SecretLockEntryDTO } from './SecretLockEntryDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { SecretLockEntryDTO } from './SecretLockEntryDTO';
 import {
     SecretLockEntryDTOFromJSON,
     SecretLockEntryDTOFromJSONTyped,
     SecretLockEntryDTOToJSON,
-} from './SecretLockEntryDTO.js';
+} from './SecretLockEntryDTO';
 
 /**
  * 

@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { MerklePathItemDTO } from './MerklePathItemDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { MerklePathItemDTO } from './MerklePathItemDTO';
 import {
     MerklePathItemDTOFromJSON,
     MerklePathItemDTOFromJSONTyped,
     MerklePathItemDTOToJSON,
-} from './MerklePathItemDTO.js';
+} from './MerklePathItemDTO';
 
 /**
  * 

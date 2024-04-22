@@ -13,14 +13,14 @@
  */
 
 
-import * as runtime from '../runtime.js';
+import * as runtime from '../runtime';
 import type {
   ModelError,
   Order,
   ReceiptTypeEnum,
   ResolutionStatementPage,
   TransactionStatementPage,
-} from '../models/index.js';
+} from '../models/index';
 import {
     ModelErrorFromJSON,
     ModelErrorToJSON,
@@ -32,7 +32,7 @@ import {
     ResolutionStatementPageToJSON,
     TransactionStatementPageFromJSON,
     TransactionStatementPageToJSON,
-} from '../models/index.js';
+} from '../models/index';
 
 export interface SearchAddressResolutionStatementsRequest {
     height?: string;

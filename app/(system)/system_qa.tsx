@@ -3,7 +3,7 @@ import { View, Text, Pressable } from 'react-native';
 import Markdown from 'react-native-markdown-display';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { List } from '@/components/atom/List.js';
+import { List } from '@/components/atom/List';
 
 // TODO: 各アプリ開発者へ "よくあるお問い合わせは更新頻度も早いと思う為、適宜 API 等で受け取るように書き直して下さい"
 const ITEMS = [

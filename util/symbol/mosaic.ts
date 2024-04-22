@@ -1,6 +1,6 @@
-import { Mosaic } from '@/models/MosaicModel.js';
-import { NetworkType } from '@/models/NetworkModels.js';
-import { NETWORK_PROPERTIES } from '@/util/configs/network-properties.js';
+import { Mosaic } from '@/models/MosaicModel';
+import { NetworkType } from '@/models/NetworkModels';
+import { NETWORK_PROPERTIES } from '@/util/configs/network-properties';
 
 /**
  * Mosaic の配列より、主軸通貨とそれ以外に分離します。

@@ -13,7 +13,7 @@
  */
 
 
-import * as runtime from '../runtime.js';
+import * as runtime from '../runtime';
 import type {
   MerkleStateInfoDTO,
   MetadataInfoDTO,
@@ -21,7 +21,7 @@ import type {
   MetadataTypeEnum,
   ModelError,
   Order,
-} from '../models/index.js';
+} from '../models/index';
 import {
     MerkleStateInfoDTOFromJSON,
     MerkleStateInfoDTOToJSON,
@@ -35,7 +35,7 @@ import {
     ModelErrorToJSON,
     OrderFromJSON,
     OrderToJSON,
-} from '../models/index.js';
+} from '../models/index';
 
 export interface GetMetadataRequest {
     compositeHash: string;

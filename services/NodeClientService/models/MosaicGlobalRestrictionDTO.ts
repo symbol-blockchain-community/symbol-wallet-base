@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { MosaicGlobalRestrictionEntryWrapperDTO } from './MosaicGlobalRestrictionEntryWrapperDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { MosaicGlobalRestrictionEntryWrapperDTO } from './MosaicGlobalRestrictionEntryWrapperDTO';
 import {
     MosaicGlobalRestrictionEntryWrapperDTOFromJSON,
     MosaicGlobalRestrictionEntryWrapperDTOFromJSONTyped,
     MosaicGlobalRestrictionEntryWrapperDTOToJSON,
-} from './MosaicGlobalRestrictionEntryWrapperDTO.js';
+} from './MosaicGlobalRestrictionEntryWrapperDTO';
 
 /**
  * 

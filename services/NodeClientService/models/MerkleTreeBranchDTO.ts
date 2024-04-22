@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { MerkleTreeBranchLinkDTO } from './MerkleTreeBranchLinkDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { MerkleTreeBranchLinkDTO } from './MerkleTreeBranchLinkDTO';
 import {
     MerkleTreeBranchLinkDTOFromJSON,
     MerkleTreeBranchLinkDTOFromJSONTyped,
     MerkleTreeBranchLinkDTOToJSON,
-} from './MerkleTreeBranchLinkDTO.js';
-import type { MerkleTreeNodeTypeEnum } from './MerkleTreeNodeTypeEnum.js';
+} from './MerkleTreeBranchLinkDTO';
+import type { MerkleTreeNodeTypeEnum } from './MerkleTreeNodeTypeEnum';
 import {
     MerkleTreeNodeTypeEnumFromJSON,
     MerkleTreeNodeTypeEnumFromJSONTyped,
     MerkleTreeNodeTypeEnumToJSON,
-} from './MerkleTreeNodeTypeEnum.js';
+} from './MerkleTreeNodeTypeEnum';
 
 /**
  * Merkle tree branch node.

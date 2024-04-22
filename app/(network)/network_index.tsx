@@ -2,11 +2,11 @@ import { Link } from 'expo-router';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { IconNodes, IconServer } from '@/components/atom/Icons.js';
-import { List, ListItem } from '@/components/atom/List.js';
-import { useLoadCurrentNetwork } from '@/hooks/useLoadCurrentNetwork.js';
-import { StorageError } from '@/models/ErrorModels.js';
-import { cn } from '@/util/classes.js';
+import { IconNodes, IconServer } from '@/components/atom/Icons';
+import { List, ListItem } from '@/components/atom/List';
+import { useLoadCurrentNetwork } from '@/hooks/useLoadCurrentNetwork';
+import { StorageError } from '@/models/ErrorModels';
+import { cn } from '@/util/classes';
 
 export default function NetworkPage(): JSX.Element {
   const { isLoading, error, network } = useLoadCurrentNetwork();

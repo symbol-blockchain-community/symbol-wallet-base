@@ -1,10 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, useContext, useEffect, useReducer, ReactNode } from 'react';
 
-import { reducer, initialState } from './reducer.js';
-import { AppState } from './types.js';
+import { reducer, initialState } from './reducer';
+import { AppState } from './types';
 
-import useUpdateEffect from '@/hooks/useUpdateEffect.js';
+import useUpdateEffect from '@/hooks/useUpdateEffect';
 
 interface StateContextType {
   state: AppState;

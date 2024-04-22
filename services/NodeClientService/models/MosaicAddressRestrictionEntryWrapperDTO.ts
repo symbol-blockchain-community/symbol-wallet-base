@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { MosaicAddressRestrictionEntryDTO } from './MosaicAddressRestrictionEntryDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { MosaicAddressRestrictionEntryDTO } from './MosaicAddressRestrictionEntryDTO';
 import {
     MosaicAddressRestrictionEntryDTOFromJSON,
     MosaicAddressRestrictionEntryDTOFromJSONTyped,
     MosaicAddressRestrictionEntryDTOToJSON,
-} from './MosaicAddressRestrictionEntryDTO.js';
-import type { MosaicRestrictionEntryTypeEnum } from './MosaicRestrictionEntryTypeEnum.js';
+} from './MosaicAddressRestrictionEntryDTO';
+import type { MosaicRestrictionEntryTypeEnum } from './MosaicRestrictionEntryTypeEnum';
 import {
     MosaicRestrictionEntryTypeEnumFromJSON,
     MosaicRestrictionEntryTypeEnumFromJSONTyped,
     MosaicRestrictionEntryTypeEnumToJSON,
-} from './MosaicRestrictionEntryTypeEnum.js';
+} from './MosaicRestrictionEntryTypeEnum';
 
 /**
  * 

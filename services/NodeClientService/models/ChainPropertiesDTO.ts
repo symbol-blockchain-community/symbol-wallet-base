@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
+import { exists, mapValues } from '../runtime';
 /**
  * Chain related configuration properties.
  * @export

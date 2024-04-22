@@ -2,8 +2,8 @@ import { Account } from 'symbol-sdk/dist/src/model/account';
 import { NetworkType as HexNetworkType, TransactionFees } from 'symbol-sdk/dist/src/model/network';
 import { SignedTransaction, Transaction } from 'symbol-sdk/dist/src/model/transaction';
 
-import { ConnectionError, InvalidValueError } from '@/models/ErrorModels.js';
-import { NetworkProperty, NetworkType, NodeInfo } from '@/models/NetworkModels.js';
+import { ConnectionError, InvalidValueError } from '@/models/ErrorModels';
+import { NetworkProperty, NetworkType, NodeInfo } from '@/models/NetworkModels';
 import { TransactionFeeRate } from '@/models/TransactionModel';
 import { Configuration, TransactionRoutesApi } from '@/services/NodeClientService';
 import { NETWORK_PROPERTIES } from '@/util/configs/network-properties';

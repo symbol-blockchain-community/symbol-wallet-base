@@ -5,10 +5,10 @@
 
 */
 
-import { NetworkType } from '@/models/NetworkModels.js';
-import { rawArrayCopy, rawArrayDeepEqual, rawArrayUint8View } from '@/util/symbol/array.js';
-import { base32Decode, base32Encode } from '@/util/symbol/base32.js';
-import { strNetworkTypeToHexadecimal } from '@/util/symbol/network.js';
+import { NetworkType } from '@/models/NetworkModels';
+import { rawArrayCopy, rawArrayDeepEqual, rawArrayUint8View } from '@/util/symbol/array';
+import { base32Decode, base32Encode } from '@/util/symbol/base32';
+import { strNetworkTypeToHexadecimal } from '@/util/symbol/network';
 
 import { Address } from 'symbol-sdk/symbol';
 

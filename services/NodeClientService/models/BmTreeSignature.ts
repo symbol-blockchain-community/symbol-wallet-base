@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { ParentPublicKeySignaturePair } from './ParentPublicKeySignaturePair.js';
+import { exists, mapValues } from '../runtime';
+import type { ParentPublicKeySignaturePair } from './ParentPublicKeySignaturePair';
 import {
     ParentPublicKeySignaturePairFromJSON,
     ParentPublicKeySignaturePairFromJSONTyped,
     ParentPublicKeySignaturePairToJSON,
-} from './ParentPublicKeySignaturePair.js';
+} from './ParentPublicKeySignaturePair';
 
 /**
  * 

@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { ResolutionStatementDTO } from './ResolutionStatementDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { ResolutionStatementDTO } from './ResolutionStatementDTO';
 import {
     ResolutionStatementDTOFromJSON,
     ResolutionStatementDTOFromJSONTyped,
     ResolutionStatementDTOToJSON,
-} from './ResolutionStatementDTO.js';
-import type { StatementMetaDTO } from './StatementMetaDTO.js';
+} from './ResolutionStatementDTO';
+import type { StatementMetaDTO } from './StatementMetaDTO';
 import {
     StatementMetaDTOFromJSON,
     StatementMetaDTOFromJSONTyped,
     StatementMetaDTOToJSON,
-} from './StatementMetaDTO.js';
+} from './StatementMetaDTO';
 
 /**
  * A resolution statement keeps the relation between a namespace alias used in a transaction

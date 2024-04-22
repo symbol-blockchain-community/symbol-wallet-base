@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { ResolutionEntryDTOResolved } from './ResolutionEntryDTOResolved.js';
+import { exists, mapValues } from '../runtime';
+import type { ResolutionEntryDTOResolved } from './ResolutionEntryDTOResolved';
 import {
     ResolutionEntryDTOResolvedFromJSON,
     ResolutionEntryDTOResolvedFromJSONTyped,
     ResolutionEntryDTOResolvedToJSON,
-} from './ResolutionEntryDTOResolved.js';
-import type { SourceDTO } from './SourceDTO.js';
+} from './ResolutionEntryDTOResolved';
+import type { SourceDTO } from './SourceDTO';
 import {
     SourceDTOFromJSON,
     SourceDTOFromJSONTyped,
     SourceDTOToJSON,
-} from './SourceDTO.js';
+} from './SourceDTO';
 
 /**
  * 

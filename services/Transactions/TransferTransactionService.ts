@@ -4,7 +4,7 @@ import { Mosaic } from 'symbol-sdk/dist/src/model/mosaic';
 import { TransactionFees } from 'symbol-sdk/dist/src/model/network';
 import { Deadline, SignedTransaction, TransferTransaction } from 'symbol-sdk/dist/src/model/transaction';
 
-import { NetworkType, NodeInfo } from '@/models/NetworkModels.js';
+import { NetworkType, NodeInfo } from '@/models/NetworkModels';
 import { TransactionFeeRate } from '@/models/TransactionModel';
 import { TransactionOption, TransactionService } from '@/services/Transactions/TransactionService';
 import { strNetworkTypeToHexadecimal } from '@/util/symbol/network';

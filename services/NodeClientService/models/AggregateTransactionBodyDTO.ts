@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { CosignatureDTO } from './CosignatureDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { CosignatureDTO } from './CosignatureDTO';
 import {
     CosignatureDTOFromJSON,
     CosignatureDTOFromJSONTyped,
     CosignatureDTOToJSON,
-} from './CosignatureDTO.js';
+} from './CosignatureDTO';
 
 /**
  * 

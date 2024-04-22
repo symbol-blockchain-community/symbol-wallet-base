@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { MetadataEntryDTOTargetId } from './MetadataEntryDTOTargetId.js';
+import { exists, mapValues } from '../runtime';
+import type { MetadataEntryDTOTargetId } from './MetadataEntryDTOTargetId';
 import {
     MetadataEntryDTOTargetIdFromJSON,
     MetadataEntryDTOTargetIdFromJSONTyped,
     MetadataEntryDTOTargetIdToJSON,
-} from './MetadataEntryDTOTargetId.js';
-import type { MetadataTypeEnum } from './MetadataTypeEnum.js';
+} from './MetadataEntryDTOTargetId';
+import type { MetadataTypeEnum } from './MetadataTypeEnum';
 import {
     MetadataTypeEnumFromJSON,
     MetadataTypeEnumFromJSONTyped,
     MetadataTypeEnumToJSON,
-} from './MetadataTypeEnum.js';
+} from './MetadataTypeEnum';
 
 /**
  * 

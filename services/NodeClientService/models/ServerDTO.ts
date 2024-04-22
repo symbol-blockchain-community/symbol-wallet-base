@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { DeploymentDTO } from './DeploymentDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { DeploymentDTO } from './DeploymentDTO';
 import {
     DeploymentDTOFromJSON,
     DeploymentDTOFromJSONTyped,
     DeploymentDTOToJSON,
-} from './DeploymentDTO.js';
+} from './DeploymentDTO';
 
 /**
  * 

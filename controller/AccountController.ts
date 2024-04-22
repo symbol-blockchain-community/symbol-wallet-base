@@ -6,13 +6,13 @@
 
 */
 
-import { WalletModel } from '@/models/AccountModel.js';
-import { InvalidValueError } from '@/models/ErrorModels.js';
-import { NetworkType } from '@/models/NetworkModels.js';
-import { AddressService } from '@/services/AddressService.js';
-import { MnemonicService } from '@/services/MnemonicService.js';
-import { PrivateKeyService } from '@/services/PrivateKeyService.js';
-import { WalletService } from '@/services/WalletService.js';
+import { WalletModel } from '@/models/AccountModel';
+import { InvalidValueError } from '@/models/ErrorModels';
+import { NetworkType } from '@/models/NetworkModels';
+import { AddressService } from '@/services/AddressService';
+import { MnemonicService } from '@/services/MnemonicService';
+import { PrivateKeyService } from '@/services/PrivateKeyService';
+import { WalletService } from '@/services/WalletService';
 
 export class AccountController {
   public address: AddressService;

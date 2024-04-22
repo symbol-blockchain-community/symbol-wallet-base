@@ -2,8 +2,8 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import React from 'react';
 import { Pressable, Text, View, ViewProps } from 'react-native';
 
-import { IconRadioButtonOff, IconRadioButtonOn } from '@/components/atom/Icons.js';
-import { cn } from '@/util/classes.js';
+import { IconRadioButtonOff, IconRadioButtonOn } from '@/components/atom/Icons';
+import { cn } from '@/util/classes';
 
 const sizeVariants = cva('font-medium w-full', {
   variants: {

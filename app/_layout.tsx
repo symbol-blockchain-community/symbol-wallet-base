@@ -1,13 +1,13 @@
 import '../shim';
 import { usePathname, Stack, Link, SplashScreen, useRouter } from 'expo-router';
 import { Pressable, View } from 'react-native';
-import { Toast } from 'react-native-toast-message/lib/src/Toast.js';
+import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
-import { IconAccount, IconClose } from '@/components/atom/Icons.js';
-import { useLoadedAssets } from '@/hooks/useLoadedAssets.js';
-import { StateProvider } from '@/states/context.js';
-import { I18nProvider } from '@/states/i18nContext.js';
-import { modeConfig } from '@/util/configs/mode.js';
+import { IconAccount, IconClose } from '@/components/atom/Icons';
+import { useLoadedAssets } from '@/hooks/useLoadedAssets';
+import { StateProvider } from '@/states/context';
+import { I18nProvider } from '@/states/i18nContext';
+import { modeConfig } from '@/util/configs/mode';
 
 // Catch any errors thrown by the Layout component.
 export { ErrorBoundary } from 'expo-router';

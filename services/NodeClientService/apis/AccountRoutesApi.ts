@@ -13,7 +13,7 @@
  */
 
 
-import * as runtime from '../runtime.js';
+import * as runtime from '../runtime';
 import type {
   AccountIds,
   AccountInfoDTO,
@@ -22,7 +22,7 @@ import type {
   MerkleStateInfoDTO,
   ModelError,
   Order,
-} from '../models/index.js';
+} from '../models/index';
 import {
     AccountIdsFromJSON,
     AccountIdsToJSON,
@@ -38,7 +38,7 @@ import {
     ModelErrorToJSON,
     OrderFromJSON,
     OrderToJSON,
-} from '../models/index.js';
+} from '../models/index';
 
 export interface GetAccountInfoRequest {
     accountId: string;

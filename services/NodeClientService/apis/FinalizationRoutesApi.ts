@@ -13,17 +13,17 @@
  */
 
 
-import * as runtime from '../runtime.js';
+import * as runtime from '../runtime';
 import type {
   FinalizationProofDTO,
   ModelError,
-} from '../models/index.js';
+} from '../models/index';
 import {
     FinalizationProofDTOFromJSON,
     FinalizationProofDTOToJSON,
     ModelErrorFromJSON,
     ModelErrorToJSON,
-} from '../models/index.js';
+} from '../models/index';
 
 export interface GetFinalizationProofAtEpochRequest {
     epoch: number;

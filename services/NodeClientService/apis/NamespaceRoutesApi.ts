@@ -13,7 +13,7 @@
  */
 
 
-import * as runtime from '../runtime.js';
+import * as runtime from '../runtime';
 import type {
   AccountsNamesDTO,
   Addresses,
@@ -28,7 +28,7 @@ import type {
   NamespacePage,
   NamespaceRegistrationTypeEnum,
   Order,
-} from '../models/index.js';
+} from '../models/index';
 import {
     AccountsNamesDTOFromJSON,
     AccountsNamesDTOToJSON,
@@ -56,7 +56,7 @@ import {
     NamespaceRegistrationTypeEnumToJSON,
     OrderFromJSON,
     OrderToJSON,
-} from '../models/index.js';
+} from '../models/index';
 
 export interface GetAccountsNamesRequest {
     addresses: Addresses;

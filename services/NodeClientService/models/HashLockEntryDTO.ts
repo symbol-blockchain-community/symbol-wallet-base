@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { LockStatus } from './LockStatus.js';
+import { exists, mapValues } from '../runtime';
+import type { LockStatus } from './LockStatus';
 import {
     LockStatusFromJSON,
     LockStatusFromJSONTyped,
     LockStatusToJSON,
-} from './LockStatus.js';
+} from './LockStatus';
 
 /**
  * 

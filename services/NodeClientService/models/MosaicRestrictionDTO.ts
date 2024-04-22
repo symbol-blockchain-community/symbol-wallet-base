@@ -12,25 +12,25 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { MosaicAddressRestrictionDTO } from './MosaicAddressRestrictionDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { MosaicAddressRestrictionDTO } from './MosaicAddressRestrictionDTO';
 import {
     MosaicAddressRestrictionDTOFromJSON,
     MosaicAddressRestrictionDTOFromJSONTyped,
     MosaicAddressRestrictionDTOToJSON,
-} from './MosaicAddressRestrictionDTO.js';
-import type { MosaicGlobalRestrictionDTO } from './MosaicGlobalRestrictionDTO.js';
+} from './MosaicAddressRestrictionDTO';
+import type { MosaicGlobalRestrictionDTO } from './MosaicGlobalRestrictionDTO';
 import {
     MosaicGlobalRestrictionDTOFromJSON,
     MosaicGlobalRestrictionDTOFromJSONTyped,
     MosaicGlobalRestrictionDTOToJSON,
-} from './MosaicGlobalRestrictionDTO.js';
-import type { MosaicGlobalRestrictionEntryWrapperDTO } from './MosaicGlobalRestrictionEntryWrapperDTO.js';
+} from './MosaicGlobalRestrictionDTO';
+import type { MosaicGlobalRestrictionEntryWrapperDTO } from './MosaicGlobalRestrictionEntryWrapperDTO';
 import {
     MosaicGlobalRestrictionEntryWrapperDTOFromJSON,
     MosaicGlobalRestrictionEntryWrapperDTOFromJSONTyped,
     MosaicGlobalRestrictionEntryWrapperDTOToJSON,
-} from './MosaicGlobalRestrictionEntryWrapperDTO.js';
+} from './MosaicGlobalRestrictionEntryWrapperDTO';
 
 /**
  * Generic Mosaic Restriction

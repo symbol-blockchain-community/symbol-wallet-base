@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { Pagination } from './Pagination.js';
+import { exists, mapValues } from '../runtime';
+import type { Pagination } from './Pagination';
 import {
     PaginationFromJSON,
     PaginationFromJSONTyped,
     PaginationToJSON,
-} from './Pagination.js';
-import type { TransactionInfoDTO } from './TransactionInfoDTO.js';
+} from './Pagination';
+import type { TransactionInfoDTO } from './TransactionInfoDTO';
 import {
     TransactionInfoDTOFromJSON,
     TransactionInfoDTOFromJSONTyped,
     TransactionInfoDTOToJSON,
-} from './TransactionInfoDTO.js';
+} from './TransactionInfoDTO';
 
 /**
  * 

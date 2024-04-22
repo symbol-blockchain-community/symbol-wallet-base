@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { AliasActionEnum } from './AliasActionEnum.js';
+import { exists, mapValues } from '../runtime';
+import type { AliasActionEnum } from './AliasActionEnum';
 import {
     AliasActionEnumFromJSON,
     AliasActionEnumFromJSONTyped,
     AliasActionEnumToJSON,
-} from './AliasActionEnum.js';
-import type { NetworkTypeEnum } from './NetworkTypeEnum.js';
+} from './AliasActionEnum';
+import type { NetworkTypeEnum } from './NetworkTypeEnum';
 import {
     NetworkTypeEnumFromJSON,
     NetworkTypeEnumFromJSONTyped,
     NetworkTypeEnumToJSON,
-} from './NetworkTypeEnum.js';
+} from './NetworkTypeEnum';
 
 /**
  * Transaction to link a namespace to an account.

@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { NodeHealthDTO } from './NodeHealthDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { NodeHealthDTO } from './NodeHealthDTO';
 import {
     NodeHealthDTOFromJSON,
     NodeHealthDTOFromJSONTyped,
     NodeHealthDTOToJSON,
-} from './NodeHealthDTO.js';
+} from './NodeHealthDTO';
 
 /**
  * 

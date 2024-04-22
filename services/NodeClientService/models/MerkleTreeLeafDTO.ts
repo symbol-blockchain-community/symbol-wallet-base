@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { MerkleTreeNodeTypeEnum } from './MerkleTreeNodeTypeEnum.js';
+import { exists, mapValues } from '../runtime';
+import type { MerkleTreeNodeTypeEnum } from './MerkleTreeNodeTypeEnum';
 import {
     MerkleTreeNodeTypeEnumFromJSON,
     MerkleTreeNodeTypeEnumFromJSONTyped,
     MerkleTreeNodeTypeEnumToJSON,
-} from './MerkleTreeNodeTypeEnum.js';
+} from './MerkleTreeNodeTypeEnum';
 
 /**
  * Merkle tree leaf node.

@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { AccountRestrictionDTOValuesInner } from './AccountRestrictionDTOValuesInner.js';
+import { exists, mapValues } from '../runtime';
+import type { AccountRestrictionDTOValuesInner } from './AccountRestrictionDTOValuesInner';
 import {
     AccountRestrictionDTOValuesInnerFromJSON,
     AccountRestrictionDTOValuesInnerFromJSONTyped,
     AccountRestrictionDTOValuesInnerToJSON,
-} from './AccountRestrictionDTOValuesInner.js';
-import type { AccountRestrictionFlagsEnum } from './AccountRestrictionFlagsEnum.js';
+} from './AccountRestrictionDTOValuesInner';
+import type { AccountRestrictionFlagsEnum } from './AccountRestrictionFlagsEnum';
 import {
     AccountRestrictionFlagsEnumFromJSON,
     AccountRestrictionFlagsEnumFromJSONTyped,
     AccountRestrictionFlagsEnumToJSON,
-} from './AccountRestrictionFlagsEnum.js';
+} from './AccountRestrictionFlagsEnum';
 
 /**
  * 

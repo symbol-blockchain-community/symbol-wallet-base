@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { MetadataEntryDTO } from './MetadataEntryDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { MetadataEntryDTO } from './MetadataEntryDTO';
 import {
     MetadataEntryDTOFromJSON,
     MetadataEntryDTOFromJSONTyped,
     MetadataEntryDTOToJSON,
-} from './MetadataEntryDTO.js';
+} from './MetadataEntryDTO';
 
 /**
  * 

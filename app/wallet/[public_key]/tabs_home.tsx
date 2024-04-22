@@ -1,12 +1,12 @@
 import * as Clipboard from 'expo-clipboard';
 import { Link, useLocalSearchParams } from 'expo-router';
 import { View, Text, Pressable } from 'react-native';
-import { Toast } from 'react-native-toast-message/lib/src/Toast.js';
+import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
-import { Card, CardFooter, CardHeader } from '@/components/atom/Card.js';
-import { useI18n } from '@/hooks/useI18n.js';
-import { WalletModel } from '@/models/AccountModel.js';
-import { AddressService } from '@/services/AddressService.js';
+import { Card, CardFooter, CardHeader } from '@/components/atom/Card';
+import { useI18n } from '@/hooks/useI18n';
+import { WalletModel } from '@/models/AccountModel';
+import { AddressService } from '@/services/AddressService';
 
 export default function WalletAccountDetail(): JSX.Element {
   const { t } = useI18n();

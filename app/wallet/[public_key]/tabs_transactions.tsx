@@ -1,13 +1,13 @@
 // import { useLocalSearchParams } from 'expo-router';
 import { View } from 'react-native';
 
-import Tabs from '@/components/atom/Tabs.js';
-import ReceievedTransactionHistory from '@/components/organisms/ReceievedTransactionHistory.js';
-import SendTransactionHistory from '@/components/organisms/SendTransactionHistory.js';
-import { useI18n } from '@/hooks/useI18n.js';
-import { useLoadCurrentNetwork } from '@/hooks/useLoadCurrentNetwork.js';
-// import { WalletModel } from '@/models/AccountModel.js';
-// import { AddressService } from '@/services/AddressService.js';
+import Tabs from '@/components/atom/Tabs';
+import ReceievedTransactionHistory from '@/components/organisms/ReceievedTransactionHistory';
+import SendTransactionHistory from '@/components/organisms/SendTransactionHistory';
+import { useI18n } from '@/hooks/useI18n';
+import { useLoadCurrentNetwork } from '@/hooks/useLoadCurrentNetwork';
+// import { WalletModel } from '@/models/AccountModel';
+// import { AddressService } from '@/services/AddressService';
 
 export default function WalletAccountTransactions(): JSX.Element {
   const { t } = useI18n();

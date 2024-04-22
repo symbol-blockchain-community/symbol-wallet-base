@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { AccountRestrictionFlagsEnum } from './AccountRestrictionFlagsEnum.js';
+import { exists, mapValues } from '../runtime';
+import type { AccountRestrictionFlagsEnum } from './AccountRestrictionFlagsEnum';
 import {
     AccountRestrictionFlagsEnumFromJSON,
     AccountRestrictionFlagsEnumFromJSONTyped,
     AccountRestrictionFlagsEnumToJSON,
-} from './AccountRestrictionFlagsEnum.js';
-import type { TransactionTypeEnum } from './TransactionTypeEnum.js';
+} from './AccountRestrictionFlagsEnum';
+import type { TransactionTypeEnum } from './TransactionTypeEnum';
 import {
     TransactionTypeEnumFromJSON,
     TransactionTypeEnumFromJSONTyped,
     TransactionTypeEnumToJSON,
-} from './TransactionTypeEnum.js';
+} from './TransactionTypeEnum';
 
 /**
  * 

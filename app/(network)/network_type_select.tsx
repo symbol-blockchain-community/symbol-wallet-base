@@ -3,13 +3,13 @@ import { useEffect, useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import Button from '@/components/atom/Button.js';
-import Loading from '@/components/atom/Loading.js';
-import RadioButton from '@/components/atom/RadioButton.js';
-import { NetworkController } from '@/controller/NetworkController.js';
-import { useLoadCurrentNetwork } from '@/hooks/useLoadCurrentNetwork.js';
-import { StorageError } from '@/models/ErrorModels.js';
-import { NetworkType } from '@/models/NetworkModels.js';
+import Button from '@/components/atom/Button';
+import Loading from '@/components/atom/Loading';
+import RadioButton from '@/components/atom/RadioButton';
+import { NetworkController } from '@/controller/NetworkController';
+import { useLoadCurrentNetwork } from '@/hooks/useLoadCurrentNetwork';
+import { StorageError } from '@/models/ErrorModels';
+import { NetworkType } from '@/models/NetworkModels';
 
 export default function SelectNetworkTypePage(): JSX.Element {
   const [selectedValue, setSelectedValue] = useState<NetworkType | null>(null);

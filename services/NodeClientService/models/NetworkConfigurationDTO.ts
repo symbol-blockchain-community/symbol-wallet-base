@@ -12,25 +12,25 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { ChainPropertiesDTO } from './ChainPropertiesDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { ChainPropertiesDTO } from './ChainPropertiesDTO';
 import {
     ChainPropertiesDTOFromJSON,
     ChainPropertiesDTOFromJSONTyped,
     ChainPropertiesDTOToJSON,
-} from './ChainPropertiesDTO.js';
-import type { NetworkPropertiesDTO } from './NetworkPropertiesDTO.js';
+} from './ChainPropertiesDTO';
+import type { NetworkPropertiesDTO } from './NetworkPropertiesDTO';
 import {
     NetworkPropertiesDTOFromJSON,
     NetworkPropertiesDTOFromJSONTyped,
     NetworkPropertiesDTOToJSON,
-} from './NetworkPropertiesDTO.js';
-import type { PluginsPropertiesDTO } from './PluginsPropertiesDTO.js';
+} from './NetworkPropertiesDTO';
+import type { PluginsPropertiesDTO } from './PluginsPropertiesDTO';
 import {
     PluginsPropertiesDTOFromJSON,
     PluginsPropertiesDTOFromJSONTyped,
     PluginsPropertiesDTOToJSON,
-} from './PluginsPropertiesDTO.js';
+} from './PluginsPropertiesDTO';
 
 /**
  * 

@@ -2,11 +2,11 @@ import { Link, useNavigation, useRouter } from 'expo-router';
 import * as React from 'react';
 import { View, Text } from 'react-native';
 
-import ButtonBase from '@/components/atom/ButtonBase.js';
-import { List } from '@/components/atom/List.js';
-import { useLoadWallets } from '@/hooks/useLoadWallets.js';
-import { WalletModel } from '@/models/AccountModel.js';
-import { AddressService } from '@/services/AddressService.js';
+import ButtonBase from '@/components/atom/ButtonBase';
+import { List } from '@/components/atom/List';
+import { useLoadWallets } from '@/hooks/useLoadWallets';
+import { WalletModel } from '@/models/AccountModel';
+import { AddressService } from '@/services/AddressService';
 
 function Item({ item }: { item: WalletModel }) {
   const router = useRouter();

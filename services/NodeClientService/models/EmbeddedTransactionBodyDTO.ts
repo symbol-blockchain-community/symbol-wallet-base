@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { EmbeddedTransactionInfoDTO } from './EmbeddedTransactionInfoDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { EmbeddedTransactionInfoDTO } from './EmbeddedTransactionInfoDTO';
 import {
     EmbeddedTransactionInfoDTOFromJSON,
     EmbeddedTransactionInfoDTOFromJSONTyped,
     EmbeddedTransactionInfoDTOToJSON,
-} from './EmbeddedTransactionInfoDTO.js';
+} from './EmbeddedTransactionInfoDTO';
 
 /**
  * 

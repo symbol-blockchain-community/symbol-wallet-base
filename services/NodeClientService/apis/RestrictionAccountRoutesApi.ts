@@ -13,14 +13,14 @@
  */
 
 
-import * as runtime from '../runtime.js';
+import * as runtime from '../runtime';
 import type {
   AccountRestrictionsInfoDTO,
   AccountRestrictionsPage,
   MerkleStateInfoDTO,
   ModelError,
   Order,
-} from '../models/index.js';
+} from '../models/index';
 import {
     AccountRestrictionsInfoDTOFromJSON,
     AccountRestrictionsInfoDTOToJSON,
@@ -32,7 +32,7 @@ import {
     ModelErrorToJSON,
     OrderFromJSON,
     OrderToJSON,
-} from '../models/index.js';
+} from '../models/index';
 
 export interface GetAccountRestrictionsRequest {
     address: string;

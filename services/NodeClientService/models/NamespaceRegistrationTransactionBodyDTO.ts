@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { NamespaceRegistrationTypeEnum } from './NamespaceRegistrationTypeEnum.js';
+import { exists, mapValues } from '../runtime';
+import type { NamespaceRegistrationTypeEnum } from './NamespaceRegistrationTypeEnum';
 import {
     NamespaceRegistrationTypeEnumFromJSON,
     NamespaceRegistrationTypeEnumFromJSONTyped,
     NamespaceRegistrationTypeEnumToJSON,
-} from './NamespaceRegistrationTypeEnum.js';
+} from './NamespaceRegistrationTypeEnum';
 
 /**
  * 

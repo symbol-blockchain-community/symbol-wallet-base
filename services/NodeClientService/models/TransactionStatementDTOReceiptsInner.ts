@@ -12,43 +12,43 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { BalanceChangeReceiptDTO } from './BalanceChangeReceiptDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { BalanceChangeReceiptDTO } from './BalanceChangeReceiptDTO';
 import {
     BalanceChangeReceiptDTOFromJSON,
     BalanceChangeReceiptDTOFromJSONTyped,
     BalanceChangeReceiptDTOToJSON,
-} from './BalanceChangeReceiptDTO.js';
-import type { BalanceTransferReceiptDTO } from './BalanceTransferReceiptDTO.js';
+} from './BalanceChangeReceiptDTO';
+import type { BalanceTransferReceiptDTO } from './BalanceTransferReceiptDTO';
 import {
     BalanceTransferReceiptDTOFromJSON,
     BalanceTransferReceiptDTOFromJSONTyped,
     BalanceTransferReceiptDTOToJSON,
-} from './BalanceTransferReceiptDTO.js';
-import type { InflationReceiptDTO } from './InflationReceiptDTO.js';
+} from './BalanceTransferReceiptDTO';
+import type { InflationReceiptDTO } from './InflationReceiptDTO';
 import {
     InflationReceiptDTOFromJSON,
     InflationReceiptDTOFromJSONTyped,
     InflationReceiptDTOToJSON,
-} from './InflationReceiptDTO.js';
-import type { MosaicExpiryReceiptDTO } from './MosaicExpiryReceiptDTO.js';
+} from './InflationReceiptDTO';
+import type { MosaicExpiryReceiptDTO } from './MosaicExpiryReceiptDTO';
 import {
     MosaicExpiryReceiptDTOFromJSON,
     MosaicExpiryReceiptDTOFromJSONTyped,
     MosaicExpiryReceiptDTOToJSON,
-} from './MosaicExpiryReceiptDTO.js';
-import type { NamespaceExpiryReceiptDTO } from './NamespaceExpiryReceiptDTO.js';
+} from './MosaicExpiryReceiptDTO';
+import type { NamespaceExpiryReceiptDTO } from './NamespaceExpiryReceiptDTO';
 import {
     NamespaceExpiryReceiptDTOFromJSON,
     NamespaceExpiryReceiptDTOFromJSONTyped,
     NamespaceExpiryReceiptDTOToJSON,
-} from './NamespaceExpiryReceiptDTO.js';
-import type { ReceiptTypeEnum } from './ReceiptTypeEnum.js';
+} from './NamespaceExpiryReceiptDTO';
+import type { ReceiptTypeEnum } from './ReceiptTypeEnum';
 import {
     ReceiptTypeEnumFromJSON,
     ReceiptTypeEnumFromJSONTyped,
     ReceiptTypeEnumToJSON,
-} from './ReceiptTypeEnum.js';
+} from './ReceiptTypeEnum';
 
 /**
  * 

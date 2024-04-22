@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
+import { exists, mapValues } from '../runtime';
 /**
  * Supplementary data stored for importance recalculation.
  * At each importance recalculation, existing buckets are shifted, the working bucket is finalized and a new working bucket is created.

@@ -13,7 +13,7 @@
  */
 
 
-import * as runtime from '../runtime.js';
+import * as runtime from '../runtime';
 import type {
   BlockInfoDTO,
   BlockOrderByEnum,
@@ -21,7 +21,7 @@ import type {
   MerkleProofInfoDTO,
   ModelError,
   Order,
-} from '../models/index.js';
+} from '../models/index';
 import {
     BlockInfoDTOFromJSON,
     BlockInfoDTOToJSON,
@@ -35,7 +35,7 @@ import {
     ModelErrorToJSON,
     OrderFromJSON,
     OrderToJSON,
-} from '../models/index.js';
+} from '../models/index';
 
 export interface GetBlockByHeightRequest {
     height: string;

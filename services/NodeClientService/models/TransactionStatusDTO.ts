@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { TransactionGroupEnum } from './TransactionGroupEnum.js';
+import { exists, mapValues } from '../runtime';
+import type { TransactionGroupEnum } from './TransactionGroupEnum';
 import {
     TransactionGroupEnumFromJSON,
     TransactionGroupEnumFromJSONTyped,
     TransactionGroupEnumToJSON,
-} from './TransactionGroupEnum.js';
-import type { TransactionStatusEnum } from './TransactionStatusEnum.js';
+} from './TransactionGroupEnum';
+import type { TransactionStatusEnum } from './TransactionStatusEnum';
 import {
     TransactionStatusEnumFromJSON,
     TransactionStatusEnumFromJSONTyped,
     TransactionStatusEnumToJSON,
-} from './TransactionStatusEnum.js';
+} from './TransactionStatusEnum';
 
 /**
  * 

@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { AliasActionEnum } from './AliasActionEnum.js';
+import { exists, mapValues } from '../runtime';
+import type { AliasActionEnum } from './AliasActionEnum';
 import {
     AliasActionEnumFromJSON,
     AliasActionEnumFromJSONTyped,
     AliasActionEnumToJSON,
-} from './AliasActionEnum.js';
+} from './AliasActionEnum';
 
 /**
  * 

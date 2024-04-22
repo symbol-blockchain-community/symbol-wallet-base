@@ -1,6 +1,6 @@
 import { FlatList, View, ViewProps } from 'react-native';
 
-import { cn } from '@/util/classes.js';
+import { cn } from '@/util/classes';
 
 type ListItemData<T> = {
   id: number | string;

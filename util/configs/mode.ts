@@ -1,4 +1,4 @@
-import { NetworkType } from '@/models/NetworkModels.js';
+import { NetworkType } from '@/models/NetworkModels';
 
 /**
  * TODO: .env* ファイルの LOAD に成功しない為、暫定として本 config ファイルを使用する

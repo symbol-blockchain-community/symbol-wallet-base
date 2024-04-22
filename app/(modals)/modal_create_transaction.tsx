@@ -2,20 +2,20 @@ import { useEffect, useState } from 'react';
 import { View, ScrollView, Text, PressableProps, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import Button from '@/components/atom/Button.js';
-import ButtonBase from '@/components/atom/ButtonBase.js';
-import { Card, CardFooter, CardHeader } from '@/components/atom/Card.js';
-import Dialog from '@/components/atom/Dialog.js';
-import { IconDown } from '@/components/atom/Icons.js';
-import Input from '@/components/atom/Input.js';
-import { List, ListItem } from '@/components/atom/List.js';
-import Loading from '@/components/atom/Loading.js';
-import { useGetCurrentBalance } from '@/hooks/useGetCurrentBalance.js';
-import { useLoadCurrentNetwork } from '@/hooks/useLoadCurrentNetwork.js';
-import { useLoadWallets } from '@/hooks/useLoadWallets.js';
-import { WalletModel } from '@/models/AccountModel.js';
-import { NetworkType } from '@/models/NetworkModels.js';
-import { AddressService } from '@/services/AddressService.js';
+import Button from '@/components/atom/Button';
+import ButtonBase from '@/components/atom/ButtonBase';
+import { Card, CardFooter, CardHeader } from '@/components/atom/Card';
+import Dialog from '@/components/atom/Dialog';
+import { IconDown } from '@/components/atom/Icons';
+import Input from '@/components/atom/Input';
+import { List, ListItem } from '@/components/atom/List';
+import Loading from '@/components/atom/Loading';
+import { useGetCurrentBalance } from '@/hooks/useGetCurrentBalance';
+import { useLoadCurrentNetwork } from '@/hooks/useLoadCurrentNetwork';
+import { useLoadWallets } from '@/hooks/useLoadWallets';
+import { WalletModel } from '@/models/AccountModel';
+import { NetworkType } from '@/models/NetworkModels';
+import { AddressService } from '@/services/AddressService';
 
 function useHooks() {
   const loadWallets = useLoadWallets();

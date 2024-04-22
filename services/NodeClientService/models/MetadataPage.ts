@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { MetadataInfoDTO } from './MetadataInfoDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { MetadataInfoDTO } from './MetadataInfoDTO';
 import {
     MetadataInfoDTOFromJSON,
     MetadataInfoDTOFromJSONTyped,
     MetadataInfoDTOToJSON,
-} from './MetadataInfoDTO.js';
-import type { Pagination } from './Pagination.js';
+} from './MetadataInfoDTO';
+import type { Pagination } from './Pagination';
 import {
     PaginationFromJSON,
     PaginationFromJSONTyped,
     PaginationToJSON,
-} from './Pagination.js';
+} from './Pagination';
 
 /**
  * 

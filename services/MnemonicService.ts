@@ -6,10 +6,10 @@
 
 import { MnemonicPassPhrase, ExtendedKey, Wallet, Network } from 'symbol-hd-wallets';
 
-import { MnemonicModel } from '@/models/AccountModel.js';
-import { InvalidValueError } from '@/models/ErrorModels.js';
-import { STORAGE_KEYS } from '@/util/configs/storage-keys.js';
-import { SecureStorage } from '@/util/storages/SecureStorage.js';
+import { MnemonicModel } from '@/models/AccountModel';
+import { InvalidValueError } from '@/models/ErrorModels';
+import { STORAGE_KEYS } from '@/util/configs/storage-keys';
+import { SecureStorage } from '@/util/storages/SecureStorage';
 
 export class MnemonicService extends SecureStorage {
   /**

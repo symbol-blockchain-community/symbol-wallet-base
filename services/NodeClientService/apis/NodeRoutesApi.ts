@@ -13,7 +13,7 @@
  */
 
 
-import * as runtime from '../runtime.js';
+import * as runtime from '../runtime';
 import type {
   NodeHealthInfoDTO,
   NodeInfoDTO,
@@ -21,7 +21,7 @@ import type {
   ServerInfoDTO,
   StorageInfoDTO,
   UnlockedAccountDTO,
-} from '../models/index.js';
+} from '../models/index';
 import {
     NodeHealthInfoDTOFromJSON,
     NodeHealthInfoDTOToJSON,
@@ -35,7 +35,7 @@ import {
     StorageInfoDTOToJSON,
     UnlockedAccountDTOFromJSON,
     UnlockedAccountDTOToJSON,
-} from '../models/index.js';
+} from '../models/index';
 
 /**
  * 

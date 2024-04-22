@@ -12,31 +12,31 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { AccountTypeEnum } from './AccountTypeEnum.js';
+import { exists, mapValues } from '../runtime';
+import type { AccountTypeEnum } from './AccountTypeEnum';
 import {
     AccountTypeEnumFromJSON,
     AccountTypeEnumFromJSONTyped,
     AccountTypeEnumToJSON,
-} from './AccountTypeEnum.js';
-import type { ActivityBucketDTO } from './ActivityBucketDTO.js';
+} from './AccountTypeEnum';
+import type { ActivityBucketDTO } from './ActivityBucketDTO';
 import {
     ActivityBucketDTOFromJSON,
     ActivityBucketDTOFromJSONTyped,
     ActivityBucketDTOToJSON,
-} from './ActivityBucketDTO.js';
-import type { Mosaic } from './Mosaic.js';
+} from './ActivityBucketDTO';
+import type { Mosaic } from './Mosaic';
 import {
     MosaicFromJSON,
     MosaicFromJSONTyped,
     MosaicToJSON,
-} from './Mosaic.js';
-import type { SupplementalPublicKeysDTO } from './SupplementalPublicKeysDTO.js';
+} from './Mosaic';
+import type { SupplementalPublicKeysDTO } from './SupplementalPublicKeysDTO';
 import {
     SupplementalPublicKeysDTOFromJSON,
     SupplementalPublicKeysDTOFromJSONTyped,
     SupplementalPublicKeysDTOToJSON,
-} from './SupplementalPublicKeysDTO.js';
+} from './SupplementalPublicKeysDTO';
 
 /**
  * 

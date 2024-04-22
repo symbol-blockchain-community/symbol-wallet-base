@@ -2,9 +2,9 @@ import { Link, useLocalSearchParams, useRouter, Tabs } from 'expo-router';
 import { useEffect } from 'react';
 import { View } from 'react-native';
 
-import { IconQRCode, IconReceipt, IconWallet } from '@/components/atom/Icons.js';
-import { useI18n } from '@/hooks/useI18n.js';
-import { useLoadWallets } from '@/hooks/useLoadWallets.js';
+import { IconQRCode, IconReceipt, IconWallet } from '@/components/atom/Icons';
+import { useI18n } from '@/hooks/useI18n';
+import { useLoadWallets } from '@/hooks/useLoadWallets';
 
 interface SearchParams {
   public_key: string;

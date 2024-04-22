@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { LockHashAlgorithmEnum } from './LockHashAlgorithmEnum.js';
+import { exists, mapValues } from '../runtime';
+import type { LockHashAlgorithmEnum } from './LockHashAlgorithmEnum';
 import {
     LockHashAlgorithmEnumFromJSON,
     LockHashAlgorithmEnumFromJSONTyped,
     LockHashAlgorithmEnumToJSON,
-} from './LockHashAlgorithmEnum.js';
-import type { LockStatus } from './LockStatus.js';
+} from './LockHashAlgorithmEnum';
+import type { LockStatus } from './LockStatus';
 import {
     LockStatusFromJSON,
     LockStatusFromJSONTyped,
     LockStatusToJSON,
-} from './LockStatus.js';
+} from './LockStatus';
 
 /**
  * 

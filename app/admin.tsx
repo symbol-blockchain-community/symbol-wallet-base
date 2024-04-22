@@ -1,24 +1,24 @@
 import { Link } from 'expo-router';
 import * as React from 'react';
 import { View, Text, ScrollView } from 'react-native';
-import { Toast } from 'react-native-toast-message/lib/src/Toast.js';
+import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
-import Avatar from '@/components/atom/Avatar.js';
-import Button from '@/components/atom/Button.js';
-import { Card, CardContent, CardFooter, CardHeader } from '@/components/atom/Card.js';
-import Checkbox from '@/components/atom/Checkbox.js';
-import * as Icons from '@/components/atom/Icons.js';
-import Input from '@/components/atom/Input.js';
-import { List, ListItem } from '@/components/atom/List.js';
-import Loading from '@/components/atom/Loading.js';
-import Select from '@/components/atom/Select.js';
-import Switch from '@/components/atom/Switch.js';
-import Tabs from '@/components/atom/Tabs.js';
-import { AccountController } from '@/controller/AccountController.js';
-import { STORAGE_KEYS } from '@/util/configs/storage-keys.js';
-import { AsyncStorage } from '@/util/storages/AsyncStorage.js';
-import { SecureStorage } from '@/util/storages/SecureStorage.js';
-import TextArea from '@/components/atom/Textarea.js';
+import Avatar from '@/components/atom/Avatar';
+import Button from '@/components/atom/Button';
+import { Card, CardContent, CardFooter, CardHeader } from '@/components/atom/Card';
+import Checkbox from '@/components/atom/Checkbox';
+import * as Icons from '@/components/atom/Icons';
+import Input from '@/components/atom/Input';
+import { List, ListItem } from '@/components/atom/List';
+import Loading from '@/components/atom/Loading';
+import Select from '@/components/atom/Select';
+import Switch from '@/components/atom/Switch';
+import Tabs from '@/components/atom/Tabs';
+import { AccountController } from '@/controller/AccountController';
+import { STORAGE_KEYS } from '@/util/configs/storage-keys';
+import { AsyncStorage } from '@/util/storages/AsyncStorage';
+import { SecureStorage } from '@/util/storages/SecureStorage';
+import TextArea from '@/components/atom/Textarea';
 
 /**
  * このスクリーンは開発中に Atom Component 等を確認するための検証用です。

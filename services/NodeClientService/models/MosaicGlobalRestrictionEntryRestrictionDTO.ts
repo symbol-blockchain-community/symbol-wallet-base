@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { MosaicRestrictionTypeEnum } from './MosaicRestrictionTypeEnum.js';
+import { exists, mapValues } from '../runtime';
+import type { MosaicRestrictionTypeEnum } from './MosaicRestrictionTypeEnum';
 import {
     MosaicRestrictionTypeEnumFromJSON,
     MosaicRestrictionTypeEnumFromJSONTyped,
     MosaicRestrictionTypeEnumToJSON,
-} from './MosaicRestrictionTypeEnum.js';
+} from './MosaicRestrictionTypeEnum';
 
 /**
  * 

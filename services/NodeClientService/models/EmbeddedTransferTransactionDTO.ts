@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { NetworkTypeEnum } from './NetworkTypeEnum.js';
+import { exists, mapValues } from '../runtime';
+import type { NetworkTypeEnum } from './NetworkTypeEnum';
 import {
     NetworkTypeEnumFromJSON,
     NetworkTypeEnumFromJSONTyped,
     NetworkTypeEnumToJSON,
-} from './NetworkTypeEnum.js';
-import type { UnresolvedMosaic } from './UnresolvedMosaic.js';
+} from './NetworkTypeEnum';
+import type { UnresolvedMosaic } from './UnresolvedMosaic';
 import {
     UnresolvedMosaicFromJSON,
     UnresolvedMosaicFromJSONTyped,
     UnresolvedMosaicToJSON,
-} from './UnresolvedMosaic.js';
+} from './UnresolvedMosaic';
 
 /**
  * 

@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { BmTreeSignature } from './BmTreeSignature.js';
+import { exists, mapValues } from '../runtime';
+import type { BmTreeSignature } from './BmTreeSignature';
 import {
     BmTreeSignatureFromJSON,
     BmTreeSignatureFromJSONTyped,
     BmTreeSignatureToJSON,
-} from './BmTreeSignature.js';
-import type { StageEnum } from './StageEnum.js';
+} from './BmTreeSignature';
+import type { StageEnum } from './StageEnum';
 import {
     StageEnumFromJSON,
     StageEnumFromJSONTyped,
     StageEnumToJSON,
-} from './StageEnum.js';
+} from './StageEnum';
 
 /**
  * 

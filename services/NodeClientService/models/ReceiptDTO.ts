@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { ReceiptTypeEnum } from './ReceiptTypeEnum.js';
+import { exists, mapValues } from '../runtime';
+import type { ReceiptTypeEnum } from './ReceiptTypeEnum';
 import {
     ReceiptTypeEnumFromJSON,
     ReceiptTypeEnumFromJSONTyped,
     ReceiptTypeEnumToJSON,
-} from './ReceiptTypeEnum.js';
+} from './ReceiptTypeEnum';
 
 /**
  * 

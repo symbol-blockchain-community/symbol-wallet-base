@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { SourceDTO } from './SourceDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { SourceDTO } from './SourceDTO';
 import {
     SourceDTOFromJSON,
     SourceDTOFromJSONTyped,
     SourceDTOToJSON,
-} from './SourceDTO.js';
-import type { TransactionStatementDTOReceiptsInner } from './TransactionStatementDTOReceiptsInner.js';
+} from './SourceDTO';
+import type { TransactionStatementDTOReceiptsInner } from './TransactionStatementDTOReceiptsInner';
 import {
     TransactionStatementDTOReceiptsInnerFromJSON,
     TransactionStatementDTOReceiptsInnerFromJSONTyped,
     TransactionStatementDTOReceiptsInnerToJSON,
-} from './TransactionStatementDTOReceiptsInner.js';
+} from './TransactionStatementDTOReceiptsInner';
 
 /**
  * 

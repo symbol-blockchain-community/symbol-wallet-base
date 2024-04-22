@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { NamespaceInfoDTO } from './NamespaceInfoDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { NamespaceInfoDTO } from './NamespaceInfoDTO';
 import {
     NamespaceInfoDTOFromJSON,
     NamespaceInfoDTOFromJSONTyped,
     NamespaceInfoDTOToJSON,
-} from './NamespaceInfoDTO.js';
-import type { Pagination } from './Pagination.js';
+} from './NamespaceInfoDTO';
+import type { Pagination } from './Pagination';
 import {
     PaginationFromJSON,
     PaginationFromJSONTyped,
     PaginationToJSON,
-} from './Pagination.js';
+} from './Pagination';
 
 /**
  * 

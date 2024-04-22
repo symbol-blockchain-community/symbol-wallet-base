@@ -1,7 +1,7 @@
-import { InvalidValueError } from '@/models/ErrorModels.js';
-import { Mosaic } from '@/models/MosaicModel.js';
-import { NetworkType } from '@/models/NetworkModels.js';
-import { AddressService } from '@/services/AddressService.js';
+import { InvalidValueError } from '@/models/ErrorModels';
+import { Mosaic } from '@/models/MosaicModel';
+import { NetworkType } from '@/models/NetworkModels';
+import { AddressService } from '@/services/AddressService';
 import {
   AccountRoutesApi,
   Configuration,
@@ -10,10 +10,10 @@ import {
   MultisigRoutesApi,
   NamespaceRoutesApi,
   NetworkRoutesApi,
-} from '@/services/NodeClientService/index.js';
-import { toAbsoluteAmount } from '@/util/symbol/amount.js';
-import { splitCurrency } from '@/util/symbol/mosaic.js';
-import { getNetworkTypeToAddressChatAt0 as getNetworkTypeToAddressCharAt0 } from '@/util/symbol/network.js';
+} from '@/services/NodeClientService/index';
+import { toAbsoluteAmount } from '@/util/symbol/amount';
+import { splitCurrency } from '@/util/symbol/mosaic';
+import { getNetworkTypeToAddressChatAt0 as getNetworkTypeToAddressCharAt0 } from '@/util/symbol/network';
 
 export class AccountInfoController {
   private accountRoutes: AccountRoutesApi;

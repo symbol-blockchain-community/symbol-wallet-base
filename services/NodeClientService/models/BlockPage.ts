@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { BlockInfoDTO } from './BlockInfoDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { BlockInfoDTO } from './BlockInfoDTO';
 import {
     BlockInfoDTOFromJSON,
     BlockInfoDTOFromJSONTyped,
     BlockInfoDTOToJSON,
-} from './BlockInfoDTO.js';
-import type { Pagination } from './Pagination.js';
+} from './BlockInfoDTO';
+import type { Pagination } from './Pagination';
 import {
     PaginationFromJSON,
     PaginationFromJSONTyped,
     PaginationToJSON,
-} from './Pagination.js';
+} from './Pagination';
 
 /**
  * 

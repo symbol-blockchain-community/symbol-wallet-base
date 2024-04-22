@@ -13,14 +13,14 @@
  */
 
 
-import * as runtime from '../runtime.js';
+import * as runtime from '../runtime';
 import type {
   HashLockInfoDTO,
   HashLockPage,
   MerkleStateInfoDTO,
   ModelError,
   Order,
-} from '../models/index.js';
+} from '../models/index';
 import {
     HashLockInfoDTOFromJSON,
     HashLockInfoDTOToJSON,
@@ -32,7 +32,7 @@ import {
     ModelErrorToJSON,
     OrderFromJSON,
     OrderToJSON,
-} from '../models/index.js';
+} from '../models/index';
 
 export interface GetHashLockRequest {
     hash: string;

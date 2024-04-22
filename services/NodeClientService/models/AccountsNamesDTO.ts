@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { AccountNamesDTO } from './AccountNamesDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { AccountNamesDTO } from './AccountNamesDTO';
 import {
     AccountNamesDTOFromJSON,
     AccountNamesDTOFromJSONTyped,
     AccountNamesDTOToJSON,
-} from './AccountNamesDTO.js';
+} from './AccountNamesDTO';
 
 /**
  * 

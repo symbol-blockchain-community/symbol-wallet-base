@@ -1,10 +1,10 @@
-import Ionicons from '@expo/vector-icons/Ionicons.js';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import * as Font from 'expo-font';
 // import { router } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
 
-import { NetworkController } from '@/controller/NetworkController.js';
+import { NetworkController } from '@/controller/NetworkController';
 
 // import { AccountController } from '@/controller/AccountController';
 

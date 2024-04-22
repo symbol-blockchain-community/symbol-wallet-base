@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { TransactionInfoDTOMeta } from './TransactionInfoDTOMeta.js';
+import { exists, mapValues } from '../runtime';
+import type { TransactionInfoDTOMeta } from './TransactionInfoDTOMeta';
 import {
     TransactionInfoDTOMetaFromJSON,
     TransactionInfoDTOMetaFromJSONTyped,
     TransactionInfoDTOMetaToJSON,
-} from './TransactionInfoDTOMeta.js';
-import type { TransactionInfoDTOTransaction } from './TransactionInfoDTOTransaction.js';
+} from './TransactionInfoDTOMeta';
+import type { TransactionInfoDTOTransaction } from './TransactionInfoDTOTransaction';
 import {
     TransactionInfoDTOTransactionFromJSON,
     TransactionInfoDTOTransactionFromJSONTyped,
     TransactionInfoDTOTransactionToJSON,
-} from './TransactionInfoDTOTransaction.js';
+} from './TransactionInfoDTOTransaction';
 
 /**
  * 

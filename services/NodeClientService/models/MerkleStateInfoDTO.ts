@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { MerkleStateInfoDTOTreeInner } from './MerkleStateInfoDTOTreeInner.js';
+import { exists, mapValues } from '../runtime';
+import type { MerkleStateInfoDTOTreeInner } from './MerkleStateInfoDTOTreeInner';
 import {
     MerkleStateInfoDTOTreeInnerFromJSON,
     MerkleStateInfoDTOTreeInnerFromJSONTyped,
     MerkleStateInfoDTOTreeInnerToJSON,
-} from './MerkleStateInfoDTOTreeInner.js';
+} from './MerkleStateInfoDTOTreeInner';
 
 /**
  * The merkle path information clients can use to proof the state of the given entity.

@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { Pagination } from './Pagination.js';
+import { exists, mapValues } from '../runtime';
+import type { Pagination } from './Pagination';
 import {
     PaginationFromJSON,
     PaginationFromJSONTyped,
     PaginationToJSON,
-} from './Pagination.js';
-import type { SecretLockInfoDTO } from './SecretLockInfoDTO.js';
+} from './Pagination';
+import type { SecretLockInfoDTO } from './SecretLockInfoDTO';
 import {
     SecretLockInfoDTOFromJSON,
     SecretLockInfoDTOFromJSONTyped,
     SecretLockInfoDTOToJSON,
-} from './SecretLockInfoDTO.js';
+} from './SecretLockInfoDTO';
 
 /**
  * 

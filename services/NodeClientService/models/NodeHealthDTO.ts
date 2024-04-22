@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { NodeStatusEnum } from './NodeStatusEnum.js';
+import { exists, mapValues } from '../runtime';
+import type { NodeStatusEnum } from './NodeStatusEnum';
 import {
     NodeStatusEnumFromJSON,
     NodeStatusEnumFromJSONTyped,
     NodeStatusEnumToJSON,
-} from './NodeStatusEnum.js';
+} from './NodeStatusEnum';
 
 /**
  * 

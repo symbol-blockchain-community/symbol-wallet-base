@@ -12,25 +12,25 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { BlockDTO } from './BlockDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { BlockDTO } from './BlockDTO';
 import {
     BlockDTOFromJSON,
     BlockDTOFromJSONTyped,
     BlockDTOToJSON,
-} from './BlockDTO.js';
-import type { ImportanceBlockDTO } from './ImportanceBlockDTO.js';
+} from './BlockDTO';
+import type { ImportanceBlockDTO } from './ImportanceBlockDTO';
 import {
     ImportanceBlockDTOFromJSON,
     ImportanceBlockDTOFromJSONTyped,
     ImportanceBlockDTOToJSON,
-} from './ImportanceBlockDTO.js';
-import type { NetworkTypeEnum } from './NetworkTypeEnum.js';
+} from './ImportanceBlockDTO';
+import type { NetworkTypeEnum } from './NetworkTypeEnum';
 import {
     NetworkTypeEnumFromJSON,
     NetworkTypeEnumFromJSONTyped,
     NetworkTypeEnumToJSON,
-} from './NetworkTypeEnum.js';
+} from './NetworkTypeEnum';
 
 /**
  * 

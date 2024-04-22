@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { FinalizedBlockDTO } from './FinalizedBlockDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { FinalizedBlockDTO } from './FinalizedBlockDTO';
 import {
     FinalizedBlockDTOFromJSON,
     FinalizedBlockDTOFromJSONTyped,
     FinalizedBlockDTOToJSON,
-} from './FinalizedBlockDTO.js';
+} from './FinalizedBlockDTO';
 
 /**
  * 

@@ -4,9 +4,9 @@ import { View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import CompleteAnimation from '@/assets/animations/complete.json';
-import Avatar from '@/components/atom/Avatar.js';
-import Button from '@/components/atom/Button.js';
-import { useI18n } from '@/hooks/useI18n.js';
+import Avatar from '@/components/atom/Avatar';
+import Button from '@/components/atom/Button';
+import { useI18n } from '@/hooks/useI18n';
 
 export default function LoginComplete(): JSX.Element {
   const { t } = useI18n();

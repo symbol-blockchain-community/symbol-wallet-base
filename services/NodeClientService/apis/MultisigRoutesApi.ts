@@ -13,13 +13,13 @@
  */
 
 
-import * as runtime from '../runtime.js';
+import * as runtime from '../runtime';
 import type {
   MerkleStateInfoDTO,
   ModelError,
   MultisigAccountGraphInfoDTO,
   MultisigAccountInfoDTO,
-} from '../models/index.js';
+} from '../models/index';
 import {
     MerkleStateInfoDTOFromJSON,
     MerkleStateInfoDTOToJSON,
@@ -29,7 +29,7 @@ import {
     MultisigAccountGraphInfoDTOToJSON,
     MultisigAccountInfoDTOFromJSON,
     MultisigAccountInfoDTOToJSON,
-} from '../models/index.js';
+} from '../models/index';
 
 export interface GetAccountMultisigRequest {
     address: string;

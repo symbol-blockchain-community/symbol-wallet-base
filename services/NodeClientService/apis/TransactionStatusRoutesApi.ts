@@ -13,12 +13,12 @@
  */
 
 
-import * as runtime from '../runtime.js';
+import * as runtime from '../runtime';
 import type {
   ModelError,
   TransactionHashes,
   TransactionStatusDTO,
-} from '../models/index.js';
+} from '../models/index';
 import {
     ModelErrorFromJSON,
     ModelErrorToJSON,
@@ -26,7 +26,7 @@ import {
     TransactionHashesToJSON,
     TransactionStatusDTOFromJSON,
     TransactionStatusDTOToJSON,
-} from '../models/index.js';
+} from '../models/index';
 
 export interface GetTransactionStatusRequest {
     hash: string;

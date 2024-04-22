@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { EmbeddedTransactionInfoDTOTransaction } from './EmbeddedTransactionInfoDTOTransaction.js';
+import { exists, mapValues } from '../runtime';
+import type { EmbeddedTransactionInfoDTOTransaction } from './EmbeddedTransactionInfoDTOTransaction';
 import {
     EmbeddedTransactionInfoDTOTransactionFromJSON,
     EmbeddedTransactionInfoDTOTransactionFromJSONTyped,
     EmbeddedTransactionInfoDTOTransactionToJSON,
-} from './EmbeddedTransactionInfoDTOTransaction.js';
-import type { EmbeddedTransactionMetaDTO } from './EmbeddedTransactionMetaDTO.js';
+} from './EmbeddedTransactionInfoDTOTransaction';
+import type { EmbeddedTransactionMetaDTO } from './EmbeddedTransactionMetaDTO';
 import {
     EmbeddedTransactionMetaDTOFromJSON,
     EmbeddedTransactionMetaDTOFromJSONTyped,
     EmbeddedTransactionMetaDTOToJSON,
-} from './EmbeddedTransactionMetaDTO.js';
+} from './EmbeddedTransactionMetaDTO';
 
 /**
  * 

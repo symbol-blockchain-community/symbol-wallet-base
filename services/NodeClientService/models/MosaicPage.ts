@@ -12,19 +12,19 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { MosaicInfoDTO } from './MosaicInfoDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { MosaicInfoDTO } from './MosaicInfoDTO';
 import {
     MosaicInfoDTOFromJSON,
     MosaicInfoDTOFromJSONTyped,
     MosaicInfoDTOToJSON,
-} from './MosaicInfoDTO.js';
-import type { Pagination } from './Pagination.js';
+} from './MosaicInfoDTO';
+import type { Pagination } from './Pagination';
 import {
     PaginationFromJSON,
     PaginationFromJSONTyped,
     PaginationToJSON,
-} from './Pagination.js';
+} from './Pagination';
 
 /**
  * 

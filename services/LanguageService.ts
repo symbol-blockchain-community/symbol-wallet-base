@@ -1,7 +1,7 @@
 import { getLocales } from 'expo-localization';
 
-import { STORAGE_KEYS } from '@/util/configs/storage-keys.js';
-import { AsyncStorage } from '@/util/storages/AsyncStorage.js';
+import { STORAGE_KEYS } from '@/util/configs/storage-keys';
+import { AsyncStorage } from '@/util/storages/AsyncStorage';
 
 export class LanguageService extends AsyncStorage {
   public constructor() {

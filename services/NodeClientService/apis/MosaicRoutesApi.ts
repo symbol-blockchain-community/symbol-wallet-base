@@ -13,7 +13,7 @@
  */
 
 
-import * as runtime from '../runtime.js';
+import * as runtime from '../runtime';
 import type {
   MerkleStateInfoDTO,
   ModelError,
@@ -21,7 +21,7 @@ import type {
   MosaicInfoDTO,
   MosaicPage,
   Order,
-} from '../models/index.js';
+} from '../models/index';
 import {
     MerkleStateInfoDTOFromJSON,
     MerkleStateInfoDTOToJSON,
@@ -35,7 +35,7 @@ import {
     MosaicPageToJSON,
     OrderFromJSON,
     OrderToJSON,
-} from '../models/index.js';
+} from '../models/index';
 
 export interface GetMosaicRequest {
     mosaicId: string;

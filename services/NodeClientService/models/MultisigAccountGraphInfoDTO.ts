@@ -12,13 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime.js';
-import type { MultisigAccountInfoDTO } from './MultisigAccountInfoDTO.js';
+import { exists, mapValues } from '../runtime';
+import type { MultisigAccountInfoDTO } from './MultisigAccountInfoDTO';
 import {
     MultisigAccountInfoDTOFromJSON,
     MultisigAccountInfoDTOFromJSONTyped,
     MultisigAccountInfoDTOToJSON,
-} from './MultisigAccountInfoDTO.js';
+} from './MultisigAccountInfoDTO';
 
 /**
  * 

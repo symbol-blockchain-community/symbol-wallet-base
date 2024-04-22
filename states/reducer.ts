@@ -1,4 +1,4 @@
-import { Action, AppState } from './types.js';
+import { Action, AppState } from './types';
 
 export const initialState: AppState = {
   node: '',

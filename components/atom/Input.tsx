@@ -2,7 +2,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import React from 'react';
 import { TextInput, TextInputProps } from 'react-native';
 
-import { cn } from '@/util/classes.js';
+import { cn } from '@/util/classes';
 
 const inputVariants = cva('border border-input px-3 rounded-md', {
   variants: {
