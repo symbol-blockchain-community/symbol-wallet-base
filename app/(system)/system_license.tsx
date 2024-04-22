@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import LicenseFile from '@/assets/json/licenses.json';
-import { List } from '@/components/atom/List';
+import { List } from '@/components/atom/List.js';
 
 /**
  * 使用している OSS ツールのライセンス一覧

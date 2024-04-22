@@ -8,12 +8,12 @@
 import { getRandomBytes, randomUUID } from 'expo-crypto';
 import nacl from 'tweetnacl';
 
-import { PrivateKeyModel } from '@/models/AccountModel';
-import { InvalidValueError } from '@/models/ErrorModels';
-import { NetworkType } from '@/models/NetworkModels';
-import { AddressService } from '@/services/AddressService';
-import { STORAGE_KEYS } from '@/util/configs/storage-keys';
-import { SecureStorage } from '@/util/storages/SecureStorage';
+import { PrivateKeyModel } from '@/models/AccountModel.js';
+import { InvalidValueError } from '@/models/ErrorModels.js';
+import { NetworkType } from '@/models/NetworkModels.js';
+import { AddressService } from '@/services/AddressService.js';
+import { STORAGE_KEYS } from '@/util/configs/storage-keys.js';
+import { SecureStorage } from '@/util/storages/SecureStorage.js';
 
 /**
  * Manage Symbol Account PrivateKey

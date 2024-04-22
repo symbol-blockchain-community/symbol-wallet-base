@@ -2,7 +2,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import React from 'react';
 import { Pressable, PressableProps, Text } from 'react-native';
 
-import { cn } from '@/util/classes';
+import { cn } from '@/util/classes.js';
 
 const buttonVariants = cva(
   'inline-flex items-center justify-center whitespace-nowrap rounded-md ring-offset-background transition-colors',

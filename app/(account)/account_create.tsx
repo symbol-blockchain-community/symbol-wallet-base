@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import Button from '@/components/atom/Button';
-import ButtonBase from '@/components/atom/ButtonBase';
-import Input from '@/components/atom/Input';
-import { List, ListItem } from '@/components/atom/List';
-import Tabs from '@/components/atom/Tabs';
+import Button from '@/components/atom/Button.js';
+import ButtonBase from '@/components/atom/ButtonBase.js';
+import Input from '@/components/atom/Input.js';
+import { List, ListItem } from '@/components/atom/List.js';
+import Tabs from '@/components/atom/Tabs.js';
 
 interface AccountItem {
   id: number;

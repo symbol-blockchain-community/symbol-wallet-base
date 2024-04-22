@@ -2,12 +2,12 @@ import { reloadAsync } from 'expo-updates';
 import { useState } from 'react';
 import { Text, View, Alert, ScrollView } from 'react-native';
 
-import Button from '@/components/atom/Button';
-import Input from '@/components/atom/Input';
-import Loading from '@/components/atom/Loading';
-import { NetworkController } from '@/controller/NetworkController';
-import { useLoadCurrentNetwork } from '@/hooks/useLoadCurrentNetwork';
-import { StorageError } from '@/models/ErrorModels';
+import Button from '@/components/atom/Button.js';
+import Input from '@/components/atom/Input.js';
+import Loading from '@/components/atom/Loading.js';
+import { NetworkController } from '@/controller/NetworkController.js';
+import { useLoadCurrentNetwork } from '@/hooks/useLoadCurrentNetwork.js';
+import { StorageError } from '@/models/ErrorModels.js';
 
 /** Node 選択画面より遷移。直接入力するケース */
 export default function CustomInputNetworkNodePage(): JSX.Element {

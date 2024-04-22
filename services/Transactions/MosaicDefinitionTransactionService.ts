@@ -9,7 +9,7 @@ import {
   SignedTransaction,
 } from 'symbol-sdk/dist/src/model/transaction';
 
-import { NetworkType, NodeInfo } from '@/models/NetworkModels';
+import { NetworkType, NodeInfo } from '@/models/NetworkModels.js';
 import { TransactionOption, TransactionService } from '@/services/Transactions/TransactionService';
 
 export interface MosaicDefinitionOption extends TransactionOption {

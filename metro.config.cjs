@@ -8,6 +8,22 @@ const defaultConfig = getDefaultConfig(__dirname);
 const config = {
   ...defaultConfig,
   resolver: {
+    resolveRequest: (context, moduleName, platform) => {
+      // skip loading wasm (not supported), an empty module will be loaded in place
+      if (moduleName === './ed25519_wasm.js') {
+        return { type: 'empty' };
+      }
+
+      // rewrite symbol-sdk subpath includes with src/ intermediate directory
+      // due to limited exports support in final bundle
+      const SYMBOL_SDK_SUBPATH_IMPORT = 'symbol-sdk/';
+      if (moduleName.startsWith(SYMBOL_SDK_SUBPATH_IMPORT)) {
+        moduleName = `symbol-sdk/src/${moduleName.substring(SYMBOL_SDK_SUBPATH_IMPORT.length)}`;
+      }
+
+      // chain to the standard Metro resolver for everything else
+      return context.resolveRequest(context, moduleName, platform);
+    },
     extraNodeModules: {
       crypto: require.resolve('@symbol-blockchain-community/expo-symbol-crypto'),
       stream: require.resolve('stream-browserify'),

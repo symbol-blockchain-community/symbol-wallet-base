@@ -1,10 +1,10 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
+import Ionicons from '@expo/vector-icons/Ionicons.js';
 import * as Font from 'expo-font';
 // import { router } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
 
-import { NetworkController } from '@/controller/NetworkController';
+import { NetworkController } from '@/controller/NetworkController.js';
 
 // import { AccountController } from '@/controller/AccountController';
 
@@ -17,7 +17,7 @@ export function useLoadedAssets(): boolean {
         SplashScreen.preventAutoHideAsync();
 
         // アセットの順次読み込み
-        await Font.loadAsync(Ionicons.font);
+        await Font.loadAsync(Ionicons.default.font);
 
         // --- Network Storage の初期値有無検証と書き込み ---
         // 起動時に NetworkType が未選択である場合は、mainnet をデフォルト値として追加する

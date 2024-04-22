@@ -2,9 +2,9 @@ import { useRouter } from 'expo-router';
 import { View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import Avatar from '@/components/atom/Avatar';
-import Button from '@/components/atom/Button';
-import { useI18n } from '@/hooks/useI18n';
+import Avatar from '@/components/atom/Avatar.js';
+import Button from '@/components/atom/Button.js';
+import { useI18n } from '@/hooks/useI18n.js';
 
 export default function LoginRoot(): React.JSX.Element {
   const { t, locale, setLocale } = useI18n();

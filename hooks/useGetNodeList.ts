@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
-import { NetworkController } from '@/controller/NetworkController';
-import { NetworkType, NodeInfo } from '@/models/NetworkModels';
+import { NetworkController } from '@/controller/NetworkController.js';
+import { NetworkType, NodeInfo } from '@/models/NetworkModels.js';
 
 type UseGetNodeListResult = {
   /** データの取得中 */

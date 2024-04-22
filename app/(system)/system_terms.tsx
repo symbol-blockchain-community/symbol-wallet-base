@@ -2,7 +2,7 @@ import { View, ScrollView } from 'react-native';
 import Markdown from 'react-native-markdown-display';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { useI18n } from '@/hooks/useI18n';
+import { useI18n } from '@/hooks/useI18n.js';
 
 const TERMS_JA: string = `
 # 利用規約
@@ -186,7 +186,7 @@ export default function TermsPage(): JSX.Element {
     <View className='flex-1 justify-center items-center p-4'>
       <SafeAreaView edges={['bottom']}>
         <ScrollView contentInsetAdjustmentBehavior='automatic' style={{ height: '100%' }}>
-          <Markdown
+          <Markdown.default
             style={{
               heading2: {
                 paddingTop: 12,
@@ -196,7 +196,7 @@ export default function TermsPage(): JSX.Element {
             }}
           >
             {locale === 'ja' ? TERMS_JA : TERMS_EN}
-          </Markdown>
+          </Markdown.default>
         </ScrollView>
       </SafeAreaView>
     </View>

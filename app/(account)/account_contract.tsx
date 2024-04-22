@@ -2,9 +2,9 @@ import * as MailComposer from 'expo-mail-composer';
 import { Link } from 'expo-router';
 import { View, Text, ScrollView, Alert } from 'react-native';
 
-import Button from '@/components/atom/Button';
-import { modeConfig } from '@/util/configs/mode';
-import { generateUnsecureRandomId } from '@/util/text';
+import Button from '@/components/atom/Button.js';
+import { modeConfig } from '@/util/configs/mode.js';
+import { generateUnsecureRandomId } from '@/util/text.js';
 
 /** ユーザーが使用しているデフォルトの Email アプリを使用してサポートへメールを送信するためのページ */
 export default function ContractPage(): JSX.Element {

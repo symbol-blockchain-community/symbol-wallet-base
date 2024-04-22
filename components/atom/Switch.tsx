@@ -2,7 +2,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import React from 'react';
 import { Switch as RNSwitch, SwitchProps } from 'react-native';
 
-import { cn } from '@/util/classes';
+import { cn } from '@/util/classes.js';
 
 const switchVariants = cva('shadow-sm transition-colors', {
   variants: {},

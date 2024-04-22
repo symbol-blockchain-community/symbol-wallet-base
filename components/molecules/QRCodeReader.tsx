@@ -1,11 +1,11 @@
-import { CameraView, useCameraPermissions, BarcodeScanningResult } from 'expo-camera/next';
+import { CameraView, useCameraPermissions, BarcodeScanningResult } from 'expo-camera/next.js';
 import * as React from 'react';
 import { Pressable, View, Text, Linking } from 'react-native';
 
-import Button from '@/components/atom/Button';
-import { IconLightDown, IconLightUp, IconCameraReverse } from '@/components/atom/Icons';
-import { useI18n } from '@/hooks/useI18n';
-import { cn } from '@/util/classes';
+import Button from '@/components/atom/Button.js';
+import { IconLightDown, IconLightUp, IconCameraReverse } from '@/components/atom/Icons.js';
+import { useI18n } from '@/hooks/useI18n.js';
+import { cn } from '@/util/classes.js';
 
 interface Props {
   open: boolean;

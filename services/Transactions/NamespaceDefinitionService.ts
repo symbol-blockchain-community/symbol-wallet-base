@@ -1,7 +1,7 @@
 import { UInt64 } from 'symbol-sdk/dist/src/model';
 import { Deadline, NamespaceRegistrationTransaction, SignedTransaction } from 'symbol-sdk/dist/src/model/transaction';
 
-import { NetworkType, NodeInfo } from '@/models/NetworkModels';
+import { NetworkType, NodeInfo } from '@/models/NetworkModels.js';
 import { Configuration, NetworkRoutesApi } from '@/services/NodeClientService';
 import { TransactionOption, TransactionService } from '@/services/Transactions/TransactionService';
 import { NETWORK_PROPERTIES } from '@/util/configs/network-properties';

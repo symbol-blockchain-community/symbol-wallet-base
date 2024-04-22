@@ -1,10 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, useContext, useEffect, useReducer, ReactNode } from 'react';
 
-import { reducer, initialState } from './reducer';
-import { AppState } from './types';
+import { reducer, initialState } from './reducer.js';
+import { AppState } from './types.js';
 
-import useUpdateEffect from '@/hooks/useUpdateEffect';
+import useUpdateEffect from '@/hooks/useUpdateEffect.js';
 
 interface StateContextType {
   state: AppState;
@@ -39,12 +39,12 @@ export const useStateContext = () => {
 };
 
 const saveState = (state: AppState) => {
-  AsyncStorage.setItem('state', JSON.stringify(state));
+  AsyncStorage.default.setItem('state', JSON.stringify(state));
 };
 
 const loadState = async () => {
   try {
-    const serializedState = await AsyncStorage.getItem('state');
+    const serializedState = await AsyncStorage.default.getItem('state');
     if (serializedState === null) {
       return initialState;
     }

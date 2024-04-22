@@ -3,7 +3,7 @@ import { View, Text, Pressable } from 'react-native';
 import Markdown from 'react-native-markdown-display';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { List } from '@/components/atom/List';
+import { List } from '@/components/atom/List.js';
 
 // TODO: 各アプリ開発者へ "よくあるお問い合わせは更新頻度も早いと思う為、適宜 API 等で受け取るように書き直して下さい"
 const ITEMS = [
@@ -45,7 +45,7 @@ function QAItem({ item }: { item: (typeof ITEMS)[number] }): JSX.Element {
       </Pressable>
       {open && (
         <View className=' w-full p-4'>
-          <Markdown>{item.answer}</Markdown>
+          <Markdown.default>{item.answer}</Markdown.default>
         </View>
       )}
     </>

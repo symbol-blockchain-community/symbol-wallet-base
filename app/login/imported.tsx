@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import Avatar from '@/components/atom/Avatar';
-import Button from '@/components/atom/Button';
-import Checkbox from '@/components/atom/Checkbox';
-import { List, ListItem } from '@/components/atom/List';
-import { useI18n } from '@/hooks/useI18n';
+import Avatar from '@/components/atom/Avatar.js';
+import Button from '@/components/atom/Button.js';
+import Checkbox from '@/components/atom/Checkbox.js';
+import { List, ListItem } from '@/components/atom/List.js';
+import { useI18n } from '@/hooks/useI18n.js';
 
 interface AccountItem {
   id: number;

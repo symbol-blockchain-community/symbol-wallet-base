@@ -1,8 +1,8 @@
 import { Address, AliasAction, MosaicId, NamespaceId } from 'symbol-sdk/dist/src/model';
 import { AliasTransaction, Deadline, SignedTransaction } from 'symbol-sdk/dist/src/model/transaction';
 
-import { InvalidValueError } from '@/models/ErrorModels';
-import { NetworkType, NodeInfo } from '@/models/NetworkModels';
+import { InvalidValueError } from '@/models/ErrorModels.js';
+import { NetworkType, NodeInfo } from '@/models/NetworkModels.js';
 import { TransactionOption, TransactionService } from '@/services/Transactions/TransactionService';
 
 export interface AliasOption extends TransactionOption {

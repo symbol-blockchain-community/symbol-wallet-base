@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 
-import { ConnectionError } from '@/models/ErrorModels';
+import { ConnectionError } from '@/models/ErrorModels.js';
 import {
   Configuration,
   SearchConfirmedTransactionsRequest,
   TransactionInfoDTO,
   TransactionPage,
   TransactionRoutesApi,
-} from '@/services/NodeClientService';
+} from '@/services/NodeClientService/index.js';
 
 type Mode = 'confirmed' | 'unconfirmed' | 'partial';
 

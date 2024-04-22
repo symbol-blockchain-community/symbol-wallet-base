@@ -3,10 +3,10 @@ import { useState } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import Avatar from '@/components/atom/Avatar';
-import Button from '@/components/atom/Button';
-import TextArea from '@/components/atom/Textarea';
-import { useI18n } from '@/hooks/useI18n';
+import Avatar from '@/components/atom/Avatar.js';
+import Button from '@/components/atom/Button.js';
+import TextArea from '@/components/atom/Textarea.js';
+import { useI18n } from '@/hooks/useI18n.js';
 
 export default function LoginImport(): JSX.Element {
   const { t } = useI18n();

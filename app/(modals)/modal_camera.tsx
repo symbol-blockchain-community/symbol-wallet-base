@@ -2,8 +2,8 @@ import { Link } from 'expo-router';
 import * as React from 'react';
 import { View, Text, ScrollView } from 'react-native';
 
-import Button from '@/components/atom/Button';
-import QRCodeReader from '@/components/molecules/QRCodeReader';
+import Button from '@/components/atom/Button.js';
+import QRCodeReader from '@/components/molecules/QRCodeReader.js';
 
 export default function Root(): React.JSX.Element {
   const [open, setOpen] = React.useState(false);

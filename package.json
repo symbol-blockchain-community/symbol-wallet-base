@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "symbol-wallet-base",
   "version": "1.0.0",
   "main": "expo-router/entry",
@@ -6,10 +7,8 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web",
     "lint": "prettier --write '**/*.{js,jsx,ts,tsx}' && eslint .",
-    "bin:licenses": "license-checker --production --json > assets/json/licenses.json",
-    "postinstall": "patch-package && rm -rf ./node_modules/symbol-crypto-wasm-node"
+    "bin:licenses": "license-checker --production --json > assets/json/licenses.json"
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.24.1",
@@ -39,7 +38,6 @@
     "i18n-js": "^4.4.3",
     "lottie-react-native": "^6.5.1",
     "nativewind": "^2.0.11",
-    "patch-package": "^8.0.0",
     "path-browserify": "^0.0.0",
     "process": "^0.11.10",
     "react": "18.2.0",
@@ -52,9 +50,7 @@
     "react-native-toast-message": "^2.2.0",
     "readable-stream": "^4.5.2",
     "stream-browserify": "^2.0.2",
-    "symbol-hd-wallets": "^0.14.2",
-    "symbol-sdk": "^2.0.5",
-    "symbol-sdk-v3": "npm:symbol-sdk@^3.2.0",
+    "symbol-sdk": "^3.2.0",
     "tailwind-merge": "^2.2.1",
     "url": "^0.11.3"
   },
@@ -62,7 +58,6 @@
     "@babel/core": "^7.20.0",
     "@openapitools/openapi-generator-cli": "^2.9.0",
     "@types/react": "~18.2.45",
-    "@types/ripemd160": "^2.0.3",
     "eslint": "^8.57.0",
     "eslint-config-universe": "^12.0.0",
     "license-checker": "^25.0.1",

@@ -6,14 +6,14 @@
 
 import { randomUUID } from 'expo-crypto';
 
-import { PrivateKeyModel, WalletModel } from '@/models/AccountModel';
-import { InvalidValueError } from '@/models/ErrorModels';
-import { NetworkType } from '@/models/NetworkModels';
-import { AddressService } from '@/services/AddressService';
-import { PrivateKeyService } from '@/services/PrivateKeyService';
-import { STORAGE_KEYS } from '@/util/configs/storage-keys';
-import { AsyncStorage } from '@/util/storages/AsyncStorage';
-import { longTextToShort } from '@/util/text';
+import { PrivateKeyModel, WalletModel } from '@/models/AccountModel.js';
+import { InvalidValueError } from '@/models/ErrorModels.js';
+import { NetworkType } from '@/models/NetworkModels.js';
+import { AddressService } from '@/services/AddressService.js';
+import { PrivateKeyService } from '@/services/PrivateKeyService.js';
+import { STORAGE_KEYS } from '@/util/configs/storage-keys.js';
+import { AsyncStorage } from '@/util/storages/AsyncStorage.js';
+import { longTextToShort } from '@/util/text.js';
 
 /**
  * Manage Symbol Wallet

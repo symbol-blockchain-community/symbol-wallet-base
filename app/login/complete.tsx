@@ -4,9 +4,9 @@ import { View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import CompleteAnimation from '@/assets/animations/complete.json';
-import Avatar from '@/components/atom/Avatar';
-import Button from '@/components/atom/Button';
-import { useI18n } from '@/hooks/useI18n';
+import Avatar from '@/components/atom/Avatar.js';
+import Button from '@/components/atom/Button.js';
+import { useI18n } from '@/hooks/useI18n.js';
 
 export default function LoginComplete(): JSX.Element {
   const { t } = useI18n();
@@ -22,7 +22,7 @@ export default function LoginComplete(): JSX.Element {
         <Avatar source={require('@/assets/icon.png')} size='lg' />
       </View>
       <View className='flex flex-grow items-center justify-center w-full max-w-sm'>
-        <LottieView source={CompleteAnimation} autoPlay style={{ height: 200, width: 200 }} />
+        <LottieView.default source={CompleteAnimation} autoPlay style={{ height: 200, width: 200 }} />
         <Text className='text-base'>{t('pages.login.complete.finished')}</Text>
       </View>
       <Button variant='default' className='w-full max-w-sm' onPress={handleComplete}>

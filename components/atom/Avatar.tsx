@@ -2,7 +2,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import React from 'react';
 import { Image, ImageProps } from 'react-native';
 
-import { cn } from '@/util/classes';
+import { cn } from '@/util/classes.js';
 
 const containerVariants = cva('rounded-full overflow-hidden', {
   variants: {

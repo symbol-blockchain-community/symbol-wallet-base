@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
-import { AccountController } from '@/controller/AccountController';
-import { WalletModel } from '@/models/AccountModel';
-import { StorageError } from '@/models/ErrorModels';
+import { AccountController } from '@/controller/AccountController.js';
+import { WalletModel } from '@/models/AccountModel.js';
+import { StorageError } from '@/models/ErrorModels.js';
 
 type ILoadWallets = {
   isLoading: boolean;

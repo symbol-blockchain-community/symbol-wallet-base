@@ -1,4 +1,4 @@
-import { NetworkType } from '@/models/NetworkModels';
+import { NetworkType } from '@/models/NetworkModels.js';
 
 export interface WalletModel {
   /** PrivateKeyModel との参照 */

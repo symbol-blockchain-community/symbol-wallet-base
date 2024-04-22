@@ -5,34 +5,35 @@
 
 */
 
-import { sha3_256 } from 'js-sha3';
-import ripemd160 from 'ripemd160';
+import { NetworkType } from '@/models/NetworkModels.js';
+import { rawArrayCopy, rawArrayDeepEqual, rawArrayUint8View } from '@/util/symbol/array.js';
+import { base32Decode, base32Encode } from '@/util/symbol/base32.js';
+import { strNetworkTypeToHexadecimal } from '@/util/symbol/network.js';
 
-import { NetworkType } from '@/models/NetworkModels';
-import { rawArrayCopy, rawArrayDeepEqual, rawArrayUint8View } from '@/util/symbol/array';
-import { base32Decode, base32Encode } from '@/util/symbol/base32';
-import { strNetworkTypeToHexadecimal } from '@/util/symbol/network';
+import { Address } from 'symbol-sdk/symbol';
 
 /**
  * Manage Symbol Account Address
  */
 export class AddressService {
-  private static readonly constants = {
-    sizes: {
-      ripemd160: 20,
-      addressDecoded: 24,
-      addressEncoded: 39,
-      key: 32,
-      checksum: 3,
-    },
-  };
+  // private static readonly constants = {
+  //   sizes: {
+  //     ripemd160: 20,
+  //     addressDecoded: 24,
+  //     addressEncoded: 39,
+  //     key: 32,
+  //     checksum: 3,
+  //   },
+  // };
 
   /**
    * @internal
    * @param address
    * @param networkType
    */
-  private constructor(private readonly address: string) {}
+  private constructor(private readonly address: string) {
+    new Address();
+  }
 
   private static uint8arrayUnresolvedAddressToEncodedAddress(uint8Array: Uint8Array): string {
     const base32Chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';

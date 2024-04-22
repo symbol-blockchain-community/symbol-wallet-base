@@ -2,7 +2,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import React from 'react';
 import { View, Text, ViewProps, TextProps } from 'react-native';
 
-import { cn } from '@/util/classes';
+import { cn } from '@/util/classes.js';
 
 const cardVariants = cva('flex flex-col space-y-1 border border-input p-2', {
   variants: {
