@@ -45,7 +45,7 @@ function QAItem({ item }: { item: (typeof ITEMS)[number] }): JSX.Element {
       </Pressable>
       {open && (
         <View className=' w-full p-4'>
-          <Markdown.default>{item.answer}</Markdown.default>
+          <Markdown>{item.answer}</Markdown>
         </View>
       )}
     </>

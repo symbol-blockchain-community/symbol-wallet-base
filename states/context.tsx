@@ -39,12 +39,12 @@ export const useStateContext = () => {
 };
 
 const saveState = (state: AppState) => {
-  AsyncStorage.default.setItem('state', JSON.stringify(state));
+  AsyncStorage.setItem('state', JSON.stringify(state));
 };
 
 const loadState = async () => {
   try {
-    const serializedState = await AsyncStorage.default.getItem('state');
+    const serializedState = await AsyncStorage.getItem('state');
     if (serializedState === null) {
       return initialState;
     }
