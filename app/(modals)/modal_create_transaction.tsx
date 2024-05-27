@@ -15,7 +15,7 @@ import { useLoadCurrentNetwork } from '@/hooks/useLoadCurrentNetwork';
 import { useLoadWallets } from '@/hooks/useLoadWallets';
 import { WalletModel } from '@/models/AccountModel';
 import { NetworkType } from '@/models/NetworkModels';
-import { AddressService } from '@/services/AddressService';
+// FIXME import { AddressService } from '@/services/AddressService';
 
 function useHooks() {
   const loadWallets = useLoadWallets();
@@ -38,8 +38,9 @@ function AccountBalanceView({
   onPress,
   ...props
 }: { publicKey?: string; node?: string; networkType?: NetworkType } & PressableProps): JSX.Element {
-  const address = publicKey && networkType ? AddressService.createFromPublicKey(publicKey, networkType) : null;
-  const { isLoading, error, balance } = useGetCurrentBalance(address?.plain() || null, node || null);
+  // FIXME const address = publicKey && networkType ? AddressService.createFromPublicKey(publicKey, networkType) : null;
+  // FIXME const { isLoading, error, balance } = useGetCurrentBalance(address?.plain() || null, node || null);
+  const { isLoading, error, balance } = useGetCurrentBalance(null, node || null);
 
   // 表記の調整。小数点以下の表示桁数指定
   const amount = balance.toLocaleString('ja', {
@@ -57,7 +58,8 @@ function AccountBalanceView({
           </View>
           <Text className='text-sm text-right text-muted-foreground'>{networkType || '--'}</Text>
         </View>
-        <CardHeader>{address ? address.pretty() : '--'}</CardHeader>
+        {/* FIXME <CardHeader>{address ? address.pretty() : '--'}</CardHeader> */}
+        <CardHeader>--</CardHeader>
         <CardFooter>
           <Text className='text-2xl'>{isLoading ? <Loading /> : error ? '0.00' : `${amount} xym`}</Text>
         </CardFooter>
@@ -137,7 +139,8 @@ export default function CreateTransactionPage(): JSX.Element {
             >
               <ListItem>
                 <Text>
-                  {networkType ? AddressService.createFromPublicKey(item.publicKey, networkType).pretty() : '--'}
+                  {/* FIXME {networkType ? AddressService.createFromPublicKey(item.publicKey, networkType).pretty() : '--'} */}
+                  --
                 </Text>
               </ListItem>
             </ButtonBase>

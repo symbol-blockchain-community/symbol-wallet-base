@@ -6,12 +6,11 @@
 */
 
 import { getRandomBytes, randomUUID } from 'expo-crypto';
-import nacl from 'tweetnacl';
 
 import { PrivateKeyModel } from '@/models/AccountModel';
 import { InvalidValueError } from '@/models/ErrorModels';
 import { NetworkType } from '@/models/NetworkModels';
-import { AddressService } from '@/services/AddressService';
+// FIXME import { AddressService } from '@/services/AddressService';
 import { STORAGE_KEYS } from '@/util/configs/storage-keys';
 import { SecureStorage } from '@/util/storages/SecureStorage';
 
@@ -31,13 +30,18 @@ export class PrivateKeyService extends SecureStorage {
     }
 
     this.privateKey = Buffer.from(privateKey).toString('hex');
-    const keypair = nacl.sign.keyPair.fromSeed(privateKey);
-    this.publicKey = Buffer.from(keypair.publicKey).toString('hex');
+    // FIXME const keypair = nacl.sign.keyPair.fromSeed(privateKey);
+    // FIXME this.publicKey = Buffer.from(keypair.publicKey).toString('hex');
+
+    this.publicKey = '';
   }
 
   /** アドレスを取得する */
-  public getAddress(networkType: NetworkType): AddressService {
-    return AddressService.createFromPublicKey(this.publicKey, networkType);
+  // FIXME public getAddress(networkType: NetworkType): AddressService {
+  //   return AddressService.createFromPublicKey(this.publicKey, networkType);
+  // }
+  public getAddress(networkType: NetworkType) {
+    return null;
   }
 
   /** ランダムな秘密鍵の発行し PrivateKeyService を作成する */
