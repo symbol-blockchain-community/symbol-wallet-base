@@ -35,6 +35,9 @@ export function useLoadWallets(): ILoadWallets {
     //     if (unmounted) return;
     //     setIsLoading(false);
     //   });
+    // FIXME
+    setWallets([]);
+    setIsLoading(false);
     return () => {
       unmounted = true;
     };
