@@ -8,7 +8,7 @@ export default function Select({ size = 'default', ...props }: Props): JSX.Eleme
   // className を受け取れない為 style にて記述
   // フォントサイズ等の基準は Tailwind の既定値を使用
   return (
-    <RNPickerSelect.default
+    <RNPickerSelect
       {...props}
       style={{
         inputIOS: {

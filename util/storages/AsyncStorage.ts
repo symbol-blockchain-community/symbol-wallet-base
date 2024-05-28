@@ -10,7 +10,7 @@ export class AsyncStorage {
 
   public async getItem(): Promise<string | null> {
     try {
-      const value = await RNAsyncStorage.default.getItem(this.key);
+      const value = await RNAsyncStorage.getItem(this.key);
       return value;
     } catch (error) {
       throw new Error(`Error when trying to get item from AsyncStorage: ${error}`);
@@ -19,7 +19,7 @@ export class AsyncStorage {
 
   public async setItem(value: string): Promise<void> {
     try {
-      await RNAsyncStorage.default.setItem(this.key, value);
+      await RNAsyncStorage.setItem(this.key, value);
     } catch (error) {
       throw new Error(`Error when trying to set item in AsyncStorage: ${error}`);
     }
@@ -27,7 +27,7 @@ export class AsyncStorage {
 
   public async removeItem(): Promise<void> {
     try {
-      await RNAsyncStorage.default.removeItem(this.key);
+      await RNAsyncStorage.removeItem(this.key);
     } catch (error) {
       throw new Error(`Error when trying to remove item from AsyncStorage: ${error}`);
     }
@@ -35,7 +35,7 @@ export class AsyncStorage {
 
   public static async clear(): Promise<void> {
     try {
-      await RNAsyncStorage.default.clear();
+      await RNAsyncStorage.clear();
     } catch (error) {
       throw new Error(`Error when trying to clear AsyncStorage: ${error}`);
     }

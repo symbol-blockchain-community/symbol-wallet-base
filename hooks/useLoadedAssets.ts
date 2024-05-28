@@ -17,7 +17,7 @@ export function useLoadedAssets(): boolean {
         SplashScreen.preventAutoHideAsync();
 
         // アセットの順次読み込み
-        await Font.loadAsync(Ionicons.default.font);
+        await Font.loadAsync(Ionicons.font);
 
         // --- Network Storage の初期値有無検証と書き込み ---
         // 起動時に NetworkType が未選択である場合は、mainnet をデフォルト値として追加する

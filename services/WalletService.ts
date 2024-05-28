@@ -9,7 +9,7 @@ import { randomUUID } from 'expo-crypto';
 import { PrivateKeyModel, WalletModel } from '@/models/AccountModel';
 import { InvalidValueError } from '@/models/ErrorModels';
 import { NetworkType } from '@/models/NetworkModels';
-import { AddressService } from '@/services/AddressService';
+// FIXME import { AddressService } from '@/services/AddressService';
 import { PrivateKeyService } from '@/services/PrivateKeyService';
 import { STORAGE_KEYS } from '@/util/configs/storage-keys';
 import { AsyncStorage } from '@/util/storages/AsyncStorage';
@@ -66,7 +66,8 @@ export class WalletService extends AsyncStorage {
     const privateKeyService = PrivateKeyService.createFromPrivateKey(model.privateKey);
     const data: WalletModel = {
       id: randomUUID(),
-      name: longTextToShort(privateKeyService.getAddress(model.networkType).plain()),
+      // FIXME name: longTextToShort(privateKeyService.getAddress(model.networkType).plain()),
+      name: 'name',
       networkType: model.networkType,
       publicKey: privateKeyService.publicKey,
       privateKeyId: model.id,
@@ -94,7 +95,8 @@ export class WalletService extends AsyncStorage {
   public static async setNewWallet(networkType: NetworkType, publicKey: string): Promise<WalletService> {
     const storage = new AsyncStorage(STORAGE_KEYS.async.WALLET);
     const oldData: WalletModel[] = JSON.parse((await storage.getItem()) || '[]');
-    const address = AddressService.createFromPublicKey(publicKey, networkType);
+    // FIXME const address = AddressService.createFromPublicKey(publicKey, networkType);
+    const address = null as any;
     const data: WalletModel = {
       id: randomUUID(),
       name: longTextToShort(address.plain()),

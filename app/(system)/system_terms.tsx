@@ -186,7 +186,7 @@ export default function TermsPage(): JSX.Element {
     <View className='flex-1 justify-center items-center p-4'>
       <SafeAreaView edges={['bottom']}>
         <ScrollView contentInsetAdjustmentBehavior='automatic' style={{ height: '100%' }}>
-          <Markdown.default
+          <Markdown
             style={{
               heading2: {
                 paddingTop: 12,
@@ -196,7 +196,7 @@ export default function TermsPage(): JSX.Element {
             }}
           >
             {locale === 'ja' ? TERMS_JA : TERMS_EN}
-          </Markdown.default>
+          </Markdown>
         </ScrollView>
       </SafeAreaView>
     </View>
