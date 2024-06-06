@@ -3,7 +3,7 @@
 */
 
 import { PublicKey } from 'symbol-sdk';
-import { models, Network, SymbolFacade } from 'symbol-sdk/symbol';
+import { Network, SymbolFacade } from 'symbol-sdk/symbol';
 import { base32Decode, base32Encode } from '@/util/symbol/base32';
 
 /**
@@ -76,19 +76,6 @@ export class AddressService {
       throw Error(`${encoded} does not represent a valid encoded address`);
     }
     return base32Decode(`${encoded}A`).subarray(0, this.constants.sizes.addressDecoded);
-  };
-
-  public static payloadToAddress = (payload: string): string => {
-    const _payload = payload.match(/.{1,2}/g);
-    if (_payload) {
-      const uint8Array = new Uint8Array(_payload.map((byte) => parseInt(byte, 16)));
-      const encodedAddress = this.uint8arrayUnresolvedAddressToEncodedAddress(
-        models.TransactionFactory.deserialize(uint8Array).recipientAddress.bytes
-      );
-      return encodedAddress;
-    } else {
-      throw new Error('入力が正しくありません。');
-    }
   };
 
   /**
