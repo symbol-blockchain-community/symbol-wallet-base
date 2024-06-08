@@ -10,8 +10,8 @@ import { Toast } from 'react-native-toast-message/lib/src/Toast';
 import Avatar from '@/components/atom/Avatar';
 import Button from '@/components/atom/Button';
 import { IconCopy } from '@/components/atom/Icons';
-import { useI18n } from '@/hooks/useI18n';
 import TextArea from '@/components/atom/Textarea';
+import { useI18n } from '@/hooks/useI18n';
 
 export default function LoginGenerate(): React.JSX.Element {
   const { t } = useI18n();
