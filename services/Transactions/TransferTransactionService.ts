@@ -46,14 +46,15 @@ export class TransferTransactionService extends TransactionService {
     super(networkType);
 
     this.facade = new SymbolFacade(networkType);
-    const transferTransactionDescripter = new descriptors.TransferTransactionV1Descriptor(
-      typeof options.recipientAddress === 'string' ? new Address(options.recipientAddress) : options.recipientAddress,
-      options.mosaics.map((m) => new descriptors.MosaicDescriptor(m.mosaicId, m.amount)),
-      options.message ? TransferTransactionService.prependNullByte(options.message) : undefined
+
+    const transferTransactionDescriptor = TransferTransactionService.createTransferTransactionDescriptor(
+      options.recipientAddress,
+      options.mosaics,
+      options.message
     );
 
     this.transaction = this.facade.createTransactionFromTypedDescriptor(
-      transferTransactionDescripter,
+      transferTransactionDescriptor,
       fromAccount.publicKey,
       options.maxFee || 100,
       Number(this.facade.now().addHours(1).timestamp)
@@ -66,15 +67,11 @@ export class TransferTransactionService extends TransactionService {
   public static calcFee(rate: TTransactionFeeRate, fee: ITransactionFees, message?: string | Uint8Array): number {
     const dummyFacade = new SymbolFacade(Network.MAINNET);
     const dummyAccount = dummyFacade.createAccount(PrivateKey.random());
-    // message 以外は計算式に影響しない
-    const transferTransactionDescripter = new descriptors.TransferTransactionV1Descriptor(
-      dummyAccount.address,
-      [],
-      message ? this.prependNullByte(message) : undefined
-    );
+
+    const transferTransactionDescriptor = this.createTransferTransactionDescriptor(dummyAccount.address, [], message);
 
     const size = dummyFacade.createTransactionFromTypedDescriptor(
-      transferTransactionDescripter,
+      transferTransactionDescriptor,
       dummyAccount.publicKey,
       0,
       0
@@ -107,6 +104,23 @@ export class TransferTransactionService extends TransactionService {
   /** 現在のトランザクションを取得する */
   public get data() {
     return this.transaction;
+  }
+
+  /**
+   * TransferTransactionDescriptor を作成する共通メソッド
+   */
+  private static createTransferTransactionDescriptor(
+    recipientAddress: string | Address,
+    mosaics: models.Mosaic[],
+    message?: string | Uint8Array
+  ): descriptors.TransferTransactionV1Descriptor {
+    const address = typeof recipientAddress === 'string' ? new Address(recipientAddress) : recipientAddress;
+
+    return new descriptors.TransferTransactionV1Descriptor(
+      address,
+      mosaics.map((m) => new descriptors.MosaicDescriptor(m.mosaicId, m.amount)),
+      message ? TransferTransactionService.prependNullByte(message) : undefined
+    );
   }
 
   /** メッセージの先頭バイトに\0を追加する */
