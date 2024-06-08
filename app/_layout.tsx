@@ -8,6 +8,10 @@ import { useLoadedAssets } from '@/hooks/useLoadedAssets';
 import { StateProvider } from '@/states/context';
 import { I18nProvider } from '@/states/i18nContext';
 import { modeConfig } from '@/util/configs/mode';
+import { useEffect } from 'react';
+import { DeviceHealthService } from '@/services/DeviceHealthService';
+import { NotificationService } from '@/services/NotificationService';
+import { PermissionError } from '@/models/ErrorModels';
 
 // Catch any errors thrown by the Layout component.
 export { ErrorBoundary } from 'expo-router';
@@ -19,7 +23,22 @@ export default function RootLayout(): JSX.Element {
   const router = useRouter();
   const isLoadingComplete = useLoadedAssets();
 
-  console.debug(`root: current page is ${pathname}`);
+  useEffect(() => {
+    console.debug(`root: current page is ${pathname}`);
+  }, [pathname]);
+
+  useEffect(() => {
+    // Check network status
+    DeviceHealthService.isConnectionAvailable().then(async (isConnected) => {
+      // 端末の起動時にネットワーク接続状態である場合は、push 通知の許可を求める
+      if (isConnected) {
+        const token = await new NotificationService().registerForPushNotificationsAsync();
+        if (token instanceof PermissionError) {
+          alert('Push notification permission denied.');
+        }
+      }
+    });
+  }, []);
 
   const handleHeaderRightClickForPage = () => {
     return (

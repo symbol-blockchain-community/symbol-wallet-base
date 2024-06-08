@@ -44,6 +44,15 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "f1155ddd-313b-4f13-9cc9-da4b8901ba1b"
+      }
+    },
+    "owner": "yuichiro.mukaiyama"
   }
 }
