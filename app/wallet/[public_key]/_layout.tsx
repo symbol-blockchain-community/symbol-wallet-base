@@ -1,8 +1,8 @@
-import { Link, useLocalSearchParams, useRouter, Tabs } from 'expo-router';
+import { useLocalSearchParams, useRouter, Tabs } from 'expo-router';
 import { useEffect } from 'react';
 import { View } from 'react-native';
 
-import { IconQRCode, IconReceipt, IconWallet } from '@/components/atom/Icons';
+import { IconReceipt, IconWallet } from '@/components/atom/Icons';
 import { useI18n } from '@/hooks/useI18n';
 import { useLoadWallets } from '@/hooks/useLoadWallets';
 

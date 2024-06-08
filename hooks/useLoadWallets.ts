@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 // FIXME import { AccountController } from '@/controller/AccountController';
 import { WalletModel } from '@/models/AccountModel';
-import { StorageError } from '@/models/ErrorModels';
+// import { StorageError } from '@/models/ErrorModels';
 
 type ILoadWallets = {
   isLoading: boolean;
@@ -19,7 +19,7 @@ export function useLoadWallets(): ILoadWallets {
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    let unmounted = false;
+    // let unmounted = false;
     setIsLoading(true);
     setError(null);
     // FIXME AccountController.getWalletList()
@@ -39,7 +39,7 @@ export function useLoadWallets(): ILoadWallets {
     setWallets([]);
     setIsLoading(false);
     return () => {
-      unmounted = true;
+      // unmounted = true;
     };
   }, []);
 

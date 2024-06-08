@@ -1,8 +1,6 @@
 import { NetworkState, getNetworkStateAsync } from 'expo-network';
 
 export class DeviceHealthService {
-  constructor() {}
-
   /**
    * デバイスの Wi-Fi または Cellular が有効な場合は true を返します。
    */

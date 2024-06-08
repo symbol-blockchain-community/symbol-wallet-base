@@ -2,12 +2,12 @@ import { Link, useNavigation, useRouter } from 'expo-router';
 import * as React from 'react';
 import { View, Text } from 'react-native';
 
+import Button from '@/components/atom/Button';
 import ButtonBase from '@/components/atom/ButtonBase';
 import { List } from '@/components/atom/List';
 import { useLoadWallets } from '@/hooks/useLoadWallets';
 import { WalletModel } from '@/models/AccountModel';
 // FIXME import { AddressService } from '@/services/AddressService';
-import Button from '@/components/atom/Button';
 import { NotificationService } from '@/services/NotificationService';
 
 function Item({ item }: { item: WalletModel }) {

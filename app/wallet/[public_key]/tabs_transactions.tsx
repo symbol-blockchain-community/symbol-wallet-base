@@ -4,13 +4,13 @@ import { View } from 'react-native';
 import Tabs from '@/components/atom/Tabs';
 import ReceievedTransactionHistory from '@/components/organisms/ReceievedTransactionHistory';
 import SendTransactionHistory from '@/components/organisms/SendTransactionHistory';
-import { useI18n } from '@/hooks/useI18n';
+// import { useI18n } from '@/hooks/useI18n';
 import { useLoadCurrentNetwork } from '@/hooks/useLoadCurrentNetwork';
 // import { WalletModel } from '@/models/AccountModel';
 // import { AddressService } from '@/services/AddressService';
 
 export default function WalletAccountTransactions(): JSX.Element {
-  const { t } = useI18n();
+  // const { t } = useI18n();
   // const params = useLocalSearchParams() as unknown as WalletModel;
   const { isLoading, error, network } = useLoadCurrentNetwork();
 
