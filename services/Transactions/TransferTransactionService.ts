@@ -1,38 +1,20 @@
-// import { Account, Address } from 'symbol-sdk/dist/src/model/account';
-// import { EmptyMessage, Message } from 'symbol-sdk/dist/src/model/message';
-// import { Mosaic } from 'symbol-sdk/dist/src/model/mosaic';
-// import { TransactionFees } from 'symbol-sdk/dist/src/model/network';
-// import { Deadline, SignedTransaction, TransferTransaction } from 'symbol-sdk/dist/src/model/transaction';
-
-// import { NetworkType, NodeInfo } from '@/models/NetworkModels';
-// import { TransactionFeeRate } from '@/models/TransactionModel';
 import {
   ITransactionFees,
   TTransactionFeeRate,
   TransactionOption,
   TransactionService,
 } from '@/services/Transactions/TransactionService';
-import { strNetworkTypeToHexadecimal } from '@/util/symbol/network';
 
-import { PrivateKey, PublicKey, Signature } from 'symbol-sdk';
-import {
-  KeyPair,
-  descriptors,
-  models,
-  SymbolFacade,
-  Address,
-  Network,
-  SymbolPublicAccount,
-  SymbolAccount,
-} from 'symbol-sdk/symbol';
-import { AddressService } from '@/services/AddressService';
+import { PrivateKey, Signature } from 'symbol-sdk';
+import { descriptors, models, SymbolFacade, Address, Network, SymbolAccount } from 'symbol-sdk/symbol';
+
 import { NodeInfo } from '@/models/NetworkModels';
 
 export interface TransferTransactionOption extends TransactionOption {
   /** 送信先Base32アドレス */
   recipientAddress: string | Address;
   /** 送信する Mosaic */
-  mosaics: models.Mosaic[];
+  mosaics: descriptors.UnresolvedMosaicDescriptor[];
   /** トランザクションメッセージ */
   message?: string | Uint8Array;
 }
@@ -85,6 +67,20 @@ export class TransferTransactionService extends TransactionService {
     return super.signTransaction(privateKey, this.transaction);
   }
 
+  /** @overload トランザクションを同期的にアナウンスする */
+  public async announceTransaction(node: NodeInfo, signedTx: Signature): Promise<any> {
+    try {
+      const res = await super.announce(node, this.transaction, signedTx);
+      if (res instanceof Error) {
+        throw res;
+      }
+      return res;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+
   /**
    * 請求向け。
    * QR コード向けの JSON に変換する。 QR コードへの表示は UI 側で別途ライブラリを使用する想定
@@ -111,14 +107,14 @@ export class TransferTransactionService extends TransactionService {
    */
   private static createTransferTransactionDescriptor(
     recipientAddress: string | Address,
-    mosaics: models.Mosaic[],
+    mosaics: descriptors.UnresolvedMosaicDescriptor[],
     message?: string | Uint8Array
   ): descriptors.TransferTransactionV1Descriptor {
     const address = typeof recipientAddress === 'string' ? new Address(recipientAddress) : recipientAddress;
 
     return new descriptors.TransferTransactionV1Descriptor(
       address,
-      mosaics.map((m) => new descriptors.MosaicDescriptor(m.mosaicId, m.amount)),
+      mosaics,
       message ? TransferTransactionService.prependNullByte(message) : undefined
     );
   }

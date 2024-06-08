@@ -5,7 +5,6 @@ import { NETWORK_PROPERTIES } from '@/util/configs/network-properties';
 
 import { PrivateKey, Signature } from 'symbol-sdk';
 import { KeyPair, models, SymbolFacade, Network } from 'symbol-sdk/symbol';
-import { AddressService } from '@/services/AddressService';
 
 export interface ITransactionFees {
   averageFeeMultiplier: number;
@@ -64,11 +63,7 @@ export class TransactionService {
   /**
    * トランザクションを同期的にアナウンスする
    */
-  public async announceTransaction(
-    node: NodeInfo,
-    transaction: models.Transaction,
-    signature: Signature
-  ): Promise<Error | any> {
+  public async announce(node: NodeInfo, transaction: models.Transaction, signature: Signature): Promise<Error | any> {
     const facade = new SymbolFacade(this.network);
     const txHash = facade.hashTransaction(transaction).toString();
     const payload = facade.transactionFactory.static.attachSignature(transaction, signature);
