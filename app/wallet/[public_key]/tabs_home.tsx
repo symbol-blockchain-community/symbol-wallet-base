@@ -1,5 +1,5 @@
 import * as Clipboard from 'expo-clipboard';
-import { Link, useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams } from 'expo-router';
 import { View, Text, Pressable } from 'react-native';
 import { Toast } from 'react-native-toast-message/lib/src/Toast';
 

@@ -7,7 +7,7 @@ import ButtonBase from '@/components/atom/ButtonBase';
 import { Card } from '@/components/atom/Card';
 import { WalletModel } from '@/models/AccountModel';
 // FIXME import { AddressService } from '@/services/AddressService';
-import { getExplorerUrl } from '@/util/symbol/network';
+// import { getExplorerUrl } from '@/util/symbol/network';
 
 /**
  * Wallet の Account QR を表示する
@@ -15,7 +15,7 @@ import { getExplorerUrl } from '@/util/symbol/network';
 export default function WalletsAccountQR(): JSX.Element {
   const params = useLocalSearchParams() as unknown as WalletModel;
   // FIXME const address = AddressService.createFromPublicKey(params.publicKey, params.networkType);
-  const address = null;
+  // const address = null;
   // FIXME const explorerURL: string = getExplorerUrl(params.networkType, 'accounts', address.plain());
   const explorerURL: string = '';
 

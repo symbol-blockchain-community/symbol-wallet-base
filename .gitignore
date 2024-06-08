@@ -10,6 +10,8 @@ node_modules/
 .expo/
 dist/
 web-build/
+ios 
+android
 
 # Native
 *.orig.*
@@ -36,3 +38,4 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
