@@ -1,10 +1,9 @@
-import { ConnectionError, InvalidValueError } from '@/models/ErrorModels';
-import { NetworkProperty, NodeInfo } from '@/models/NetworkModels';
-
-import { NETWORK_PROPERTIES } from '@/util/configs/network-properties';
-
 import { PrivateKey, Signature } from 'symbol-sdk';
 import { KeyPair, models, SymbolFacade, Network } from 'symbol-sdk/symbol';
+
+import { ConnectionError, InvalidValueError } from '@/models/ErrorModels';
+import { NetworkProperty, NodeInfo } from '@/models/NetworkModels';
+import { NETWORK_PROPERTIES } from '@/util/configs/network-properties';
 
 export interface ITransactionFees {
   averageFeeMultiplier: number;

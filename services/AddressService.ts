@@ -4,6 +4,7 @@
 
 import { PublicKey } from 'symbol-sdk';
 import { Network, SymbolFacade } from 'symbol-sdk/symbol';
+
 import { base32Decode, base32Encode } from '@/util/symbol/base32';
 
 /**
