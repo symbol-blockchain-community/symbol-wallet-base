@@ -9,6 +9,7 @@
         "output": "services/NodeClientService",
         "enablePostProcessFile": true,
         "inputSpec": "specs/node-openapi.yml",
+        "additionalProperties": {},
         "globalProperty": {
           "skipFormModel": false
         }

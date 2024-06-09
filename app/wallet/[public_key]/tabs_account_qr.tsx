@@ -1,24 +1,27 @@
 import * as Clipboard from 'expo-clipboard';
 import { Link, useLocalSearchParams } from 'expo-router';
 import { ScrollView, Text, View } from 'react-native';
-import Toast from 'react-native-toast-message';
+import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
 import ButtonBase from '@/components/atom/ButtonBase';
 import { Card } from '@/components/atom/Card';
 import { WalletModel } from '@/models/AccountModel';
-import { AddressService } from '@/services/AddressService';
-import { getExplorerUrl } from '@/util/symbol/network';
+// FIXME import { AddressService } from '@/services/AddressService';
+// import { getExplorerUrl } from '@/util/symbol/network';
 
 /**
  * Wallet の Account QR を表示する
  */
 export default function WalletsAccountQR(): JSX.Element {
   const params = useLocalSearchParams() as unknown as WalletModel;
-  const address = AddressService.createFromPublicKey(params.publicKey, params.networkType);
-  const explorerURL: string = getExplorerUrl(params.networkType, 'accounts', address.plain());
+  // FIXME const address = AddressService.createFromPublicKey(params.publicKey, params.networkType);
+  // const address = null;
+  // FIXME const explorerURL: string = getExplorerUrl(params.networkType, 'accounts', address.plain());
+  const explorerURL: string = '';
 
   const copyHandle = () => {
-    Clipboard.setStringAsync(address.plain()).then(() => Toast.show({ text1: 'Copied' }));
+    // FIXME Clipboard.setStringAsync(address.plain()).then(() => Toast.show({ text1: 'Copied' }));
+    Clipboard.setStringAsync('').then(() => Toast.show({ text1: 'Copied' }));
   };
 
   return (
@@ -36,7 +39,8 @@ export default function WalletsAccountQR(): JSX.Element {
         <View className='w-full'>
           <ButtonBase onPress={copyHandle}>
             <Text className='text-base font-semibold'>Address</Text>
-            <Text className='text-sm text-muted-foreground'>{address.pretty()}</Text>
+            {/* FIXME <Text className='text-sm text-muted-foreground'>{address.pretty()}</Text> */}
+            <Text className='text-sm text-muted-foreground'>--</Text>
           </ButtonBase>
         </View>
         <View className='w-full'>

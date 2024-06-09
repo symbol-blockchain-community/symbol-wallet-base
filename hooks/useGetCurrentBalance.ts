@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 
 import { AccountInfoController } from '@/controller/AccountInfoController';
 import { Mosaic } from '@/models/MosaicModel';
-import { ResponseError } from '@/services/NodeClientService';
+import { ResponseError } from '@/services/NodeClientService/index';
 
 type IResult = {
   isLoading: boolean;

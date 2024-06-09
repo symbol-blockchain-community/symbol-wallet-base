@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
-import { AccountController } from '@/controller/AccountController';
+// FIXME import { AccountController } from '@/controller/AccountController';
 import { WalletModel } from '@/models/AccountModel';
-import { StorageError } from '@/models/ErrorModels';
+// import { StorageError } from '@/models/ErrorModels';
 
 type ILoadWallets = {
   isLoading: boolean;
@@ -19,24 +19,27 @@ export function useLoadWallets(): ILoadWallets {
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    let unmounted = false;
+    // let unmounted = false;
     setIsLoading(true);
     setError(null);
-    AccountController.getWalletList()
-      .then((w) => {
-        if (unmounted) return;
-        setWallets([...w]);
-      })
-      .catch(() => {
-        if (unmounted) return;
-        setError(new StorageError('Failed to load Wallet.'));
-      })
-      .finally(() => {
-        if (unmounted) return;
-        setIsLoading(false);
-      });
+    // FIXME AccountController.getWalletList()
+    //   .then((w) => {
+    //     if (unmounted) return;
+    //     setWallets([...w]);
+    //   })
+    //   .catch(() => {
+    //     if (unmounted) return;
+    //     setError(new StorageError('Failed to load Wallet.'));
+    //   })
+    //   .finally(() => {
+    //     if (unmounted) return;
+    //     setIsLoading(false);
+    //   });
+    // FIXME
+    setWallets([]);
+    setIsLoading(false);
     return () => {
-      unmounted = true;
+      // unmounted = true;
     };
   }, []);
 

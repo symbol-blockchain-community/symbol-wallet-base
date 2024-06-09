@@ -7,7 +7,7 @@ import {
   TransactionInfoDTO,
   TransactionPage,
   TransactionRoutesApi,
-} from '@/services/NodeClientService';
+} from '@/services/NodeClientService/index';
 
 type Mode = 'confirmed' | 'unconfirmed' | 'partial';
 

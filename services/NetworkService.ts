@@ -6,7 +6,7 @@
 */
 import { InvalidValueError } from '@/models/ErrorModels';
 import { NetworkType } from '@/models/NetworkModels';
-import { Configuration, NodeRoutesApi } from '@/services/NodeClientService';
+import { Configuration, NodeRoutesApi } from '@/services/NodeClientService/index';
 import { STORAGE_KEYS } from '@/util/configs/storage-keys';
 import { AsyncStorage } from '@/util/storages/AsyncStorage';
 import { hexToStrNetworkType } from '@/util/symbol/network';

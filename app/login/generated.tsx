@@ -5,7 +5,7 @@ import * as Sharing from 'expo-sharing';
 import { useEffect, useState } from 'react';
 import { View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Toast from 'react-native-toast-message';
+import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
 import Avatar from '@/components/atom/Avatar';
 import Button from '@/components/atom/Button';

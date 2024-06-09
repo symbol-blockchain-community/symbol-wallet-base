@@ -1,4 +1,4 @@
-import { CameraView, useCameraPermissions, BarcodeScanningResult } from 'expo-camera/next';
+import { CameraView, useCameraPermissions, BarcodeScanningResult } from 'expo-camera';
 import * as React from 'react';
 import { Pressable, View, Text, Linking } from 'react-native';
 
@@ -58,7 +58,6 @@ export default function QRCodeReader({
             barcodeScannerSettings={{
               // @see https://docs.expo.dev/versions/latest/sdk/camera-next/#barcodesettings
               barcodeTypes: ['qr'],
-              interval: 500, // FIXME 効かない
             }}
             enableTorch={enableTorch}
             onBarcodeScanned={handleBarcodeScanned}

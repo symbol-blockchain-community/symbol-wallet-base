@@ -1,17 +1,10 @@
 /*
-
   Symbol Blockchain Account Address の発行、整形、バリデーション
-  以下の実装の多くは symbol-sdk@2 より移植されています。
-
 */
 
-import { sha3_256 } from 'js-sha3';
-import ripemd160 from 'ripemd160';
-
-import { NetworkType } from '@/models/NetworkModels';
-import { rawArrayCopy, rawArrayDeepEqual, rawArrayUint8View } from '@/util/symbol/array';
+import { PublicKey } from 'symbol-sdk';
+import { Network, SymbolFacade } from 'symbol-sdk/symbol';
 import { base32Decode, base32Encode } from '@/util/symbol/base32';
-import { strNetworkTypeToHexadecimal } from '@/util/symbol/network';
 
 /**
  * Manage Symbol Account Address
@@ -32,31 +25,10 @@ export class AddressService {
    * @param address
    * @param networkType
    */
-  private constructor(private readonly address: string) {}
-
-  private static uint8arrayUnresolvedAddressToEncodedAddress(uint8Array: Uint8Array): string {
-    const base32Chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
-
-    let bits = 0;
-    let value = 0;
-    let base32 = '';
-
-    for (let i = 0; i < uint8Array.length; i++) {
-      value = (value << 8) | uint8Array[i];
-      bits += 8;
-
-      while (bits >= 5) {
-        base32 += base32Chars[(value >>> (bits - 5)) & 0x1f];
-        bits -= 5;
-      }
-    }
-
-    if (bits > 0) {
-      base32 += base32Chars[(value << (5 - bits)) & 0x1f];
-    }
-
-    return base32;
+  private constructor(private readonly address: string) {
+    this.address = address;
   }
+
   /**
    * Converts a decoded address to an encoded address string.
    * @param {Uint8Array} decoded The decoded address.
@@ -83,62 +55,25 @@ export class AddressService {
     return base32Decode(`${encoded}A`).subarray(0, this.constants.sizes.addressDecoded);
   };
 
-  public static payloadToAddress = (payload: string): string => {
-    const _payload = payload.match(/.{1,2}/g);
-    if (_payload) {
-      const uint8Array = new Uint8Array(_payload.map((byte) => parseInt(byte, 16)));
-      const encodedAddress = this.uint8arrayUnresolvedAddressToEncodedAddress(
-        TransactionFactory.deserialize(uint8Array).recipientAddress.bytes
-      );
-      return encodedAddress;
-    } else {
-      throw new Error('入力が正しくありません。');
-    }
-  };
-
   /**
-   * Determines the validity of a decoded address.
-   * @param {Uint8Array} decoded The decoded address.
+   * Checks if an address string is valid and belongs to this network.
+   * @param {string} address
+   * @param {string} networkType Network name.
    * @returns {boolean} true if the decoded address is valid, false otherwise.
    */
-  public static isValidAddress = (decoded: Uint8Array): boolean => {
-    if (this.constants.sizes.addressDecoded !== decoded.length) {
-      return false;
-    }
-    const hash = sha3_256.create();
-    const checksumBegin = this.constants.sizes.addressDecoded - this.constants.sizes.checksum;
-    hash.update(decoded.subarray(0, checksumBegin));
-    const checksum = new Uint8Array(this.constants.sizes.checksum);
-    rawArrayCopy(checksum, rawArrayUint8View(hash.arrayBuffer()), this.constants.sizes.checksum);
-    return rawArrayDeepEqual(checksum, decoded.subarray(checksumBegin));
+  public static isValidAddress = (address: string, networkType: Network): boolean => {
+    return new SymbolFacade(networkType).network.isValidAddressString(address);
   };
 
   /**
-   * Create from private key
+   * Create from public key
    * @param publicKey - The account public key.
-   * @param networkType - The NEM network type.
+   * @param networkType - The Symbol network type.
    * @returns {Address}
    */
-  public static createFromPublicKey(publicKey: string, networkType: NetworkType): AddressService {
-    const uint8: Uint8Array = Buffer.from(publicKey, 'hex');
-    const publicKeyHash: ArrayBuffer = sha3_256.arrayBuffer(uint8);
-    const ripemdHash: Uint8Array = new ripemd160().update(Buffer.from(publicKeyHash)).digest();
-
-    // add network identifier byte
-    const decodedAddress: Uint8Array = new Uint8Array(AddressService.constants.sizes.addressDecoded);
-    decodedAddress[0] = strNetworkTypeToHexadecimal(networkType);
-    rawArrayCopy(decodedAddress, ripemdHash, AddressService.constants.sizes.ripemd160, 1);
-
-    // concatenate decodedAddress and the checksum of decodedAddress
-    const hash = sha3_256.arrayBuffer(decodedAddress.subarray(0, AddressService.constants.sizes.ripemd160 + 1));
-    rawArrayCopy(
-      decodedAddress,
-      rawArrayUint8View(hash),
-      AddressService.constants.sizes.checksum,
-      AddressService.constants.sizes.ripemd160 + 1
-    );
-    // convert to Base32 and create instance
-    return new AddressService(this.addressToBase32(decodedAddress));
+  public static createFromPublicKey(publicKey: string, networkType: Network): AddressService {
+    const address = new SymbolFacade(networkType).network.publicKeyToAddress(new PublicKey(publicKey));
+    return new AddressService(address.toString());
   }
 
   /**
@@ -168,12 +103,12 @@ export class AddressService {
    * @param {string} rawAddress The raw address string. Expected format TATNE7Q5BITMUTRRN6IB4I7FLSDRDWZA37JGO5Q
    * @returns {boolean} true if the raw address string is valid, false otherwise.
    */
-  public static isValidRawAddress = (rawAddress: string): boolean => {
+  public static isValidRawAddress = (rawAddress: string, networkType: Network): boolean => {
     if (!['A', 'I', 'Q', 'Y'].includes(rawAddress.slice(-1).toUpperCase())) {
       return false;
     }
     try {
-      return this.isValidAddress(this.stringToAddress(rawAddress));
+      return this.isValidAddress(this.stringToAddress(rawAddress).toString(), networkType);
     } catch {
       return false;
     }
