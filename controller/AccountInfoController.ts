@@ -1,7 +1,7 @@
 import { InvalidValueError } from '@/models/ErrorModels';
 import { Mosaic } from '@/models/MosaicModel';
 import { NetworkType } from '@/models/NetworkModels';
-//  FIXME import { AddressService } from '@/services/AddressService';
+import { AddressService } from '@/services/AddressService';
 import {
   AccountRoutesApi,
   Configuration,
@@ -26,8 +26,7 @@ export class AccountInfoController {
   public constructor(node: string, address: string) {
     // 引数の整形
     console.debug(`AccountInfoController: node ${node}, address ${address}`);
-    // FIXME this.address = AddressService.createFromRawAddress(address).plain();
-    this.address = '';
+    this.address = AddressService.createFromRawAddress(address).plain();
     const basePath = new URL(node).origin;
     // 各サービスの有効化
     const config = new Configuration({ basePath });
@@ -79,8 +78,7 @@ export class AccountInfoController {
     const splitedMosaics = splitCurrency(networkType, resolvedMosaics);
     return {
       accountType: accountInfoRow.account.accountType,
-      // address: AddressService.createFromEncoded(accountInfoRow.account.address).plain(),
-      address: '',
+      address: AddressService.createFromEncoded(accountInfoRow.account.address).plain(),
       importance: Number(accountInfoRow.account.importance),
       mosaics: splitedMosaics.mosaics,
       balance: splitedMosaics.currency.amount,
