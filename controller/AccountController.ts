@@ -35,7 +35,7 @@ export class AccountController {
    * 新規ニーモニックを作成し、SecureStorage へ保存する（ WALLET の初期作成時向け ）
    */
   public static async createNewNemomicAccount(networkType: NetworkType): Promise<AccountController> {
-    const privateKey: string = MnemonicService.createRandom().getChildPrivateKey(0);
+    const privateKey: string = MnemonicService.createRandom().getChildPrivateKey(0, networkType);
     const privateKeyModel = await PrivateKeyService.createFromPrivateKey(privateKey).setToStorage(networkType);
     const walletService = await WalletService.setNewFullWallet(privateKeyModel);
     return new AccountController(walletService.wallet);
@@ -50,7 +50,7 @@ export class AccountController {
     if (!mnemonic) {
       throw new InvalidValueError('No mnemonic is stored in the specified wallet');
     }
-    const privateKey = MnemonicService.generateFromPhrase(mnemonic.mnemonic).getChildPrivateKey(height);
+    const privateKey = MnemonicService.generateFromPhrase(mnemonic.mnemonic).getChildPrivateKey(height, networkType);
     const privateKeyModel = await PrivateKeyService.createFromPrivateKey(privateKey).setToStorage(networkType);
     const walletService = await WalletService.setNewFullWallet(privateKeyModel);
     return new AccountController(walletService.wallet);
