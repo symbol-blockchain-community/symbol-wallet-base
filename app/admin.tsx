@@ -14,8 +14,8 @@ import Loading from '@/components/atom/Loading';
 import Select from '@/components/atom/Select';
 import Switch from '@/components/atom/Switch';
 import Tabs from '@/components/atom/Tabs';
-// FIXME import { AccountController } from '@/controller/AccountController';
 import TextArea from '@/components/atom/Textarea';
+import { AccountController } from '@/controller/AccountController';
 import { STORAGE_KEYS } from '@/util/configs/storage-keys';
 import { AsyncStorage } from '@/util/storages/AsyncStorage';
 import { SecureStorage } from '@/util/storages/SecureStorage';
@@ -30,7 +30,7 @@ export default function Root(): React.JSX.Element {
         <View className='flex justify-start items-stretch gap-y-10 p-2 bg-background'>
           <Text className='font-bold'>このスクリーンは開発中に Atom Component 等を確認するための検証用です。</Text>
           <View className='flex flex-col space-y-4'>
-            {/* FIXME <Button onPress={() => AccountController.createNewPrivateKeyAccount('testnet')}>WALLET 設定追加</Button> */}
+            <Button onPress={() => AccountController.createNewPrivateKeyAccount('testnet')}>WALLET 設定追加</Button>
             <Button>WALLET 設定追加</Button>
             <Button onPress={() => new SecureStorage(STORAGE_KEYS.secure.ACCOUNT).resetSecretItem()}>
               WALLET 初期化

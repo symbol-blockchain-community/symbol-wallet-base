@@ -5,12 +5,14 @@
 
 */
 
-import { getRandomBytes, randomUUID } from 'expo-crypto';
+import { randomUUID } from 'expo-crypto';
+import { PrivateKey } from 'symbol-sdk';
+import { KeyPair } from 'symbol-sdk/symbol';
 
 import { PrivateKeyModel } from '@/models/AccountModel';
 import { InvalidValueError } from '@/models/ErrorModels';
 import { NetworkType } from '@/models/NetworkModels';
-// FIXME import { AddressService } from '@/services/AddressService';
+import { AddressService } from '@/services/AddressService';
 import { STORAGE_KEYS } from '@/util/configs/storage-keys';
 import { SecureStorage } from '@/util/storages/SecureStorage';
 
@@ -18,42 +20,25 @@ import { SecureStorage } from '@/util/storages/SecureStorage';
  * Manage Symbol Account PrivateKey
  */
 export class PrivateKeyService extends SecureStorage {
-  public static readonly KEY_LENGTH = 32;
   public privateKey: string;
   public publicKey: string;
 
-  private constructor(privateKey: Uint8Array) {
+  public constructor(privateKey: string) {
     super(STORAGE_KEYS.secure.PRIVATEKEY);
 
-    if (privateKey.length !== PrivateKeyService.KEY_LENGTH) {
-      throw Error(`private key has unexpected size: ${privateKey.length}`);
-    }
-
-    this.privateKey = Buffer.from(privateKey).toString('hex');
-    // FIXME const keypair = nacl.sign.keyPair.fromSeed(privateKey);
-    // FIXME this.publicKey = Buffer.from(keypair.publicKey).toString('hex');
-
-    this.publicKey = '';
+    const _privateKey: PrivateKey = new PrivateKey(privateKey);
+    this.privateKey = _privateKey.toString();
+    this.publicKey = new KeyPair(_privateKey).publicKey.toString();
   }
 
   /** アドレスを取得する */
-  // FIXME public getAddress(networkType: NetworkType): AddressService {
-  //   return AddressService.createFromPublicKey(this.publicKey, networkType);
-  // }
-  public getAddress(networkType: NetworkType) {
-    return null;
+  public getAddress(networkType: NetworkType): AddressService {
+    return AddressService.createFromPublicKey(this.publicKey, networkType);
   }
 
   /** ランダムな秘密鍵の発行し PrivateKeyService を作成する */
   public static generateNewPrivateKey(): PrivateKeyService {
-    const v = getRandomBytes(32);
-    return new PrivateKeyService(v);
-  }
-
-  /** 秘密鍵文字列より PrivateKeyService を作成する */
-  public static createFromPrivateKey(privateKey: string): PrivateKeyService {
-    const bytes = Buffer.from(privateKey, 'hex');
-    return new PrivateKeyService(bytes);
+    return new PrivateKeyService(PrivateKey.random().toString());
   }
 
   /** 指定された id の秘密鍵を SeucreStorage より削除する */
