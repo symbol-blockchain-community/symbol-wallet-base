@@ -6,17 +6,15 @@ import { Toast } from 'react-native-toast-message/lib/src/Toast';
 import { Card, CardFooter, CardHeader } from '@/components/atom/Card';
 import { useI18n } from '@/hooks/useI18n';
 import { WalletModel } from '@/models/AccountModel';
-// FIXNE import { AddressService } from '@/services/AddressService';
+import { AddressService } from '@/services/AddressService';
 
 export default function WalletAccountDetail(): JSX.Element {
   const { t } = useI18n();
   const params = useLocalSearchParams() as unknown as WalletModel;
-  // FIXME const address = AddressService.createFromPublicKey(params.publicKey, params.networkType);
-  const address = null as any;
+  const address = AddressService.createFromPublicKey(params.publicKey, params.networkType);
 
   const copyAddress = () => {
-    // FIXME Clipboard.setStringAsync(address.plain()).then(() => Toast.show({ text1: t('common.copied') }));
-    Clipboard.setStringAsync('').then(() => Toast.show({ text1: t('common.copied') }));
+    Clipboard.setStringAsync(address.plain()).then(() => Toast.show({ text1: t('common.copied') }));
   };
 
   return (

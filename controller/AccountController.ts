@@ -6,20 +6,15 @@
 
 */
 
-import { WalletModel } from '@/models/AccountModel';
+import { PrivateKeyModel, WalletModel } from '@/models/AccountModel';
 import { InvalidValueError } from '@/models/ErrorModels';
 import { NetworkType } from '@/models/NetworkModels';
-import { AddressService } from '@/services/AddressService';
 import { MnemonicService } from '@/services/MnemonicService';
 import { PrivateKeyService } from '@/services/PrivateKeyService';
 import { WalletService } from '@/services/WalletService';
 
 export class AccountController {
-  public address: AddressService;
-
-  private constructor(public wallet: WalletModel) {
-    this.address = AddressService.createFromPublicKey(wallet.publicKey, wallet.networkType);
-  }
+  private constructor(public wallet: WalletModel) {}
 
   /**
    * 新規秘密鍵を生成し、新たなアカウントを作成する。
@@ -36,7 +31,7 @@ export class AccountController {
    */
   public static async createNewNemomicAccount(networkType: NetworkType): Promise<AccountController> {
     const privateKey: string = MnemonicService.createRandom().getChildPrivateKey(0, networkType);
-    const privateKeyModel = await PrivateKeyService.createFromPrivateKey(privateKey).setToStorage(networkType);
+    const privateKeyModel: PrivateKeyModel = await new PrivateKeyService(privateKey).setToStorage(networkType);
     const walletService = await WalletService.setNewFullWallet(privateKeyModel);
     return new AccountController(walletService.wallet);
   }
@@ -51,7 +46,7 @@ export class AccountController {
       throw new InvalidValueError('No mnemonic is stored in the specified wallet');
     }
     const privateKey = MnemonicService.generateFromPhrase(mnemonic.mnemonic).getChildPrivateKey(height, networkType);
-    const privateKeyModel = await PrivateKeyService.createFromPrivateKey(privateKey).setToStorage(networkType);
+    const privateKeyModel = await new PrivateKeyService(privateKey).setToStorage(networkType);
     const walletService = await WalletService.setNewFullWallet(privateKeyModel);
     return new AccountController(walletService.wallet);
   }

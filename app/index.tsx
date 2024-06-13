@@ -7,7 +7,7 @@ import ButtonBase from '@/components/atom/ButtonBase';
 import { List } from '@/components/atom/List';
 import { useLoadWallets } from '@/hooks/useLoadWallets';
 import { WalletModel } from '@/models/AccountModel';
-// FIXME import { AddressService } from '@/services/AddressService';
+import { AddressService } from '@/services/AddressService';
 import { NotificationService } from '@/services/NotificationService';
 
 function Item({ item }: { item: WalletModel }) {
@@ -23,8 +23,7 @@ function Item({ item }: { item: WalletModel }) {
         <Text className='text-xs text-muted-foreground absolute top-2 right-4'>{item.networkType}</Text>
         <Text className='text-xl font-semibold'>{item.name}</Text>
         <Text className='text-base'>
-          {/* FIXME {AddressService.createFromPublicKey(item.publicKey, item.networkType).pretty()} */}
-          AddressService.createFromPublicKey(item.publicKey, item.networkType).pretty()
+          {AddressService.createFromPublicKey(item.publicKey, item.networkType).pretty()}
         </Text>
         {/* TODO: 暫定で固定値挿入 */}
         <Text className='text-2xl text-right'>{(100000).toLocaleString('ja') + ' xym'}</Text>

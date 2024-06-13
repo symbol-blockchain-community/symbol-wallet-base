@@ -6,22 +6,19 @@ import { Toast } from 'react-native-toast-message/lib/src/Toast';
 import ButtonBase from '@/components/atom/ButtonBase';
 import { Card } from '@/components/atom/Card';
 import { WalletModel } from '@/models/AccountModel';
-// FIXME import { AddressService } from '@/services/AddressService';
-// import { getExplorerUrl } from '@/util/symbol/network';
+import { AddressService } from '@/services/AddressService';
+import { getExplorerUrl } from '@/util/symbol/network';
 
 /**
  * Wallet の Account QR を表示する
  */
 export default function WalletsAccountQR(): JSX.Element {
   const params = useLocalSearchParams() as unknown as WalletModel;
-  // FIXME const address = AddressService.createFromPublicKey(params.publicKey, params.networkType);
-  // const address = null;
-  // FIXME const explorerURL: string = getExplorerUrl(params.networkType, 'accounts', address.plain());
-  const explorerURL: string = '';
+  const address = AddressService.createFromPublicKey(params.publicKey, params.networkType);
+  const explorerURL: string = getExplorerUrl(params.networkType, 'accounts', address.plain());
 
   const copyHandle = () => {
-    // FIXME Clipboard.setStringAsync(address.plain()).then(() => Toast.show({ text1: 'Copied' }));
-    Clipboard.setStringAsync('').then(() => Toast.show({ text1: 'Copied' }));
+    Clipboard.setStringAsync(address.plain()).then(() => Toast.show({ text1: 'Copied' }));
   };
 
   return (
@@ -39,8 +36,7 @@ export default function WalletsAccountQR(): JSX.Element {
         <View className='w-full'>
           <ButtonBase onPress={copyHandle}>
             <Text className='text-base font-semibold'>Address</Text>
-            {/* FIXME <Text className='text-sm text-muted-foreground'>{address.pretty()}</Text> */}
-            <Text className='text-sm text-muted-foreground'>--</Text>
+            <Text className='text-sm text-muted-foreground'>{address.pretty()}</Text>
           </ButtonBase>
         </View>
         <View className='w-full'>
