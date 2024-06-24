@@ -3,8 +3,9 @@
 */
 
 import { PublicKey } from 'symbol-sdk';
-import { Network, SymbolFacade } from 'symbol-sdk/symbol';
+import { SymbolFacade } from 'symbol-sdk/symbol';
 
+import { NetworkType } from '@/models/NetworkModels';
 import { base32Decode, base32Encode } from '@/util/symbol/base32';
 
 /**
@@ -62,7 +63,7 @@ export class AddressService {
    * @param {string} networkType Network name.
    * @returns {boolean} true if the decoded address is valid, false otherwise.
    */
-  public static isValidAddress = (address: string, networkType: Network): boolean => {
+  public static isValidAddress = (address: string, networkType: NetworkType): boolean => {
     return new SymbolFacade(networkType).network.isValidAddressString(address);
   };
 
@@ -72,7 +73,7 @@ export class AddressService {
    * @param networkType - The Symbol network type.
    * @returns {Address}
    */
-  public static createFromPublicKey(publicKey: string, networkType: Network): AddressService {
+  public static createFromPublicKey(publicKey: string, networkType: NetworkType): AddressService {
     const address = new SymbolFacade(networkType).network.publicKeyToAddress(new PublicKey(publicKey));
     return new AddressService(address.toString());
   }
@@ -104,7 +105,7 @@ export class AddressService {
    * @param {string} rawAddress The raw address string. Expected format TATNE7Q5BITMUTRRN6IB4I7FLSDRDWZA37JGO5Q
    * @returns {boolean} true if the raw address string is valid, false otherwise.
    */
-  public static isValidRawAddress = (rawAddress: string, networkType: Network): boolean => {
+  public static isValidRawAddress = (rawAddress: string, networkType: NetworkType): boolean => {
     if (!['A', 'I', 'Q', 'Y'].includes(rawAddress.slice(-1).toUpperCase())) {
       return false;
     }
