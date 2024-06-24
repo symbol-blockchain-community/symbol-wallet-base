@@ -1,4 +1,4 @@
-import { PrivateKey, Signature } from 'symbol-sdk';
+import { Signature } from 'symbol-sdk';
 import { descriptors, models, SymbolFacade, Address, Network, SymbolAccount } from 'symbol-sdk/symbol';
 
 import { NodeInfo } from '@/models/NetworkModels';
@@ -38,27 +38,15 @@ export class TransferTransactionService extends TransactionService {
       transferTransactionDescriptor,
       fromAccount.publicKey,
       options.maxFee || 100,
-      Number(this.facade.now().addHours(1).timestamp)
+      60 * 60 * 2 // 2H
     );
   }
 
   /**
    * MaxFee を試算する。 fee は事前に http://node-domain/network/fees/transaction より取得する。
    */
-  public static calcFee(rate: TTransactionFeeRate, fee: ITransactionFees, message?: string | Uint8Array): number {
-    const dummyFacade = new SymbolFacade(Network.MAINNET);
-    const dummyAccount = dummyFacade.createAccount(PrivateKey.random());
-
-    const transferTransactionDescriptor = this.createTransferTransactionDescriptor(dummyAccount.address, [], message);
-
-    const size = dummyFacade.createTransactionFromTypedDescriptor(
-      transferTransactionDescriptor,
-      dummyAccount.publicKey,
-      0,
-      0
-    ).size;
-
-    return this.calcTransactionFee(rate, fee, size);
+  public static calcFee(rate: TTransactionFeeRate, fee: ITransactionFees, transaction: models.Transaction): number {
+    return this.calcTransactionFee(rate, fee, transaction.size);
   }
 
   /** @overload 署名する */
