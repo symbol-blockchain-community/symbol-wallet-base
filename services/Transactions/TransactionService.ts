@@ -79,11 +79,8 @@ export class TransactionService {
 
     return await new Promise(function (resolve, reject) {
       const ws = new WebSocket(node.websocketUrl);
-      setInterval(() => {
-        console.log('WebSocket readyState:', ws.readyState);
-      }, 1000);
+
       ws.onopen = () => {
-        ws.ping();
         // アナウンスは WebSocket を開いた後でなければならない
         transactionRoutesApi
           .announceTransaction({
