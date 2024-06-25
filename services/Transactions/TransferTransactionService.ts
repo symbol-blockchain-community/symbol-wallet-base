@@ -1,7 +1,7 @@
 import { Signature } from 'symbol-sdk';
-import { descriptors, models, SymbolFacade, Address, Network, SymbolAccount } from 'symbol-sdk/symbol';
+import { descriptors, models, SymbolFacade, Address, SymbolAccount } from 'symbol-sdk/symbol';
 
-import { NodeInfo } from '@/models/NetworkModels';
+import { NetworkType, NodeInfo } from '@/models/NetworkModels';
 import {
   ITransactionFees,
   TTransactionFeeRate,
@@ -23,7 +23,7 @@ export class TransferTransactionService extends TransactionService {
   private facade: SymbolFacade;
 
   /** TransferTransaction を作成する */
-  public constructor(networkType: Network, fromAccount: SymbolAccount, options: TransferTransactionOption) {
+  public constructor(networkType: NetworkType, fromAccount: SymbolAccount, options: TransferTransactionOption) {
     super(networkType);
 
     this.facade = new SymbolFacade(networkType);

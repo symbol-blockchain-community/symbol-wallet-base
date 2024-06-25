@@ -1,8 +1,8 @@
 import { PrivateKey, Signature } from 'symbol-sdk';
-import { KeyPair, models, SymbolFacade, Network } from 'symbol-sdk/symbol';
+import { KeyPair, models, SymbolFacade } from 'symbol-sdk/symbol';
 
 import { ConnectionError, InvalidValueError } from '@/models/ErrorModels';
-import { NetworkProperty, NodeInfo } from '@/models/NetworkModels';
+import { NetworkProperty, NetworkType, NodeInfo } from '@/models/NetworkModels';
 import { AddressService } from '@/services/AddressService';
 import { Configuration, TransactionRoutesApi } from '@/services/NodeClientService';
 import { NETWORK_PROPERTIES } from '@/util/configs/network-properties';
@@ -26,10 +26,10 @@ export interface TransactionOption {
 
 export class TransactionService {
   protected networkPropeties: NetworkProperty;
-  protected network: Network;
+  protected network: NetworkType;
 
-  protected constructor(network: Network) {
-    this.networkPropeties = NETWORK_PROPERTIES[network.name as 'testnet' | 'mainnet'];
+  protected constructor(network: NetworkType) {
+    this.networkPropeties = NETWORK_PROPERTIES[network];
     this.network = network;
   }
 
