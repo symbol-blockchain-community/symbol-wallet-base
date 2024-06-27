@@ -28,7 +28,7 @@ export class NamespaceDefinitionService extends TransactionService {
       Deadline.create(this.networkPropeties.epochAdjustment, options.deadlineHour || 2),
       options.namespaceName,
       UInt64.fromUint(options.duration),
-      this.hexNetworkType
+      this.network
     );
   }
 

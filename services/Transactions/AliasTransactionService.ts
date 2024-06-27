@@ -34,7 +34,7 @@ export class AliasService extends TransactionService {
         options.linkActionType === 'link' ? AliasAction.Link : AliasAction.Unlink,
         NamespaceId.createFromEncoded(options.namespaceId),
         Address.createFromRawAddress(options.targetAddress),
-        this.hexNetworkType
+        this.network
       ).setMaxFee(100);
     } else if (options.linkTargetType === 'mosaic') {
       if (!options.targetMosaicId) {
@@ -45,7 +45,7 @@ export class AliasService extends TransactionService {
         options.linkActionType === 'link' ? AliasAction.Link : AliasAction.Unlink,
         NamespaceId.createFromEncoded(options.namespaceId),
         new MosaicId(options.targetMosaicId),
-        this.hexNetworkType
+        this.network
       ).setMaxFee(100);
     } else {
       throw new InvalidValueError(`linkTargetType is invalid: ${options.linkTargetType}`);

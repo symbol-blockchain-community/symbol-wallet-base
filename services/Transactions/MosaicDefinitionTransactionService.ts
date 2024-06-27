@@ -38,7 +38,7 @@ export class MosaicDefinitionService extends TransactionService {
   private constructor(networkType: NetworkType, options: MosaicDefinitionOption) {
     super(networkType);
     const nonce = MosaicNonce.createRandom();
-    const publicAccount = PublicAccount.createFromPublicKey(options.ownerPublickey, this.hexNetworkType);
+    const publicAccount = PublicAccount.createFromPublicKey(options.ownerPublickey, this.network);
 
     const defineTx = MosaicDefinitionTransaction.create(
       undefined,
@@ -47,7 +47,7 @@ export class MosaicDefinitionService extends TransactionService {
       MosaicFlags.create(options.supplyMutable, options.transferable, options.restrictable, options.revokable),
       options.divisibility,
       UInt64.fromUint(options.duration),
-      this.hexNetworkType
+      this.network
     ).setMaxFee(options.maxFee || 100) as MosaicDefinitionTransaction;
 
     const supplyChainTx = MosaicSupplyChangeTransaction.create(
@@ -55,13 +55,13 @@ export class MosaicDefinitionService extends TransactionService {
       defineTx.mosaicId,
       MosaicSupplyChangeAction.Increase,
       UInt64.fromUint(options.numberOfIssued),
-      this.hexNetworkType
+      this.network
     );
 
     this.transaction = AggregateTransaction.createComplete(
       Deadline.create(this.networkPropeties.epochAdjustment, options.deadlineHour || 2),
       [defineTx.toAggregate(publicAccount), supplyChainTx.toAggregate(publicAccount)],
-      this.hexNetworkType,
+      this.network,
       []
     );
   }
