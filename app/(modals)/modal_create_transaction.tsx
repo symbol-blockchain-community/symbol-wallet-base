@@ -10,21 +10,24 @@ import { IconDown } from '@/components/atom/Icons';
 import Input from '@/components/atom/Input';
 import { List, ListItem } from '@/components/atom/List';
 import Loading from '@/components/atom/Loading';
-import { useGetCurrentBalance } from '@/hooks/useGetCurrentBalance';
+// import { useGetCurrentBalance } from '@/hooks/useGetCurrentBalance';
 import { useLoadCurrentNetwork } from '@/hooks/useLoadCurrentNetwork';
-import { useLoadWallets } from '@/hooks/useLoadWallets';
+// import { useLoadWallets } from '@/hooks/useLoadWallets';
 import { WalletModel } from '@/models/AccountModel';
 import { NetworkType } from '@/models/NetworkModels';
-import { AddressService } from '@/services/AddressService';
+// import { AddressService } from '@/services/AddressService';
 
 function useHooks() {
-  const loadWallets = useLoadWallets();
+  // const loadWallets = useLoadWallets();
   const loadNetworks = useLoadCurrentNetwork();
 
   return {
-    isLoading: loadWallets.isLoading || loadNetworks.isLoading,
-    error: loadWallets.error || loadNetworks.error,
-    wallets: loadWallets.wallets.filter((e) => e.networkType === loadNetworks.network?.network.networkType),
+    // isLoading: loadWallets.isLoading || loadNetworks.isLoading,
+    // error: loadWallets.error || loadNetworks.error,
+    // wallets: loadWallets.wallets.filter((e) => e.networkType === loadNetworks.network?.network.networkType),
+    isLoading: false,
+    error: null,
+    wallets: [],
     connection: loadNetworks.network?.connection,
     restGateway: loadNetworks.network?.network.restGatewayUrl,
     networkType: loadNetworks.network?.network.networkType,
@@ -38,8 +41,10 @@ function AccountBalanceView({
   onPress,
   ...props
 }: { publicKey?: string; node?: string; networkType?: NetworkType } & PressableProps): JSX.Element {
-  const address = publicKey && networkType ? AddressService.createFromPublicKey(publicKey, networkType) : null;
-  const { isLoading, error, balance } = useGetCurrentBalance(address?.plain() || null, node || null);
+  const address: any = '';
+  const { isLoading, error, balance } = { isLoading: false, error: null, balance: 0 };
+  // const address = publicKey && networkType ? AddressService.createFromPublicKey(publicKey, networkType) : null;
+  // const { isLoading, error, balance } = useGetCurrentBalance(address?.plain() || null, node || null);
 
   // 表記の調整。小数点以下の表示桁数指定
   const amount = balance.toLocaleString('ja', {
@@ -137,7 +142,7 @@ export default function CreateTransactionPage(): JSX.Element {
             >
               <ListItem>
                 <Text>
-                  {networkType ? AddressService.createFromPublicKey(item.publicKey, networkType).pretty() : '--'}
+                  {/* {networkType ? AddressService.createFromPublicKey(item.publicKey, networkType).pretty() : '--'} */}
                 </Text>
               </ListItem>
             </ButtonBase>
