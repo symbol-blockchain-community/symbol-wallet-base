@@ -1,4 +1,3 @@
-import '../shim';
 import { usePathname, Stack, Link, SplashScreen } from 'expo-router';
 import { useEffect } from 'react';
 import { View } from 'react-native';
