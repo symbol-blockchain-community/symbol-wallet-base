@@ -37,6 +37,7 @@ export type TempType = {
 
 export default function Root(): React.JSX.Element {
   const navigation = useNavigation();
+  const router = useRouter();
   const { isLoading, wallets } = useLoadWallets();
   const [isWalletsInfoReload, setIsWalletsInfoReload] = React.useState<boolean>(false);
 
@@ -47,6 +48,14 @@ export default function Root(): React.JSX.Element {
       routes: state.routes.map((route) => ({ ...route, state: undefined })),
     });
   }, []);
+
+  React.useEffect(() => {
+    // ウォレットが保存されていない場合は作成ページへ遷移
+    if (!isLoading && wallets.length === 0) {
+      router.push('/login');
+    }
+    // TODO PIN or 生体認証
+  }, [isLoading, wallets]);
 
   const testPushNotification = async () => {
     await new NotificationService().sendPushNotification('test', 'hello world', { key: 'test' });
