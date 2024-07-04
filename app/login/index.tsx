@@ -53,6 +53,9 @@ export default function LoginRoot(): React.JSX.Element {
         <Button variant='link' onPress={toggleLanguage}>
           {t('pages.login.index.language')}
         </Button>
+        <Button variant='link' onPress={() => router.push('/_sitemap')}>
+          サイトマップ
+        </Button>
       </View>
     </SafeAreaView>
   );

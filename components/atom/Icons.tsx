@@ -100,3 +100,7 @@ export function IconRadioButtonOn({ size = 28, isOutline = true, ...props }: Pro
 export function IconRadioButtonOff({ size = 28, isOutline = true, ...props }: Props): JSX.Element {
   return <IonIcons name={isOutline ? 'radio-button-off-outline' : 'radio-button-off'} size={size} {...props} />;
 }
+
+export function IconRefresh({ size = 28, isOutline = true, ...props }: Props): JSX.Element {
+  return <IonIcons name={isOutline ? 'refresh-outline' : 'refresh'} size={size} {...props} />;
+}

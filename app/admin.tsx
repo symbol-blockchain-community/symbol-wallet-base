@@ -122,6 +122,7 @@ export default function Root(): React.JSX.Element {
               <Icons.IconSend style={{ width: 50 }} />
               <Icons.IconSettings style={{ width: 50 }} />
               <Icons.IconWallet style={{ width: 50 }} />
+              <Icons.IconRefresh style={{ width: 50 }} />
             </View>
           </View>
           <View>
