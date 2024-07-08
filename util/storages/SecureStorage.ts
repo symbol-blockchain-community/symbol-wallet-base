@@ -17,7 +17,7 @@ export class SecureStorage {
 
   public async setSecretItem(value: string): Promise<void> {
     try {
-      await SecureStore.setItemAsync(this.key, value);
+      await SecureStore.setItemAsync(this.key, value, { requireAuthentication: true });
     } catch (error) {
       throw new Error(`Error when trying to set item in SecureStore: ${error}`);
     }
