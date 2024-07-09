@@ -29,7 +29,7 @@ function Item({ item, setAccounts }: ItemProps): JSX.Element {
   const { state } = useStateContext();
   const { networkType } = state;
 
-  const handleChenge = () => {
+  const handleChange = () => {
     setAccounts((accounts) => {
       const newAccounts = [...accounts];
       newAccounts[item.id].checked = !newAccounts[item.id].checked;
@@ -38,9 +38,9 @@ function Item({ item, setAccounts }: ItemProps): JSX.Element {
   };
 
   return (
-    <Pressable onPress={handleChenge}>
+    <Pressable onPress={handleChange}>
       <ListItem className='max-w-full space-x-3'>
-        <Checkbox value={item.checked} onTouchStart={handleChenge} />
+        <Checkbox value={item.checked} onTouchStart={handleChange} />
         <View className='pr-3'>
           <Text className='text-base'>{item.privateKey.getAddress(networkType).pretty()}</Text>
         </View>
@@ -85,8 +85,6 @@ export default function LoginImported(): JSX.Element {
         }),
       ]);
       setOffset(end);
-    } catch (error) {
-      throw error;
     } finally {
       setIsCreating(false);
     }
