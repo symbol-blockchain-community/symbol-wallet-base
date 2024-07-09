@@ -73,7 +73,7 @@ export class MnemonicService extends SecureStorage {
   }
 
   /** ニーモニックに紐づく秘密鍵を指定した height まで取得する */
-  public getChildPrivateKeies(start: number = 0, end: number = 30, networkType: NetworkType): string[] {
+  public getChildPrivateKeys(start: number = 0, end: number = 30, networkType: NetworkType): string[] {
     if (start >= end) {
       throw new Error('Invalid range: start must be less than end');
     }
