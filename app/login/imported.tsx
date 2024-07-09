@@ -100,12 +100,11 @@ export default function LoginImported(): JSX.Element {
   const handleComplete = async () => {
     // 選択されたアカウントをストレージへ保管する
     const selected = accounts.filter((e) => e.checked);
-    await Promise.all(
-      selected.map(async (account) => {
-        const model = await account.privateKey.setToStorage(networkType);
-        WalletService.setNewFullWallet(model);
-      })
-    );
+
+    for (const account of selected) {
+      const model = await account.privateKey.setToStorage(networkType);
+      await WalletService.setNewFullWallet(model);
+    }
     router.push('/login/complete');
   };
 
