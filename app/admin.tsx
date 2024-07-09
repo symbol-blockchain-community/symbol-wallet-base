@@ -12,7 +12,6 @@ import * as Icons from '@/components/atom/Icons';
 import Input from '@/components/atom/Input';
 import { List, ListItem } from '@/components/atom/List';
 import Loading from '@/components/atom/Loading';
-import Pre from '@/components/atom/Pre';
 import Select from '@/components/atom/Select';
 import Switch from '@/components/atom/Switch';
 import Tabs from '@/components/atom/Tabs';
@@ -58,6 +57,34 @@ export default function Root(): React.JSX.Element {
             <Button>WALLET 設定追加</Button>
             <Button onPress={() => new SecureStorage(STORAGE_KEYS.secure.ACCOUNT).resetSecretItem()}>
               WALLET 初期化
+            </Button>
+            <Button
+              onPress={async () => {
+                // ニーモニック削除
+                const mnSecureStorage = new SecureStorage(STORAGE_KEYS.secure.MNEMONIC);
+                const mnSecureData = JSON.parse((await mnSecureStorage.getSecretItem()) || '');
+                if (mnSecureData) {
+                  await mnSecureStorage.resetSecretItem();
+                }
+
+                // SecureStorage から全ての秘密鍵を削除
+                const secureStorage = new SecureStorage(STORAGE_KEYS.secure.PRIVATEKEY);
+                const secureData = JSON.parse((await secureStorage.getSecretItem()) || '[]');
+                console.debug('secureData:', secureData);
+                if (secureData.length > 0) {
+                  await secureStorage.resetSecretItem();
+                }
+
+                // AsyncStorage から全てのウォレットを削除
+                const asyncStorage = new AsyncStorage(STORAGE_KEYS.async.WALLET);
+                const asyncData = JSON.parse((await asyncStorage.getItem()) || '[]');
+                console.debug('asyncData:', asyncData);
+                if (asyncData.length > 0) {
+                  await asyncStorage.removeItem();
+                }
+              }}
+            >
+              ニーモニック/WALLET 初期化
             </Button>
             <Button onPress={() => new AsyncStorage(STORAGE_KEYS.async.NETWORK).removeItem()}>NW 設定初期化</Button>
             <Button onPress={() => new AsyncStorage(STORAGE_KEYS.async.NODESTATISTICS).removeItem()}>
