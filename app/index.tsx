@@ -50,11 +50,11 @@ export default function Root(): React.JSX.Element {
   }, []);
 
   React.useEffect(() => {
+    if (isLoading) return;
     // ウォレットが保存されていない場合は作成ページへ遷移
-    if (!isLoading && wallets.length === 0) {
+    if (wallets.length === 0) {
       router.push('/login');
     }
-    // TODO PIN or 生体認証
   }, [isLoading, wallets]);
 
   const testPushNotification = async () => {
