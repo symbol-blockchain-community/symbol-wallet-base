@@ -1,3 +1,4 @@
+import RNAsyncStorage from '@react-native-async-storage/async-storage';
 import { Link } from 'expo-router';
 import * as React from 'react';
 import { View, Text, ScrollView } from 'react-native';
@@ -11,6 +12,7 @@ import * as Icons from '@/components/atom/Icons';
 import Input from '@/components/atom/Input';
 import { List, ListItem } from '@/components/atom/List';
 import Loading from '@/components/atom/Loading';
+import Pre from '@/components/atom/Pre';
 import Select from '@/components/atom/Select';
 import Switch from '@/components/atom/Switch';
 import Tabs from '@/components/atom/Tabs';
@@ -20,10 +22,32 @@ import { STORAGE_KEYS } from '@/util/configs/storage-keys';
 import { AsyncStorage } from '@/util/storages/AsyncStorage';
 import { SecureStorage } from '@/util/storages/SecureStorage';
 
+const getAllAsyncStorageData = async () => {
+  try {
+    const keys = await RNAsyncStorage.getAllKeys();
+    const result = await RNAsyncStorage.multiGet(keys);
+    return Object.fromEntries(result);
+  } catch (error) {
+    console.error('Error getting AsyncStorage data:', error);
+    return {};
+  }
+};
+
 /**
  * このスクリーンは開発中に Atom Component 等を確認するための検証用です。
  */
 export default function Root(): React.JSX.Element {
+  const [storageData, setStorageData] = React.useState<Record<string, string | null>>({});
+
+  const loadAsyncStorageData = async () => {
+    const data = await getAllAsyncStorageData();
+    setStorageData(data);
+  };
+
+  React.useEffect(() => {
+    loadAsyncStorageData();
+  }, []);
+
   return (
     <View className='flex-1'>
       <ScrollView>
@@ -158,6 +182,19 @@ export default function Root(): React.JSX.Element {
           <View>
             <Text>Toast</Text>
             <Button onPress={() => Toast.show({ type: 'success', text1: 'Success' })}>test</Button>
+          </View>
+        </View>
+        <View>
+          <Text>AsyncStorage</Text>
+          <View>
+            {Object.keys(storageData)
+              .sort()
+              .map((key) => (
+                <Card key={key}>
+                  <CardHeader>{key}</CardHeader>
+                  <CardContent>{storageData[key]}</CardContent>
+                </Card>
+              ))}
           </View>
         </View>
       </ScrollView>
