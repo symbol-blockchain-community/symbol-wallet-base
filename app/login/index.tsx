@@ -1,10 +1,12 @@
 import { useRouter } from 'expo-router';
+import { useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import Avatar from '@/components/atom/Avatar';
 import Button from '@/components/atom/Button';
 import { useI18n } from '@/hooks/useI18n';
+import { MnemonicService } from '@/services/MnemonicService';
 
 export default function LoginRoot(): React.JSX.Element {
   const { t, locale, setLocale } = useI18n();
@@ -26,6 +28,14 @@ export default function LoginRoot(): React.JSX.Element {
     const lang = locale === 'en' ? 'ja' : 'en';
     setLocale(lang);
   };
+
+  useEffect(() => {
+    // ニーモニックフレーズが保存済みの場合はアドレス選択へ
+    MnemonicService.getFromStorage().then((value) => {
+      if (!value) return;
+      router.push('/login/imported');
+    });
+  }, []);
 
   return (
     <SafeAreaView className='flex-1 flex flex-col items-center p-6'>
