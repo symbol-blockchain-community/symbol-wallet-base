@@ -1,3 +1,4 @@
+import * as Device from 'expo-device';
 import * as SecureStore from 'expo-secure-store';
 
 export class SecureStorage {
@@ -9,7 +10,11 @@ export class SecureStorage {
 
   public async getSecretItem(): Promise<string | null> {
     try {
-      return (await SecureStore.getItemAsync(this.key)) as string | null;
+      if (Device.isDevice) {
+        return (await SecureStore.getItemAsync(this.key, { requireAuthentication: true })) as string | null;
+      } else {
+        return (await SecureStore.getItemAsync(this.key)) as string | null;
+      }
     } catch (error) {
       throw new Error(`Error when trying to get item from SecureStore: ${error}`);
     }
@@ -17,15 +22,24 @@ export class SecureStorage {
 
   public async setSecretItem(value: string): Promise<void> {
     try {
-      await SecureStore.setItemAsync(this.key, value, { requireAuthentication: true });
+      if (Device.isDevice) {
+        await SecureStore.setItemAsync(this.key, value, { requireAuthentication: true });
+      } else {
+        await SecureStore.setItemAsync(this.key, value);
+      }
     } catch (error) {
+      console.error(error);
       throw new Error(`Error when trying to set item in SecureStore: ${error}`);
     }
   }
 
   public async resetSecretItem(): Promise<void> {
     try {
-      await SecureStore.deleteItemAsync(this.key);
+      if (Device.isDevice) {
+        await SecureStore.deleteItemAsync(this.key, { requireAuthentication: true });
+      } else {
+        await SecureStore.deleteItemAsync(this.key);
+      }
     } catch (error) {
       throw new Error(`Error when trying to remove item from SecureStore: ${error}`);
     }

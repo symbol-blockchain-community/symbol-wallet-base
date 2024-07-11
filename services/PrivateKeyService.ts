@@ -25,7 +25,6 @@ export class PrivateKeyService extends SecureStorage {
 
   public constructor(privateKey: string) {
     super(STORAGE_KEYS.secure.PRIVATEKEY);
-
     const _privateKey: PrivateKey = new PrivateKey(privateKey);
     this.privateKey = _privateKey.toString();
     this.publicKey = new KeyPair(_privateKey).publicKey.toString();

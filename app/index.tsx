@@ -2,13 +2,11 @@ import { Link, useNavigation, useRouter } from 'expo-router';
 import * as React from 'react';
 import { View, Text } from 'react-native';
 
-import Button from '@/components/atom/Button';
 import ButtonBase from '@/components/atom/ButtonBase';
 import { List } from '@/components/atom/List';
 import { useLoadWallets } from '@/hooks/useLoadWallets';
 import { WalletModel } from '@/models/AccountModel';
 import { AddressService } from '@/services/AddressService';
-import { NotificationService } from '@/services/NotificationService';
 
 function Item({ item }: { item: WalletModel }) {
   const router = useRouter();
@@ -48,10 +46,6 @@ export default function Root(): React.JSX.Element {
     });
   }, []);
 
-  const testPushNotification = async () => {
-    await new NotificationService().sendPushNotification('test', 'hello world', { key: 'test' });
-  };
-
   const reloadAccountInfo = () => {
     setIsWalletsInfoReload(true);
     try {
@@ -72,7 +66,6 @@ export default function Root(): React.JSX.Element {
           <Link href='/_sitemap' className='text-blue-700 underline text-center py-10 text-lg'>
             開発用 - サイトマップへ
           </Link>
-          <Button onPress={testPushNotification}>tset</Button>
           <List
             items={wallets}
             renderItem={(item) => <Item item={item} />}

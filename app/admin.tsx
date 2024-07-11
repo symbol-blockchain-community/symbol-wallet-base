@@ -31,10 +31,6 @@ export default function Root(): React.JSX.Element {
           <Text className='font-bold'>このスクリーンは開発中に Atom Component 等を確認するための検証用です。</Text>
           <View className='flex flex-col space-y-4'>
             <Button onPress={() => AccountController.createNewPrivateKeyAccount('testnet')}>WALLET 設定追加</Button>
-            <Button>WALLET 設定追加</Button>
-            <Button onPress={() => new SecureStorage(STORAGE_KEYS.secure.ACCOUNT).resetSecretItem()}>
-              WALLET 初期化
-            </Button>
             <Button onPress={() => new AsyncStorage(STORAGE_KEYS.async.NETWORK).removeItem()}>NW 設定初期化</Button>
             <Button onPress={() => new AsyncStorage(STORAGE_KEYS.async.NODESTATISTICS).removeItem()}>
               統計サーバーキャッシュ削除
