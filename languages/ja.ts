@@ -15,6 +15,9 @@ const ja = {
     importance: '重要度',
     next: '次へ',
     copied: 'コピーしました',
+    loadMore: '更に読み込む',
+    receive: '受信',
+    send: '送信',
   },
   pages: {
     layout: {
@@ -90,6 +93,14 @@ const ja = {
       enableCamera: 'カメラを有効化',
       cameraDisabled: 'カメラが無効になっています。設定画面よりカメラの使用を許可して下さい。',
       openSettings: '設定を開く',
+    },
+  },
+  organisms: {
+    ReceivedTransactionHistory: {
+      noTransactionHistory: 'トランザクション履歴はありません。',
+    },
+    SendTransactionHistory: {
+      noTransactionHistory: 'トランザクション履歴はありません。',
     },
   },
 };

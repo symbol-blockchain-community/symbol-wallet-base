@@ -86,7 +86,8 @@ export function useTransactionHistory(
       }
       const body = (await res.raw.json()) as TransactionPage;
 
-      console.debug(`useTransactionSearch: search result, ${body.data.length}, ${node}, ${JSON.stringify(query)}`);
+      // console.debug(`useTransactionSearch: search result, ${body.data.length}, ${node}, ${JSON.stringify(query)}`);
+      console.debug(`useTransactionSearch: search result,  ${JSON.stringify(body)}`);
 
       setTransactions((prev) =>
         pageNumber === 1 ? { [pageNumber.toString()]: body.data } : { ...prev, [pageNumber.toString()]: body.data }
