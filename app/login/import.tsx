@@ -23,11 +23,11 @@ export default function LoginImport(): JSX.Element {
     }
   };
 
-  const handleComplete = () => {
+  const handleComplete = async () => {
     try {
       const mnemonic = MnemonicService.generateFromPhrase(inputMnemonic);
       // ニーモニックを解析し、問題がなければ Secure Storage へ格納する
-      mnemonic.replaceToStorage();
+      await mnemonic.replaceToStorage();
       router.push('/login/imported');
     } catch (error: any) {
       Toast.show({ type: 'error', text1: error.message });

@@ -2,7 +2,7 @@ import * as Clipboard from 'expo-clipboard';
 import { writeAsStringAsync, deleteAsync, documentDirectory } from 'expo-file-system';
 import { useRouter } from 'expo-router';
 import * as Sharing from 'expo-sharing';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Toast } from 'react-native-toast-message/lib/src/Toast';
@@ -18,12 +18,13 @@ export default function LoginGenerate(): React.JSX.Element {
   const { t } = useI18n();
   const router = useRouter();
   const [checked, setChecked] = useState<boolean>(false);
-  const [mnemonicService, setMnemonicService] = useState<MnemonicService>(MnemonicService.createRandom());
+  const [mnemonicService, setMnemonicService] = useState<MnemonicService>();
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    if (!mnemonicService) return;
     if (checked && mnemonicService.mnemonic) {
       // SecureStorageに保存
-      mnemonicService.replaceToStorage();
+      await mnemonicService.replaceToStorage();
       // ウォレット選択画面に移動
       router.push('/login/imported');
     } else {
@@ -38,6 +39,7 @@ export default function LoginGenerate(): React.JSX.Element {
   };
 
   const handleCopy = async () => {
+    if (!mnemonicService) return;
     await Clipboard.setStringAsync(mnemonicService.mnemonic);
     Toast.show({ text1: t('common.copied') });
   };
@@ -45,6 +47,10 @@ export default function LoginGenerate(): React.JSX.Element {
   const handleRefresh = () => {
     setMnemonicService(MnemonicService.createRandom());
   };
+
+  React.useEffect(() => {
+    setMnemonicService(MnemonicService.createRandom());
+  }, []);
 
   return (
     <SafeAreaView className='flex-1 flex flex-col items-center p-6'>
@@ -65,7 +71,11 @@ export default function LoginGenerate(): React.JSX.Element {
               <IconRefresh size={20} />
             </Button>
           </View>
-          <TextArea readOnly value={mnemonicService.mnemonic} className='text-lg tracking-wider p-8 text-primary' />
+          {mnemonicService && (
+            <>
+              <TextArea readOnly value={mnemonicService.mnemonic} className='text-lg tracking-wider p-8 text-primary' />
+            </>
+          )}
         </View>
       </View>
       <Button variant='default' className='w-full max-w-sm mt-auto' onPress={handleSubmit}>
