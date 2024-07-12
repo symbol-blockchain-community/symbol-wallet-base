@@ -7,7 +7,7 @@ import ButtonBase from '@/components/atom/ButtonBase';
 import { IconDown } from '@/components/atom/Icons';
 import { List, ListItem } from '@/components/atom/List';
 import { useI18n } from '@/hooks/useI18n';
-import { useTransactionHistory } from '@/hooks/useTransactionSearch';
+import { useTransactionHistory } from '@/hooks/useTransactionHistory';
 import { NetworkType } from '@/models/NetworkModels';
 import { NETWORK_PROPERTIES } from '@/util/configs/network-properties';
 import { getExplorerUrl } from '@/util/symbol/network';

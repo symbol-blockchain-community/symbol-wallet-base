@@ -5,7 +5,7 @@ import { View, Text } from 'react-native';
 import ButtonBase from '@/components/atom/ButtonBase';
 import { IconDown } from '@/components/atom/Icons';
 import { List, ListItem } from '@/components/atom/List';
-import { useTransactionHistory } from '@/hooks/useTransactionSearch';
+import { useTransactionHistory } from '@/hooks/useTransactionHistory';
 import { getExplorerUrl } from '@/util/symbol/network';
 
 interface Props {
