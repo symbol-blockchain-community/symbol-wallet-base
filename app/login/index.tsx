@@ -33,7 +33,7 @@ export default function LoginRoot(): React.JSX.Element {
     // ニーモニックフレーズが保存済みの場合はアドレス選択へ
     MnemonicService.getFromStorage().then((value) => {
       if (!value) return;
-      router.push('/login/imported');
+      router.replace('/login/imported');
     });
   }, []);
 
@@ -62,9 +62,6 @@ export default function LoginRoot(): React.JSX.Element {
         </Button>
         <Button variant='link' onPress={toggleLanguage}>
           {t('pages.login.index.language')}
-        </Button>
-        <Button variant='link' onPress={() => router.push('/_sitemap')}>
-          サイトマップ
         </Button>
       </View>
     </SafeAreaView>
