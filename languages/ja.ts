@@ -17,6 +17,12 @@ const ja = {
     copied: 'コピーしました',
   },
   pages: {
+    layout: {
+      wallet: {
+        title: 'ウォレット詳細',
+        header_back_title: '戻る',
+      },
+    },
     login: {
       index: {
         remark: 'アプリを利用する場合、規約に同意頂いたものと致します',
@@ -62,7 +68,12 @@ const ja = {
     },
     wallet: {
       layout: {
+        home_tab_name: 'ホーム',
         transactions_tab_name: '履歴',
+        qr_tab_name: 'QR',
+      },
+      tabsHome: {
+        owned_mosaics: '所有モザイク',
       },
       index: {},
       transactions: {},
