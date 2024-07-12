@@ -66,7 +66,7 @@ export function useGetCurrentBalance(address: string | null, node: string | null
     return () => {
       unmounted = true;
     };
-  }, [address]);
+  }, [address, node]);
 
   const refresh = async () => {
     if (controller === null) return;
