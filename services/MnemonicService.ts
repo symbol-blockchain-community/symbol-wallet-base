@@ -32,7 +32,8 @@ export class MnemonicService extends SecureStorage {
   /** ローカルストレージに保存されたニーモニックを返却する */
   public static async getFromStorage(): Promise<MnemonicModel | null> {
     const storage = new SecureStorage(STORAGE_KEYS.secure.MNEMONIC);
-    return JSON.parse((await storage.getSecretItem()) || 'null');
+    // NOTE wallet-baseでは単一のニーモニックのみ対応
+    return JSON.parse((await storage.getSecretItem()) || '[null]')[0];
   }
 
   /** ニーモニックフレーズより MnemonicService インスタンスを返却する */
@@ -68,7 +69,7 @@ export class MnemonicService extends SecureStorage {
 
   /** ニーモニックをストレージへ保存する。デバイスにつきニーモニックは1つとする */
   public async replaceToStorage(): Promise<void> {
-    const item = JSON.stringify({ mnemonic: this.mnemonic } as MnemonicModel);
+    const item = JSON.stringify([{ mnemonic: this.mnemonic, label: 'Default' }] as MnemonicModel[]);
     await this.setSecretItem(item);
   }
 

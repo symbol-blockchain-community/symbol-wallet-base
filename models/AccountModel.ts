@@ -18,6 +18,7 @@ export interface PrivateKeyModel {
 
 export interface MnemonicModel {
   mnemonic: string;
+  label?: string;
 }
 
 /** 連絡帳向け */
