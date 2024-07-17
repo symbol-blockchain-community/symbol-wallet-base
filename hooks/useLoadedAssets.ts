@@ -1,14 +1,14 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import * as Font from 'expo-font';
-import { router } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
 
 import { AccountController } from '@/controller/AccountController';
 import { NetworkController } from '@/controller/NetworkController';
 
-export function useLoadedAssets(): boolean {
+export function useLoadedAssets() {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
+  const [isWalletEmpty, setIsWalletEmpty] = useState(false);
 
   useEffect(() => {
     async function loadResourcesAndDataAsync() {
@@ -25,10 +25,15 @@ export function useLoadedAssets(): boolean {
         await NetworkController.initCheck();
 
         // --- Account Storage の初期値有無検証とリダイレクト ---
-        // 起動時にストレージが存在しない場合はログインページへ遷移する
+        // 起動時にストレージが存在しない場合はフラグをセット
+        console.debug('useLoadedAssets called!');
         await AccountController.getWalletList()
-          .then((wallets) => (!wallets || wallets.length === 0) && router.replace('login'))
-          .catch(() => router.replace('login'));
+          .then((wallets) => {
+            setIsWalletEmpty(wallets?.length === 0);
+          })
+          .catch(() => {
+            setIsWalletEmpty(true);
+          });
       } catch (e) {
         console.warn(e);
       } finally {
@@ -40,5 +45,5 @@ export function useLoadedAssets(): boolean {
     loadResourcesAndDataAsync();
   }, []);
 
-  return isLoadingComplete;
+  return { isLoadingComplete, isWalletEmpty };
 }

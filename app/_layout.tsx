@@ -19,7 +19,7 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout(): JSX.Element {
   const pathname = usePathname();
-  const isLoadingComplete = useLoadedAssets();
+  const { isLoadingComplete } = useLoadedAssets();
 
   useEffect(() => {
     console.debug(`root: current page is ${pathname}`);
