@@ -103,6 +103,11 @@ const ja = {
       noTransactionHistory: 'トランザクション履歴はありません。',
     },
   },
+  hooks: {
+    useGetCurrentBalance: {
+      accountNotFound: 'アカウントが見つからないか、一度も送受信されていません',
+    },
+  },
 };
 
 export default ja;

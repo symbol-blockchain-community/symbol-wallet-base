@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 
 import { AccountInfoController } from '@/controller/AccountInfoController';
+import { useI18n } from '@/hooks/useI18n';
 import { Mosaic } from '@/models/MosaicModel';
 import { ResponseError } from '@/services/NodeClientService/index';
 
@@ -29,6 +30,7 @@ export function useGetCurrentBalance(address: string | null, node: string | null
   const [balance, setBalance] = useState<number>(0);
   const [mosaics, setMosaics] = useState<Mosaic[]>([]);
   const [error, setError] = useState<Error | null>(null);
+  const { t } = useI18n();
 
   const controller = useMemo(
     // ノードURL は暫定実装
@@ -54,7 +56,7 @@ export function useGetCurrentBalance(address: string | null, node: string | null
         if (err instanceof ResponseError) {
           if (err.response.status === 404) {
             console.warn(`Account not found ${address} in ${node}`);
-            if (!unmounted) setError(new Error(`Account not found ${address} in ${node}`));
+            if (!unmounted) setError(new Error(t('hooks.useGetCurrentBalance.accountNotFound')));
             return;
           }
         }
