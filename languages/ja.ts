@@ -77,6 +77,7 @@ const ja = {
       },
       tabsHome: {
         owned_mosaics: '所有モザイク',
+        owned_mosaics_show_more: '更に読み込む',
       },
       index: {},
       transactions: {},

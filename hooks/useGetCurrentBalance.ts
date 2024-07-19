@@ -13,9 +13,14 @@ type IResult = {
   mosaics: Mosaic[];
   /** 残高を再取得する */
   refresh: () => Promise<void>;
+  /** 次の5件のモザイクを取得する */
+  loadMoreMosaics: () => Promise<void>;
   /** エラー */
   error: Error | null;
 };
+
+/** 一度に取得するモザイクの件数 */
+export const FETCH_MOSAICS_LIMIT = 3;
 
 /**
  * 指定されたアドレスの残高を取得する。アドレスに null が渡された場合は取得を保留とし、待機する
@@ -30,6 +35,7 @@ export function useGetCurrentBalance(address: string | null, node: string | null
   const [balance, setBalance] = useState<number>(0);
   const [mosaics, setMosaics] = useState<Mosaic[]>([]);
   const [error, setError] = useState<Error | null>(null);
+  const [offset, setOffset] = useState<number>(0);
   const { t } = useI18n();
 
   const controller = useMemo(
@@ -41,41 +47,43 @@ export function useGetCurrentBalance(address: string | null, node: string | null
     [address, node]
   );
 
-  useEffect(() => {
+  const loadMosaics = async (newOffset: number) => {
     if (controller === null) return;
-    let unmounted = false;
     setIsLoading(true);
     setError(null);
-    controller
-      .getAccountInfo()
-      .then((res) => {
-        if (!unmounted) setMosaics(res.mosaics);
-        if (!unmounted) setBalance(res.balance);
-      })
-      .catch((err) => {
-        if (err instanceof ResponseError) {
-          if (err.response.status === 404) {
-            console.warn(`Account not found ${address} in ${node}`);
-            if (!unmounted) setError(new Error(t('hooks.useGetCurrentBalance.accountNotFound')));
-            return;
-          }
+    try {
+      const res = await controller.getAccountInfo(newOffset, FETCH_MOSAICS_LIMIT);
+      setMosaics((prevMosaics) => [...prevMosaics, ...res.mosaics]);
+      setBalance(res.balance);
+      setOffset(newOffset + 5);
+    } catch (err: any) {
+      if (err instanceof ResponseError) {
+        if (err.response.status === 404) {
+          console.warn(`Account not found ${address} in ${node}`);
+          setError(new Error(t('hooks.useGetCurrentBalance.accountNotFound')));
+          return;
         }
-        if (!unmounted) setError(err);
-      })
-      .finally(() => {
-        if (!unmounted) setIsLoading(false);
-      });
-    return () => {
-      unmounted = true;
-    };
-  }, [address, node]);
+      }
+      setError(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
+  const loadMoreMosaics = async () => {
+    await loadMosaics(offset);
+  };
+
+  useEffect(() => {
+    if (controller === null) return;
+    loadMosaics(0);
+  }, [address, node]);
   const refresh = async () => {
     if (controller === null) return;
     setIsLoading(true);
     setError(null);
     controller
-      .getAccountInfo()
+      .getAccountInfo(0, FETCH_MOSAICS_LIMIT)
       .then((res) => {
         setMosaics(res.mosaics);
         setBalance(res.balance);
@@ -89,5 +97,5 @@ export function useGetCurrentBalance(address: string | null, node: string | null
       });
   };
 
-  return { isLoading, balance, mosaics, error, refresh };
+  return { isLoading, balance, mosaics, error, refresh, loadMoreMosaics };
 }

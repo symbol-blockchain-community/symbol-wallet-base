@@ -3,9 +3,10 @@ import { useLocalSearchParams } from 'expo-router';
 import { View, Text, Pressable, ScrollView } from 'react-native';
 import { Toast } from 'react-native-toast-message/lib/src/Toast';
 
+import Button from '@/components/atom/Button';
 import { Card, CardFooter, CardHeader } from '@/components/atom/Card';
 import FormattedAmount from '@/components/atom/FormattedAmount';
-import { useGetCurrentBalance } from '@/hooks/useGetCurrentBalance';
+import { useGetCurrentBalance, FETCH_MOSAICS_LIMIT } from '@/hooks/useGetCurrentBalance';
 import { useI18n } from '@/hooks/useI18n';
 import { useLoadCurrentNetwork } from '@/hooks/useLoadCurrentNetwork';
 import { WalletModel } from '@/models/AccountModel';
@@ -27,7 +28,7 @@ export default function WalletAccountDetail(): JSX.Element {
   const { restGateway } = useHooks();
 
   const address = AddressService.createFromPublicKey(params.publicKey, params.networkType);
-  const { isLoading, balance, mosaics } = useGetCurrentBalance(address.plain(), restGateway || null);
+  const { isLoading, balance, mosaics, loadMoreMosaics } = useGetCurrentBalance(address.plain(), restGateway || null);
   const copyAddress = () => {
     Clipboard.setStringAsync(address.plain()).then(() => Toast.show({ text1: t('common.copied') }));
   };
@@ -51,18 +52,30 @@ export default function WalletAccountDetail(): JSX.Element {
             </CardFooter>
           </Card>
 
-          <Text className='text-xl my-4'>{t('pages.wallet.tabsHome.owned_mosaics')}</Text>
+          {mosaics.length > 0 && (
+            <View>
+              <Text className='text-xl my-4'>{t('pages.wallet.tabsHome.owned_mosaics')}</Text>
 
-          {mosaics.map((mosaic) => {
-            return (
-              <Card className='w-full p-4' color='default' key={mosaic.id}>
-                <CardHeader>{mosaic.namespace ?? mosaic.id}</CardHeader>
-                <CardFooter>
-                  <FormattedAmount amount={mosaic.amount} className='text-2xl' />
-                </CardFooter>
-              </Card>
-            );
-          })}
+              {mosaics.map((mosaic) => {
+                return (
+                  <Card className='w-full p-4' color='default' key={mosaic.id}>
+                    <CardHeader>{mosaic.namespace ?? mosaic.id}</CardHeader>
+                    <CardFooter>
+                      <FormattedAmount amount={mosaic.amount} className='text-2xl' />
+                    </CardFooter>
+                  </Card>
+                );
+              })}
+              {mosaics.length > 0 && mosaics.length % FETCH_MOSAICS_LIMIT === 0 && (
+                <View>
+                  <Button onPress={loadMoreMosaics}>{t('pages.wallet.tabsHome.owned_mosaics_show_more')}</Button>
+                </View>
+              )}
+              <Text>
+                {FETCH_MOSAICS_LIMIT}, {mosaics.length}, {mosaics.length % FETCH_MOSAICS_LIMIT}
+              </Text>
+            </View>
+          )}
         </ScrollView>
       </View>
     </>

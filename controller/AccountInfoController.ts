@@ -52,11 +52,24 @@ export class AccountInfoController {
 
   /**
    * アカウントの情報を取得する。アドレスは Base32 へ、 Mosaic は名前解決と絶対値への変換を行う
+   * @param offset モザイク取得開始位置
+   * @param limit モザイク取得件数
    */
-  public async getAccountInfo() {
+  public async getAccountInfo(offset = 0) {
+    console.debug(`mosaic slice ${offset} to ${offset + 3}`);
     const networkType = await this.testNetworkType();
     const accountInfoRow = await this.accountRoutes.getAccountInfo({ accountId: this.address });
-    const mosaicIds: string[] = await Promise.all(accountInfoRow.account.mosaics.map((m) => m.id));
+    console.debug(
+      'before mosaics:',
+      accountInfoRow.account.mosaics.map((m) => m.id)
+    );
+    console.debug(
+      'sliced mosaics:',
+      accountInfoRow.account.mosaics.slice(offset, offset + 3).map((m) => m.id)
+    );
+    const mosaicIds: string[] = await Promise.all(
+      accountInfoRow.account.mosaics.slice(offset, offset + 3).map((m) => m.id)
+    );
     // divisivility と、 namespace 情報を取得する
     const [mosaicsInfoDTO, namespaceInfoDTO] = await Promise.all([
       this.mosaicRoutes.getMosaics({ mosaicIds: { mosaicIds } }),
@@ -64,7 +77,7 @@ export class AccountInfoController {
     ]);
     // Mosaic の名前とAmountを解決する
     const resolvedMosaics: Mosaic[] = await Promise.all(
-      accountInfoRow.account.mosaics.map((m) => {
+      accountInfoRow.account.mosaics.slice(offset, offset + 3).map((m) => {
         const mosaicInfoDTO = mosaicsInfoDTO.find((e) => e.mosaic.id === m.id);
         const mosaicNamesDTO = namespaceInfoDTO.mosaicNames.find((e) => e.mosaicId === m.id);
         return {
