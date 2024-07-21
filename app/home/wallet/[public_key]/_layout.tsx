@@ -22,10 +22,11 @@ export default function WalletPublicKeyDynamicLayout(): JSX.Element {
     // LocalStorage の読込中にエラーが発生した場合、ホーム画面へ戻る
     if (error) {
       console.error('Wallets Load Error', error);
-      router.replace('/');
+      router.replace('/home');
     }
     // 指定されたアカウントが存在しない場合、ホーム画面へ戻る
     if (!isLoading && !currentWallet) {
+      console.log(wallets, currentWallet);
       console.log(`Wallet ${params.public_key} is not find`);
       router.replace('/');
     }

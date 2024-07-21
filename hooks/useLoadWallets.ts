@@ -35,8 +35,6 @@ export function useLoadWallets(): ILoadWallets {
         if (unmounted) return;
         setIsLoading(false);
       });
-    setWallets([]);
-    setIsLoading(false);
     return () => {
       unmounted = true;
     };
