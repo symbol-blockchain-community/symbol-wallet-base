@@ -2,7 +2,7 @@ import { Action, AppState } from './types';
 
 export const initialState: AppState = {
   node: '',
-  networkType: 0,
+  networkType: 'testnet',
 };
 
 export const reducer = (state: AppState, action: Action): AppState => {
@@ -13,6 +13,8 @@ export const reducer = (state: AppState, action: Action): AppState => {
       return { ...state, node: action.payload };
     case 'SET_NETWORK_TYPE':
       return { ...state, networkType: action.payload };
+    case 'GET_NETWORK_TYPE':
+      return state;
     default:
       return state;
   }

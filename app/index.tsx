@@ -6,6 +6,7 @@ import Button from '@/components/atom/Button';
 import ButtonBase from '@/components/atom/ButtonBase';
 import { List } from '@/components/atom/List';
 import { useLoadWallets } from '@/hooks/useLoadWallets';
+import { useLoadedAssets } from '@/hooks/useLoadedAssets';
 import { WalletModel } from '@/models/AccountModel';
 import { AddressService } from '@/services/AddressService';
 import { NotificationService } from '@/services/NotificationService';
@@ -37,9 +38,10 @@ export type TempType = {
 
 export default function Root(): React.JSX.Element {
   const navigation = useNavigation();
+  const router = useRouter();
   const { isLoading, wallets } = useLoadWallets();
   const [isWalletsInfoReload, setIsWalletsInfoReload] = React.useState<boolean>(false);
-
+  const { isLoadingComplete, isWalletEmpty } = useLoadedAssets();
   React.useEffect(() => {
     const state = navigation.getState();
     navigation.reset({
@@ -47,6 +49,13 @@ export default function Root(): React.JSX.Element {
       routes: state.routes.map((route) => ({ ...route, state: undefined })),
     });
   }, []);
+
+  React.useEffect(() => {
+    // ウォレットが保存されていない場合は作成ページへ遷移
+    if (isLoadingComplete && isWalletEmpty) {
+      router.push('/login');
+    }
+  }, [isLoadingComplete, isWalletEmpty]);
 
   const testPushNotification = async () => {
     await new NotificationService().sendPushNotification('test', 'hello world', { key: 'test' });

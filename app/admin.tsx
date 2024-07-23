@@ -1,3 +1,4 @@
+import RNAsyncStorage from '@react-native-async-storage/async-storage';
 import { Link } from 'expo-router';
 import * as React from 'react';
 import { View, Text, ScrollView } from 'react-native';
@@ -20,10 +21,32 @@ import { STORAGE_KEYS } from '@/util/configs/storage-keys';
 import { AsyncStorage } from '@/util/storages/AsyncStorage';
 import { SecureStorage } from '@/util/storages/SecureStorage';
 
+const getAllAsyncStorageData = async () => {
+  try {
+    const keys = await RNAsyncStorage.getAllKeys();
+    const result = await RNAsyncStorage.multiGet(keys);
+    return Object.fromEntries(result);
+  } catch (error) {
+    console.error('Error getting AsyncStorage data:', error);
+    return {};
+  }
+};
+
 /**
  * このスクリーンは開発中に Atom Component 等を確認するための検証用です。
  */
 export default function Root(): React.JSX.Element {
+  const [storageData, setStorageData] = React.useState<Record<string, string | null>>({});
+
+  const loadAsyncStorageData = async () => {
+    const data = await getAllAsyncStorageData();
+    setStorageData(data);
+  };
+
+  React.useEffect(() => {
+    loadAsyncStorageData();
+  }, []);
+
   return (
     <View className='flex-1'>
       <ScrollView>
@@ -34,6 +57,34 @@ export default function Root(): React.JSX.Element {
             <Button>WALLET 設定追加</Button>
             <Button onPress={() => new SecureStorage(STORAGE_KEYS.secure.ACCOUNT).resetSecretItem()}>
               WALLET 初期化
+            </Button>
+            <Button
+              onPress={async () => {
+                // ニーモニック削除
+                const mnSecureStorage = new SecureStorage(STORAGE_KEYS.secure.MNEMONIC);
+                const mnSecureData = JSON.parse((await mnSecureStorage.getSecretItem()) || '');
+                if (mnSecureData) {
+                  await mnSecureStorage.resetSecretItem();
+                }
+
+                // SecureStorage から全ての秘密鍵を削除
+                const secureStorage = new SecureStorage(STORAGE_KEYS.secure.PRIVATEKEY);
+                const secureData = JSON.parse((await secureStorage.getSecretItem()) || '[]');
+                console.debug('secureData:', secureData);
+                if (secureData.length > 0) {
+                  await secureStorage.resetSecretItem();
+                }
+
+                // AsyncStorage から全てのウォレットを削除
+                const asyncStorage = new AsyncStorage(STORAGE_KEYS.async.WALLET);
+                const asyncData = JSON.parse((await asyncStorage.getItem()) || '[]');
+                console.debug('asyncData:', asyncData);
+                if (asyncData.length > 0) {
+                  await asyncStorage.removeItem();
+                }
+              }}
+            >
+              ニーモニック/WALLET 初期化
             </Button>
             <Button onPress={() => new AsyncStorage(STORAGE_KEYS.async.NETWORK).removeItem()}>NW 設定初期化</Button>
             <Button onPress={() => new AsyncStorage(STORAGE_KEYS.async.NODESTATISTICS).removeItem()}>
@@ -122,6 +173,7 @@ export default function Root(): React.JSX.Element {
               <Icons.IconSend style={{ width: 50 }} />
               <Icons.IconSettings style={{ width: 50 }} />
               <Icons.IconWallet style={{ width: 50 }} />
+              <Icons.IconRefresh style={{ width: 50 }} />
             </View>
           </View>
           <View>
@@ -157,6 +209,19 @@ export default function Root(): React.JSX.Element {
           <View>
             <Text>Toast</Text>
             <Button onPress={() => Toast.show({ type: 'success', text1: 'Success' })}>test</Button>
+          </View>
+        </View>
+        <View>
+          <Text>AsyncStorage</Text>
+          <View>
+            {Object.keys(storageData)
+              .sort()
+              .map((key) => (
+                <Card key={key}>
+                  <CardHeader>{key}</CardHeader>
+                  <CardContent>{storageData[key]}</CardContent>
+                </Card>
+              ))}
           </View>
         </View>
       </ScrollView>

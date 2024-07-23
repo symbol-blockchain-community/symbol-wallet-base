@@ -43,11 +43,14 @@ const ja = {
       },
       imported: {
         title: '読み込むアカウントを選択してください',
+        is_creating: 'アドレスを生成しています。これには時間がかかる場合があります。',
+        load_more: '更に表示する',
       },
       generated: {
         title: 'リカバリーフレーズを作成しました。必ず安全な場所に保管し、誰にも共有しないで下さい。',
         input_label: 'リカバリーフレーズ',
         save: '保存する',
+        refresh: 'リフレッシュ',
       },
       complete: {
         finished: '準備を完了しました！',
