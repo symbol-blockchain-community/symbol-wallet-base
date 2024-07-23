@@ -31,7 +31,7 @@ export default function RootLayout(): JSX.Element {
 
 function RootLayoutContent(): JSX.Element {
   const pathname = usePathname();
-  const isLoadingComplete = useLoadedAssets();
+  const { isLoadingComplete } = useLoadedAssets();
   const { t } = useI18n();
 
   useEffect(() => {

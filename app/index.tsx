@@ -8,6 +8,7 @@ import { List } from '@/components/atom/List';
 import { useGetCurrentBalance } from '@/hooks/useGetCurrentBalance';
 import { useLoadCurrentNetwork } from '@/hooks/useLoadCurrentNetwork';
 import { useLoadWallets } from '@/hooks/useLoadWallets';
+import { useLoadedAssets } from '@/hooks/useLoadedAssets';
 import { WalletModel } from '@/models/AccountModel';
 import { AddressService } from '@/services/AddressService';
 
@@ -78,14 +79,6 @@ export default function Root(): React.JSX.Element {
       routes: state.routes.map((route) => ({ ...route, state: undefined })),
     });
   }, []);
-
-  React.useEffect(() => {
-    if (isLoading) return;
-    // ウォレットが保存されていない場合は作成ページへ遷移
-    if (wallets.length === 0) {
-      router.push('/login');
-    }
-  }, [isLoading, wallets]);
 
   const reloadAccountInfo = async () => {
     if (connection === 'disconnected') {
