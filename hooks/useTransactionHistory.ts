@@ -11,7 +11,7 @@ import {
 
 type Mode = 'confirmed' | 'unconfirmed' | 'partial';
 
-type UseTransactionSearchResult = {
+type UseTransactionHistoryResult = {
   /** データの取得中 */
   isLoading: boolean;
   /** 取得したデータの配列 */
@@ -37,7 +37,7 @@ export function useTransactionHistory(
   node: string | null,
   mode: Mode,
   query: Omit<SearchConfirmedTransactionsRequest, 'pageNumber'>
-): UseTransactionSearchResult {
+): UseTransactionHistoryResult {
   // TransactionInfoDTO は一次元配列では取得の失敗時にどのデータが重複しているか困難で有るため、dict に対して offset ごとに格納する
   const [transactions, setTransactions] = useState<{ [key: string]: TransactionInfoDTO[] }>({});
   const [isLoading, setIsLoading] = useState(false);

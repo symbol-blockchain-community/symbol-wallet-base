@@ -14,16 +14,16 @@ import { getExplorerUrl } from '@/util/symbol/network';
 
 interface Props {
   node: string | null;
-  signerPublicKey: string;
+  recipientAddress: string;
   networkType: NetworkType;
 }
 
-export default function SendTransactionHistory(props: Props): JSX.Element {
+export default function ReceivedTransactionHistory(props: Props): JSX.Element {
   const router = useRouter();
   const { t } = useI18n();
   const { isLoading, error, next, refresh, transactions } = useTransactionHistory(props.node, 'confirmed', {
     order: 'desc',
-    signerPublicKey: props.signerPublicKey,
+    recipientAddress: props.recipientAddress,
     embedded: true,
   });
 
@@ -71,7 +71,7 @@ export default function SendTransactionHistory(props: Props): JSX.Element {
           </ButtonBase>
         ) : (
           <Text className='text-lg text-muted-foreground py-32 text-center'>
-            {t('organisms.SendTransactionHistory.noTransactionHistory')}
+            {t('organisms.ReceivedTransactionHistory.noTransactionHistory')}
           </Text>
         )
       }

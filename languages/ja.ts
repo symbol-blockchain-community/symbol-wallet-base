@@ -15,8 +15,17 @@ const ja = {
     importance: '重要度',
     next: '次へ',
     copied: 'コピーしました',
+    loadMore: '更に読み込む',
+    receive: '受信',
+    send: '送信',
   },
   pages: {
+    layout: {
+      wallet: {
+        title: 'ウォレット詳細',
+        header_back_title: '戻る',
+      },
+    },
     login: {
       index: {
         remark: 'アプリを利用する場合、規約に同意頂いたものと致します',
@@ -62,7 +71,13 @@ const ja = {
     },
     wallet: {
       layout: {
+        home_tab_name: 'ホーム',
         transactions_tab_name: '履歴',
+        qr_tab_name: 'QR',
+      },
+      tabsHome: {
+        owned_mosaics: '所有モザイク',
+        owned_mosaics_show_more: '更に読み込む',
       },
       index: {},
       transactions: {},
@@ -79,6 +94,19 @@ const ja = {
       enableCamera: 'カメラを有効化',
       cameraDisabled: 'カメラが無効になっています。設定画面よりカメラの使用を許可して下さい。',
       openSettings: '設定を開く',
+    },
+  },
+  organisms: {
+    ReceivedTransactionHistory: {
+      noTransactionHistory: 'トランザクション履歴はありません。',
+    },
+    SendTransactionHistory: {
+      noTransactionHistory: 'トランザクション履歴はありません。',
+    },
+  },
+  hooks: {
+    useGetCurrentBalance: {
+      accountNotFound: 'アカウントが見つからないか、一度も送受信されていません',
     },
   },
 };

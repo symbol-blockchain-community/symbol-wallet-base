@@ -43,7 +43,7 @@ export default function WalletPublicKeyDynamicLayout(): JSX.Element {
         options={{
           headerShown: false,
           tabBarIcon: () => <IconWallet size={20} className='text-primary' />,
-          tabBarLabel: 'Home',
+          tabBarLabel: t('pages.wallet.layout.home_tab_name'),
         }}
       />
       <Tabs.Screen
@@ -53,15 +53,16 @@ export default function WalletPublicKeyDynamicLayout(): JSX.Element {
           headerShown: false,
           headerTitle: t('pages.wallet.layout.transactions_tab_name'),
           tabBarIcon: () => <IconReceipt size={20} className='text-primary' />,
-          tabBarLabel: 'History',
+          tabBarLabel: t('pages.wallet.layout.transactions_tab_name'),
         }}
       />
+      {/* TODO まだ表示しない */}
       <Tabs.Screen
         name='tabs_account_qr'
         initialParams={currentWallet}
         options={{
           headerShown: false,
-          headerTitle: 'QR',
+          headerTitle: t('pages.wallet.layout.qr_tab_name'),
           href: null,
         }}
       />
